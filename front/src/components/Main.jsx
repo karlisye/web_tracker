@@ -1,42 +1,31 @@
 import { useEffect, useState } from "react";
+import browser from "webextension-polyfill";
 
 function Main() {
-  const [tab, setTab] = useState({})
-  const [loading, setLoading] = useState(true)
+  const [isActive, setIsActive] = useState(false);
 
-  useEffect(()=>{
-      const getPageURL = async () => {
-          try {
-              //get active tab
-              const [currentTab] = await chrome.tabs.query({active: true, currentWindow: true})          
-              const tabName = new URL(currentTab.url);
-              setTab(tabName.hostname)
-              setLoading(false) 
+  //parbauda vai chrome storage uzglaba isActive.
+  useEffect(() => {
+    const loadState = async () => {
+      const result = await browser.storage.sync.get('isActive');
+      //ja uzglaba tad saglaba taa vertibu, ja ne tad iedod false
+      setIsActive(result.isActive ?? false);
+    };
+    loadState();
+  }, []);
 
-              await fetch('http://127.0.0.1:8000/api/store-url', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({
-                    name: tabName.hostname,
-                }),
-              });
-
-          } catch (error) {
-              console.error('Error: ',error)
-          }
-      }
-      getPageURL()
-  },[])
-
-  if(loading) return <p>Loading...</p>
+  const toggleWebsiteReader = () => {
+    const newState = !isActive;
+    browser.storage.sync.set({ isActive: newState });
+    setIsActive(newState);
+  }
 
   return (
     <div className="border p-2 flex gap-2">
+        <span>{ isActive ? 'ON' : 'OFF' }</span>
         <h3>Current Website: </h3>
-        <p>{ tab }</p>
+        {/* <p>{ tab }</p> */}
+        <button onClick={toggleWebsiteReader}>{ isActive ? 'turn off' : 'turn on' }</button>
     </div>
   )
 }
