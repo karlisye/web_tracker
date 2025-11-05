@@ -33,7 +33,21 @@ browser.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
             //strada ar majaslapas DOM
             browser.scripting.executeScript({
                 target: { tabId },
-                func: () => console.log('page finished loading')
+                func: () => {
+                    console.log('page finished loading')
+
+                    const keywords = ['sign out', 'signout', 'log out', 'logout', 'beigt darbu'];
+
+                    const elements = document.querySelectorAll('a, button');
+
+                    elements.forEach(el => {
+                        const text = el.innerText?.toLowerCase() || el.value?.toLowerCase() || '';
+                        
+                        if (keywords.some(keyword => text.includes(keyword))) {
+                            console.log("Found a log-out button: ", el);
+                        }
+                    });
+                }
             });
         } catch (error) {
             console.error('Error on tab update:', error);
