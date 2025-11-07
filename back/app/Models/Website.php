@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class Website extends Model
 {
-    protected $fillable = ['name'];
+    protected $fillable = ['host', 'page_url', 'method', 'detected_at'];
 }

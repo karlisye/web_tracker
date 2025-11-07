@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('websites', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('host');
+            $table->string('page_url');
+            $table->string('method');
+            $table->timestamp('detected_at');
             $table->timestamps();
         });
     }

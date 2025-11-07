@@ -10,16 +10,13 @@ class UrlController extends Controller
     public function store(Request $request)
     {
         $incomingFields = $request->validate([
-            'name' => ['required'],
+            'host' => 'required|string',
+            'page_url' => 'required|url',
+            'method' => 'required|string',
+            'detected_at' => 'required|date',
         ]);
-        
-        // !! vēlāk pievienot COUNT
-        if(Website::where('name', $incomingFields['name'])->exists()){
-            return response()->json(['message' => 'URL added to count successfuly'], 200);
-        }
-
 
         Website::create($incomingFields);
-        return response()->json(['message' => 'URL received successfully!'], 200);
+        return response()->json(['message' => 'Stored successfully!'], 200);
     }
 }

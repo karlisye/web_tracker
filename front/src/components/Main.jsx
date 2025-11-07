@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
-import browser from "webextension-polyfill";
+import { storage } from "webextension-polyfill";
 
 function Main() {
   const [isActive, setIsActive] = useState(false);
 
-  //parbauda vai chrome storage uzglaba isActive.
   useEffect(() => {
     const loadState = async () => {
-      const result = await browser.storage.sync.get('isActive');
-      //ja uzglaba tad saglaba taa vertibu, ja ne tad iedod false
+      const result = await storage.sync.get('isActive');
       setIsActive(result.isActive ?? false);
     };
     loadState();
@@ -16,18 +14,17 @@ function Main() {
 
   const toggleWebsiteReader = () => {
     const newState = !isActive;
-    browser.storage.sync.set({ isActive: newState });
+    storage.sync.set({ isActive: newState });
     setIsActive(newState);
-  }
+  };
 
   return (
     <div className="border p-2 flex gap-2">
         <span>{ isActive ? 'ON' : 'OFF' }</span>
-        <h3>Current Website: </h3>
-        {/* <p>{ tab }</p> */}
-        <button onClick={toggleWebsiteReader}>{ isActive ? 'turn off' : 'turn on' }</button>
+        <h3>Auth Monitor:</h3>
+        <button onClick={toggleWebsiteReader}>{ isActive ? 'Turn OFF' : 'Turn ON' }</button>
     </div>
-  )
+  );
 }
 
-export default Main
+export default Main;
