@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function visits()
+    {
+        return $this->hasMany(Visit::class);
+    }
+
+    public function websitesVisited()
+    {
+        return $this->belongsToMany(Website::class, 'visits')->withPivot('visit_time')->withTimestamps();
+    }
 }
