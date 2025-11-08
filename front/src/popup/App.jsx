@@ -1,7 +1,7 @@
 import './App.css'
-import Body from './popup/layouts/Body'
-import Head from './popup/layouts/Head'
-import Main from './popup/pages/Main'
+import Body from './layouts/Body'
+import Head from './layouts/Head'
+import Main from './pages/Main'
 
 function App() {
   return (
