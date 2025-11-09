@@ -4,8 +4,14 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev:extension": "vite build --mode extension --watch",
+    "build:extension": "vite build --mode extension",
+
+    "dev:web": "vite serve --mode web",
+    "build:web": "vite build --mode web",
+
+    "build": "npm run build:extension && npm run build:web",
+    "clean": "rimraf dist dist-web",
     "lint": "eslint .",
     "preview": "vite preview"
   },
