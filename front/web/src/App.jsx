@@ -1,8 +1,10 @@
-import React from 'react'
+import LoginPage from "./pages/LoginPage"
 
 const App = () => {
   return (
-    <div className='font-bold'>App</div>
+    <>
+      <LoginPage/>
+    </>
   )
 }
 
