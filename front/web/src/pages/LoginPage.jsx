@@ -1,5 +1,26 @@
 import { useState } from "react";
 
+const postToBackend = async (email, password) => {
+  try {
+    const response = await fetch('http://127.0.0.1:8000/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({email, password})
+    });
+    if (!response.ok) {
+      console.error('Backend rejected login', response.status, await response.text());
+    } else {
+      console.log('Login recorded on backend:', email, ' ', password);
+    }
+    
+  } catch (error) {
+    console.error('Error sending to backend:', error);
+  }
+}
+
 const isEmailValid = (email) => {
   const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return emailPattern.test(email);
@@ -24,6 +45,8 @@ const LoginPage = () => {
     }
 
     setError("");
+
+    postToBackend(email, password);
   };
 
   return (
