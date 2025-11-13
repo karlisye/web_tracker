@@ -11,3 +11,4 @@ Route::get('/user', function (Request $request) {
 
 Route::post('/store-url', [UrlController::class, 'store']);
 Route::post('/login', [UserController::class, 'login']);
+Route::post('/register', [UserController::class, 'register']);
