@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 const postToBackend = async (email, password) => {
   try {
@@ -10,14 +11,14 @@ const postToBackend = async (email, password) => {
       },
       body: JSON.stringify({email, password})
     });
-    if (!response.ok) {
-      console.error('Backend rejected login', response.status, await response.text());
-    } else {
-      console.log('Login recorded on backend:', email, ' ', password);
-    }
+
+    const data = await response.json();
+
+    return { response, data };
     
   } catch (error) {
     console.error('Error sending to backend:', error);
+    return null;
   }
 }
 
@@ -27,11 +28,13 @@ const isEmailValid = (email) => {
 };
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!email || !password) {
@@ -45,8 +48,19 @@ const LoginPage = () => {
     }
 
     setError("");
+    const result = await postToBackend(email, password);
+    if(!result) {
+      setError('Server error')
+    }
 
-    postToBackend(email, password);
+    const { response, data } = result;
+
+    if(response.ok) {
+      navigate('/dashboard')
+    } else {
+      setError(data.message);
+    }
+      
   };
 
   return (
@@ -70,6 +84,7 @@ const LoginPage = () => {
         {error && <p>{error}</p>}
 
         <button type="submit">Log in</button>
+        <button><Link to={'/register'}>Register instead</Link></button>
       </form>
     </section>
   );

@@ -1,4 +1,5 @@
 import { useState } from "react"
+import { Link } from "react-router-dom";
 
 const postToBackend = async (name, email, password) => {
   console.log('called');
@@ -66,6 +67,7 @@ const RegisterPage = () => {
             {error && <p>{error}</p>}
 
             <button type="submit">Register</button>
+            <button><Link to={'/login'}>Log in instead</Link></button>
         </form>
     </div>
   )
