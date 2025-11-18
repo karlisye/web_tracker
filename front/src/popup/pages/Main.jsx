@@ -37,7 +37,7 @@ function Main() {
 
   const toggleWebsiteReader = () => {
     const newState = !isActive;
-    storage.sync.set({ isActive: newState });
+    chrome.storage.sync.set({ isActive: newState });
     setIsActive(newState);
   };
 
