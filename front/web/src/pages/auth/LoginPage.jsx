@@ -31,6 +31,17 @@ const LoginPage = () => {
       setToken(data.token)
       navigate('/');
       console.log(data)
+
+      // send token to extension
+      if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+          "kgkngedhfflokdkjhcjehphiomalonjg",
+          { token: data.token },
+          (response) => {
+            console.log("Message sent to Chrome extension:", response);
+          }
+        );
+      }
     }
 
   }
