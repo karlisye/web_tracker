@@ -35,6 +35,19 @@ const RegisterPage = () => {
       setToken(data.token)
       navigate('/');
       console.log(data)
+
+      if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+          "kgkngedhfflokdkjhcjehphiomalonjg",
+          { 
+            type: 'auth-token',
+            token: data.token 
+          },
+          (response) => {
+            console.log("Message sent to Chrome extension:", response);
+          }
+        );
+      }
     }
 
   }

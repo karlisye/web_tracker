@@ -36,15 +36,26 @@
 //     postToBackend(record);
 // });
 
-chrome.runtime.onMessageExternal.addListener((request, sender, sendResponse) => {
-    if (request.token) {
-      chrome.storage.local.set({ authToken: request.token }, () => {
-        console.log("Token stored in extension");
-        sendResponse({ status: "Token saved" });
-      });
-    } else {
-      sendResponse({ status: "No token received" });
+chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
+    if(!message.type) return;
+
+    switch (message.type) {
+        case "auth-token":
+            console.log("Received token:", message.token);
+            chrome.storage.local.set({ authToken: message.token });
+            sendResponse({ status: "Token saved" });
+            break;
+
+        case 'remove-token':
+            chrome.storage.local.remove('authToken', () => {
+                console.log("Token removed from storage");
+                sendResponse({ status: "Token removed" });
+            });
+            break;
+
+        default:
+            console.log("Unknown message type received:", message.type);
+            sendResponse({ error: "Unknown message type" });
     }
-    return true;
 });
   

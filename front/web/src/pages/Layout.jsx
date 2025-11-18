@@ -16,13 +16,21 @@ const Layout = () => {
       }
     });
 
-    const data = await response.json();
-
     if (response.ok) {
       setUser(null);
       setToken(null);
       localStorage.removeItem('token');
       navigate('/')
+
+      if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+          "kgkngedhfflokdkjhcjehphiomalonjg",
+          { type: 'remove-token' },
+          (response) => {
+            console.log("Message sent to Chrome extension:", response);
+          }
+        );
+      }
     }
   }
 
