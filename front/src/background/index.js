@@ -58,4 +58,23 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
             sendResponse({ error: "Unknown message type" });
     }
 });
+
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+    if(!message.type) return;
+
+    switch (message.type) {
+        case 'redirect-to-login':
+            chrome.tabs.create({ url: "http://localhost:5173/login" }, () => {
+                console.log('redirected')
+                sendResponse({ status: 'redirected' })
+            });
+            // need to return true to sendResponse work since create is asyncrnous
+            return true;
+
+        default:
+            console.log("Unknown message type received:", message.type);
+            sendResponse({ error: "Unknown message type" });
+    }
+
+});
   

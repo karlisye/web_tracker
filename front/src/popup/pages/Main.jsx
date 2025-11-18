@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 function Main() {
   const [isActive, setIsActive] = useState(false);
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -25,12 +25,12 @@ function Main() {
             setUser(data);
           }
         } catch (error) {
-          
+          console.log('error getting user', error)
         }
       }
       setLoading(false);
     }
-
+    
     loadState();
     loadUser();
   }, []);
@@ -41,14 +41,34 @@ function Main() {
     setIsActive(newState);
   };
 
-  return (
-    <div className="border p-2 flex gap-2">
-        <span>{ isActive ? 'ON' : 'OFF' }</span>
-        <h3>Auth Monitor:</h3>
-        <button onClick={toggleWebsiteReader}>{ isActive ? 'Turn OFF' : 'Turn ON' }</button>
+  const redirectToLogin = () => {
+    if (window.chrome && chrome.runtime) {
+      chrome.runtime.sendMessage(
+        { 
+          type: 'redirect-to-login',
+        },
+        (response) => {
+          console.log("Message sent to Chrome extension:", response);
+        }
+      );
+    }
+  }
 
-        <div>{loading ? <p>Loading...</p> : <p>{user.name}</p>}</div>
-    </div>
+  if(loading) return <p>Loading...</p>
+
+  return (
+    <>
+      {user ? ( 
+      <>
+        <p>Logged in as: {user.name}</p> 
+        <div className="border p-2 flex gap-2">
+            <span>{ isActive ? 'ON' : 'OFF' }</span>
+            <h3>Auth Monitor:</h3>
+            <button onClick={toggleWebsiteReader}>{ isActive ? 'Turn OFF' : 'Turn ON' }</button>
+        </div>
+      </>
+      ) : redirectToLogin()}
+    </>
   );
 }
 

@@ -35,7 +35,7 @@ const LoginPage = () => {
       // send token to extension
       if (window.chrome && chrome.runtime) {
         chrome.runtime.sendMessage(
-          "kgkngedhfflokdkjhcjehphiomalonjg",
+          "pcgcfgmlofnnogmlooolkdjhhhmifbno",
           { 
             type: 'auth-token',
             token: data.token 

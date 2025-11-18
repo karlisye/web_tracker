@@ -24,7 +24,7 @@ const Layout = () => {
 
       if (window.chrome && chrome.runtime) {
         chrome.runtime.sendMessage(
-          "kgkngedhfflokdkjhcjehphiomalonjg",
+          "pcgcfgmlofnnogmlooolkdjhhhmifbno",
           { type: 'remove-token' },
           (response) => {
             console.log("Message sent to Chrome extension:", response);
