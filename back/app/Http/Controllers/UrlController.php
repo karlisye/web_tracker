@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Visit;
 use App\Models\Website;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,20 @@ class UrlController extends Controller
             'detected_at' => 'required|date',
         ]);
 
-        Website::create($incomingFields);
+        $website = Website::firstOrCreate(
+            ['host' => $incomingFields['host']],
+            [
+                'page_url' => $incomingFields['page_url'],
+                'method' => $incomingFields['method']
+            ],
+        );
+
+        Visit::create([
+            'user_id' => auth()->id(),
+            'website_id' => $website->id,
+            'detected_at' => $incomingFields['detected_at'],
+        ]);
+
         return response()->json(['message' => 'Stored successfully!'], 200);
     }
 }

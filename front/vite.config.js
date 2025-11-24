@@ -26,6 +26,18 @@ export default defineConfig(({ mode }) => {
         react(),
         tailwindcss(),
       ],
+      server: {
+        proxy: {
+          '/api': {
+            target: 'http://localhost:8000',
+            changeOrigin: true,
+            headers: {
+              Accept: 'application/json',
+              "Content-Type": 'application/json',
+            }
+          }
+        }
+      },
       build: {
         outDir: 'dist-web',
       },

@@ -1,4 +1,4 @@
-import { runtime, storage } from "webextension-polyfill";
+// import { runtime, storage } from "webextension-polyfill";
 
 const initAuthMonitoring = () => {
   const isAuthorizeForm = (form) => {
@@ -14,7 +14,7 @@ const initAuthMonitoring = () => {
   document.addEventListener('submit', (event) => {
     const form = event.target;
     if(isAuthorizeForm(form)){
-      runtime.sendMessage({
+      chrome.runtime.sendMessage({
         type: 'auth-form-submitted',
         host: location.host,
         url: location.href,
@@ -22,18 +22,18 @@ const initAuthMonitoring = () => {
     }
   }, true);
 
-  const originalFetch = window.fetch;
-  window.fetch = function (...args) {
-    const url = typeof args[0] === 'string' ? args[0] : args[0].url;
-    if(/login|register|signin|signup|auth/i.test(url)){
-      runtime.sendMessage({
-        type: 'auth-network-call',
-        host: location.host,
-        url,
-      });
-    }
-    return originalFetch.apply(this, args);
-  };
+  // const originalFetch = window.fetch;
+  // window.fetch = function (...args) {
+  //   const url = typeof args[0] === 'string' ? args[0] : args[0].url;
+  //   if(/login|register|signin|signup|auth/i.test(url)){
+  //     runtime.sendMessage({
+  //       type: 'auth-network-call',
+  //       host: location.host,
+  //       url,
+  //     });
+  //   }
+  //   return originalFetch.apply(this, args);
+  // };
 
   const observer = new MutationObserver(() => {
     const forms = document.querySelectorAll('form');
@@ -46,7 +46,7 @@ const initAuthMonitoring = () => {
   observer.observe(document.body, { childList: true, subtree: true });
 };
 
-storage.sync.get('isActive').then(({ isActive }) => {
+chrome.storage.sync.get('isActive').then(({ isActive }) => {
   if (isActive) {
     initAuthMonitoring();
   } else {
