@@ -1,42 +1,46 @@
 import React, { useContext } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+axios.defaults.baseURL = "http://localhost:8000";
+
+const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 
 const Layout = () => {
-  const { user, token, setUser, setToken } = useContext(AppContext);
+  const { user, setUser } = useContext(AppContext);
   const navigate = useNavigate();
 
   const handleLogout = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
 
-    const response = await fetch('/api/logout', {
-      method: 'post',
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    });
+    const response = await axios.post('/logout')
 
-    if (response.ok) {
-      setUser(null);
-      setToken(null);
-      localStorage.removeItem('token');
-      navigate('/')
-
-      if (window.chrome && chrome.runtime) {
-        chrome.runtime.sendMessage(
-          "pcgcfgmlofnnogmlooolkdjhhhmifbno",
-          { type: 'remove-token' },
-          (response) => {
-            console.log("Message sent to Chrome extension:", response);
-          }
-        );
-      }
+    if (response.data.errors) {
+      console.log(response.data.errors)
+      return;
     }
+
+    setUser(null);
+    navigate('/')
+
+    if (window.chrome && chrome.runtime) {
+      chrome.runtime.sendMessage(
+        extensionId,
+        { type: 'remove-token' },
+        (response) => {
+          console.log("Message sent to Chrome extension:", response);
+        }
+      );
+    }
+    
   }
 
   return (
     <>
-      <header>
+      <header className='border'>
           <nav>
               <Link to='/'>Home</Link>
               {user ? (

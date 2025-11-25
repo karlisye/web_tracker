@@ -1,31 +1,30 @@
 import { createContext, useEffect, useState } from "react";
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+axios.defaults.baseURL = "http://localhost:8000";
 
 export const AppContext = createContext();
 
 export default function AppProvider({children}) {
-    const [token, setToken] = useState(localStorage.getItem('token'));
     const [user, setUser] = useState(null);
 
     const getUser = async () => {
-        const response = await fetch('api/user', {
-            headers: {
-                Authorization: `Bearer ${token}`,
-            }
-        });
-        const data = await response.json();
-        if (response.ok) {
-            setUser(data);
+        try {
+            const response = await axios.get('/user');
+            setUser(response.data);
+        } catch (error) {
+            setUser(null);
         }
     }
 
     useEffect(() => {
-        if (token) {
-            getUser();
-        }
-    }, [token]);
+        getUser();
+    }, []);
 
     return (
-        <AppContext.Provider value={{ token, setToken, user, setUser }}>
+        <AppContext.Provider value={{ user, setUser, getUser }}>
             {children}
         </AppContext.Provider>
     )

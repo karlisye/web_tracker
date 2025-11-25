@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 
 function Main() {
@@ -15,17 +16,11 @@ function Main() {
       const { authToken } = await chrome.storage.local.get('authToken');
       if (authToken) {
         try {
-          const response = await fetch('http://localhost:8000/api/user', {
-            headers: {
-              Authorization: `Bearer ${authToken}`,
-            },
-          });
-          if (response.ok) {
-            const data = await response.json();
-            setUser(data);
-          }
+          const config = { headers: { Authorization: `Bearer ${authToken}` } }
+          const response = await axios.get('http://localhost:8000/api/user', config);
+          setUser(response.data);
         } catch (error) {
-          console.log('error getting user', error)
+          console.log('Error getting user', error)
         }
       }
       setLoading(false);

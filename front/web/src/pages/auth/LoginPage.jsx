@@ -1,13 +1,18 @@
 import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
+import axios from 'axios';
 
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+axios.defaults.baseURL = "http://localhost:8000";
+
+const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 
 const LoginPage = () => {
-  const {setToken} = useContext(AppContext);
   const navigate = useNavigate();
+  const { getUser } = useContext(AppContext);
   const [errors, setErrors] = useState({});
-  
   const [formData, setFormData] = useState({
     email: '',
     password: '',
@@ -17,34 +22,30 @@ const LoginPage = () => {
     e.preventDefault();
 
     //validacija
+    
+    await axios.get('/sanctum/csrf-cookie');
+    const response = await axios.post('/login', formData);
+    const data = response.data;
 
-    const response = await fetch('/api/login', {
-      method: 'post',
-      body: JSON.stringify(formData)
-    });
-
-    const data = await response.json()
+    
     if (data.errors) {
       setErrors(data.errors);
-    } else {
-      localStorage.setItem('token', data.token);
-      setToken(data.token)
-      navigate('/');
-      console.log(data)
+      console.log(data.errors);
+      return;
+    }
 
-      // send token to extension
-      if (window.chrome && chrome.runtime) {
-        chrome.runtime.sendMessage(
-          "pcgcfgmlofnnogmlooolkdjhhhmifbno",
-          { 
-            type: 'auth-token',
-            token: data.token 
-          },
-          (response) => {
-            console.log("Message sent to Chrome extension:", response);
-          }
-        );
-      }
+    await getUser();
+
+    navigate('/');
+    console.log(data);
+
+    // send token to extension
+    if (window.chrome && chrome.runtime) {
+      chrome.runtime.sendMessage(
+        extensionId,
+        { type: 'auth-token', token: data.token },
+        response => { console.log("Message sent to Chrome extension:", response) }
+      );
     }
 
   }
