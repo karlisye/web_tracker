@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -18,40 +19,52 @@ class AuthController extends Controller
 
         $user = User::create($incomingFields);
 
-        $token = $user->createToken($request->name);
+        $token = $user->createToken('auth-token')->plainTextToken;
+        $user->extension_token = $token;
+        $user->save();
+
+        Auth::login($user);
 
         return [
             'user' => $user,
-            'token' => $token->plainTextToken
+            'token' => $token
         ];
     }
     public function login(Request $request)
     {
-        $request->validate([
+        $credentials = $request->validate([
             'email' => ['required', 'exists:users'],
             'password' => ['required'],
         ]);
 
-        $user = User::where('email', $request->email)->first();
+        if(Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        if(!$user || !Hash::check($request->password, $user->password)){
+            $user = Auth::user();
+
+            $token = $user->createToken('auth-token')->plainTextToken;
+            $user->extension_token = $token;
+            $user->save();
+    
             return [
-                'errors' => [
-                    'email' => ['incorrect credentials']
-                ]
+                'user' => $user,
+                'token' => $token
             ];
         }
-
-        $token = $user->createToken($user->name);
-
         return [
-            'user' => $user,
-            'token' => $token->plainTextToken
+            'errors' => [
+                'email' => ['incorrect credentials']
+            ]
         ];
+
     }
     public function logout(Request $request)
     {
-        $request->user()->tokens()->delete();
+        Auth::logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
         return [
             'message' => 'you are logged out'
         ];
