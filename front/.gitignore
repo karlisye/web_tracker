@@ -13,6 +13,9 @@ web/dist-web
 dist-ssr
 *.local
 
+.env
+.env.web
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

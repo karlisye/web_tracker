@@ -7,6 +7,7 @@ axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
 axios.defaults.baseURL = 'http://localhost:8000';
 
+const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -21,9 +22,10 @@ const RegisterPage = () => {
 
   const handleRegister = async (e) => {
     e.preventDefault();
+    setErrors({});
 
     //validacija
-
+    
     await axios.get('/sanctum/csrf-cookie');
     const response = await axios.post('/register', formData);
     const data = response.data;
@@ -41,7 +43,7 @@ const RegisterPage = () => {
 
     if (window.chrome && chrome.runtime) {
       chrome.runtime.sendMessage(
-        "pcgcfgmlofnnogmlooolkdjhhhmifbno",
+        extensionId,
         { type: 'auth-token', token: data.token },
         response => { console.log("Message sent to Chrome extension:", response) }
       );

@@ -7,6 +7,8 @@ axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
 axios.defaults.baseURL = "http://localhost:8000";
 
+const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
+
 const Layout = () => {
   const { user, setUser } = useContext(AppContext);
   const navigate = useNavigate();
@@ -26,7 +28,7 @@ const Layout = () => {
 
     if (window.chrome && chrome.runtime) {
       chrome.runtime.sendMessage(
-        "pcgcfgmlofnnogmlooolkdjhhhmifbno",
+        extensionId,
         { type: 'remove-token' },
         (response) => {
           console.log("Message sent to Chrome extension:", response);

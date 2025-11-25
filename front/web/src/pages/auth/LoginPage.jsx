@@ -7,6 +7,8 @@ axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
 axios.defaults.baseURL = "http://localhost:8000";
 
+const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const { getUser } = useContext(AppContext);
@@ -40,7 +42,7 @@ const LoginPage = () => {
     // send token to extension
     if (window.chrome && chrome.runtime) {
       chrome.runtime.sendMessage(
-        "pcgcfgmlofnnogmlooolkdjhhhmifbno",
+        extensionId,
         { type: 'auth-token', token: data.token },
         response => { console.log("Message sent to Chrome extension:", response) }
       );
