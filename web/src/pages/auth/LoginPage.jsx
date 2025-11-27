@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import axios from 'axios';
+import { authorize } from "../../services/auth";
 
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
@@ -20,34 +21,17 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setErrors({});
 
     //validacija
-    
-    await axios.get('/sanctum/csrf-cookie');
-    const response = await axios.post('/login', formData);
-    const data = response.data;
 
-    
-    if (data.errors) {
-      setErrors(data.errors);
-      console.log(data.errors);
-      return;
-    }
-
-    await getUser();
-
-    navigate('/');
-    console.log(data);
-
-    // send token to extension
-    if (window.chrome && chrome.runtime) {
-      chrome.runtime.sendMessage(
-        extensionId,
-        { type: 'auth-token', token: data.token },
-        response => { console.log("Message sent to Chrome extension:", response) }
-      );
-    }
-
+    try {
+      await authorize('login', formData, getUser);
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+      setErrors(error.response?.data?.errors || "Login failed");
+    }  
   }
 
 
