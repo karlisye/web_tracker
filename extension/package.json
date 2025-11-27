@@ -1,15 +1,10 @@
 {
-  "name": "front",
+  "name": "extension",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev:extension": "vite build --mode extension --watch",
-    "build:extension": "vite build --mode extension",
-    "dev:web": "vite serve --mode web",
-    "build:web": "vite build --mode web",
-    "build": "npm run build:extension && npm run build:web",
-    "clean": "rimraf dist dist-web",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -18,11 +13,9 @@
     "axios": "^1.13.2",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router-dom": "^7.9.6",
     "tailwindcss": "^4.1.16",
     "vite-plugin-static-copy": "^3.1.4",
-    "vite-plugin-web-extension": "^4.5.0",
-    "webextension-polyfill": "^0.12.0"
+    "vite-plugin-web-extension": "^4.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
