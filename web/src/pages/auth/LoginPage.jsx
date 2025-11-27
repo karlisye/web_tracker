@@ -1,12 +1,7 @@
 import { useContext, useState } from "react"
 import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
-import axios from 'axios';
 import { authorize } from "../../services/auth";
-
-axios.defaults.withCredentials = true;
-axios.defaults.withXSRFToken = true;
-axios.defaults.baseURL = "http://localhost:8000";
 
 const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 
