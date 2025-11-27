@@ -1,14 +1,7 @@
 import React, { useContext } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
-import axios from 'axios';
 import { logout } from '../services/auth';
-
-axios.defaults.withCredentials = true;
-axios.defaults.withXSRFToken = true;
-axios.defaults.baseURL = "http://localhost:8000";
-
-const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 
 const Layout = () => {
   const { user, setUser } = useContext(AppContext);
