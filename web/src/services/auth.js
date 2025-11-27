@@ -2,7 +2,7 @@ import axios from 'axios';
 
 axios.defaults.withCredentials = true;
 axios.defaults.withXSRFToken = true;
-axios.defaults.baseURL = "http://localhost:8000";
+axios.defaults.baseURL = 'http://localhost:8000';
 
 const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 
@@ -13,7 +13,7 @@ export const authorize = async (route, formData, getUser) => {
         const data = response.data;
         
         if (data.errors) {
-            const error = new Error("Validation failed");
+            const error = new Error('Validation failed');
             error.response = { data };
             throw error;
         }
@@ -26,13 +26,39 @@ export const authorize = async (route, formData, getUser) => {
             chrome.runtime.sendMessage(
                 extensionId,
                 { type: 'auth-token', token: data.token },
-                response => { console.log("Message sent to Chrome extension:", response) }
+                response => { console.log('Message sent to Chrome extension:', response) }
             );
         }
-    
-        return null;
     } catch (error) {
         console.log('Auth failed:', error);
+        throw error;
+    }
+}
+
+export const logout = async (setUser) => {
+    try {
+        const response = await axios.post('/logout');
+        const data = response.data;
+    
+        if (data.errors) {
+            const error = new Error('Logout failed');
+            error.response = { data };
+            throw error;
+        }
+    
+        setUser(null);
+    
+        if (window.chrome && chrome.runtime) {
+            chrome.runtime.sendMessage(
+                extensionId,
+                { type: 'remove-token' },
+                (response) => {
+                console.log('Message sent to Chrome extension:', response);
+                }
+            );
+        }  
+    } catch (error) {
+        console.log('Logout failed:', error);
         throw error;
     }
 }
