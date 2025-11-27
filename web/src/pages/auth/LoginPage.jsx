@@ -3,8 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import { AppContext } from "../../context/AppContext";
 import { authorize } from "../../services/auth";
 
-const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
-
 const LoginPage = () => {
   const navigate = useNavigate();
   const { getUser } = useContext(AppContext);
