@@ -22,28 +22,29 @@ const initAuthMonitoring = () => {
     }
   }, true);
 
-  // const originalFetch = window.fetch;
-  // window.fetch = function (...args) {
-  //   const url = typeof args[0] === 'string' ? args[0] : args[0].url;
-  //   if(/login|register|signin|signup|auth/i.test(url)){
-  //     runtime.sendMessage({
-  //       type: 'auth-network-call',
-  //       host: location.host,
-  //       url,
-  //     });
-  //   }
-  //   return originalFetch.apply(this, args);
-  // };
-
+  const detectedForms = new WeakSet();
+  
   const observer = new MutationObserver(() => {
-    const forms = document.querySelectorAll('form');
-    forms.forEach((form) => {
-      if(isAuthorizeForm(form)) {
-        console.log('Auth detected on: ', location.href);
+    document.querySelectorAll('form').forEach((form) => {
+      if (detectedForms.has(form)) return;
+
+      if (isAuthorizeForm(form)) {
+        detectedForms.add(form);
+
+        console.log('Auth detected on:', location.href);
+        chrome.runtime.sendMessage({
+          type: 'auth-form-detected',
+          host: location.host,
+          url: location.href,
+        });
+
+        observer.disconnect();
       }
     });
   });
+
   observer.observe(document.body, { childList: true, subtree: true });
+
 };
 
 chrome.storage.sync.get('isActive').then(({ isActive }) => {

@@ -1,3 +1,5 @@
+let authDetected = false;
+
 chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => {
     if(!message.type) return;
 
@@ -33,15 +35,12 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             // need to return true to sendResponse work since create is asyncrnous
             return true;
 
+        case 'auth-form-detected':
+            authDetected = true;
+            postToBackend(message);
+
         case 'auth-form-submitted':
-            const { host, url } = message;
-            const record = {
-                host,
-                page_url: url,
-                method: message.type,
-                detected_at: new Date().toISOString().slice(0, 19).replace("T", " "),
-            };
-            postToBackend(record);
+            authDetected ? !authDetected : postToBackend(message);
 
         default:
             console.log("Unknown message type received:", message.type);
@@ -50,7 +49,15 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
 });
 
-const postToBackend = async (record) => {
+const postToBackend = async (msg) => {
+    const { host, url } = msg;
+    const record = {
+        host,
+        page_url: url,
+        method: msg.type,
+        detected_at: new Date().toISOString().slice(0, 19).replace("T", " "),
+    };
+
     try {
         const { authToken } = await chrome.storage.local.get('authToken');
         if(!authToken) return
