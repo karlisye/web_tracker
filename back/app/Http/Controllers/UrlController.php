@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class UrlController extends Controller
 {
+    public function index (Request $request) {
+        $visits = $request->user()->visits()->with(['user', 'website'])->paginate(10);
+        return response()->json(['visits' => $visits]);
+    }
+
     public function store(Request $request)
     {
         $incomingFields = $request->validate([
