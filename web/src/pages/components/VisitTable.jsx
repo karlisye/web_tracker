@@ -41,9 +41,26 @@ const VisitTable = () => {
           ))}
         </tbody>
       </table>
+      
       <div className='flex gap-2'>
-        <button className='bg-indigo-200 rounded-md py-2 px-4 hover:bg-indigo-300 hover:cursor-pointer' onClick={() => setPage(prev => Math.max(prev - 1, 1))}>previous</button>
-        <button className='bg-indigo-200 rounded-md py-2 px-4 hover:bg-indigo-300 hover:cursor-pointer' onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}>next</button>
+        <button 
+          className={`bg-indigo-200 rounded-md py-2 px-4
+            ${page-1 < 1 ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
+          `}          onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+          disabled={page-1 < 1}
+        >
+          <span>previous</span>
+        </button>
+
+        <button 
+          className={`bg-indigo-200 rounded-md py-2 px-4
+            ${page+1 > pageCount ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
+          `}
+          onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}
+          disabled={page+1 > pageCount}
+        >
+          <span>next</span>
+        </button>
       </div>
     </div>
   )
