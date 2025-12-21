@@ -8,10 +8,24 @@ use Illuminate\Http\Request;
 
 class UrlController extends Controller
 {
-    public function index (Request $request) {
-        $visits = $request->user()->visits()->with(['user', 'website'])->paginate(10);
-        return response()->json(['visits' => $visits]);
+    public function index(Request $request)
+    {
+        $incomingFields = $request->validate([
+            'sortBy' => ['required', 'in:visit_time,website_id'],
+            'direction' => ['required', 'in:asc,desc']
+        ]);
+
+        $visits = $request->user()
+            ->visits()
+            ->with(['user', 'website'])
+            ->orderBy($incomingFields['sortBy'], $incomingFields['direction'])
+            ->paginate(10);
+
+        return response()->json([
+            'visits' => $visits
+        ]);
     }
+
 
     public function store(Request $request)
     {

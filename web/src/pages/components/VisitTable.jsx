@@ -5,21 +5,41 @@ const VisitTable = () => {
   const [visits, setVisits] = useState(null);
   const [pageCount, setPageCount] = useState(null);
   const [page, setPage] = useState(1);
+  const [sortBy, setSortBy] = useState('visit_time');
+  const [direction, setDirection] = useState('asc');
 
   const getVisits = async () => {
-    const res = await axios.get(`/visits?page=${page}`);
+    const res = await axios.get(`/visits?page=${page}`, { params: { sortBy, direction } });
     setPageCount(res.data.visits.links.length - 2);
     setVisits(res.data.visits.data);
   }
 
   useEffect(() => {
     getVisits();
-  },[page]);
+  },[page, sortBy, direction]);
 
   if (!visits) return <p>Loading...</p>
 
   return (
     <div className='p-2 rounded-md m-4 bg-indigo-100'>
+      <div className='flex gap-4 text-slate-600 justify-end'>
+        <div>
+          <label htmlFor="sortBy">Sort by: </label>
+          <select onChange={(e) => setSortBy(e.target.value)} id='sortBy'>
+            <option value='visit_time'>Time</option>
+            <option value='website_id'>Website</option>
+          </select>
+        </div>
+
+        <div>
+          <label htmlFor="direction">Direction: </label>
+          <select onChange={(e) => setDirection(e.target.value)} id='direction'>
+            <option value='asc'>Ascending</option>
+            <option value='desc'>Descending</option>
+          </select>
+        </div>
+      </div>
+
       <table className='w-full table-fixed text-left border-separate border-spacing-y-2'>
         <thead>
           <tr>
@@ -41,7 +61,7 @@ const VisitTable = () => {
           ))}
         </tbody>
       </table>
-      
+
       <div className='flex gap-2'>
         <button 
           className={`bg-indigo-200 rounded-md py-2 px-4
