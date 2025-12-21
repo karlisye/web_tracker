@@ -20,18 +20,18 @@ const Layout = () => {
 
   return (
     <>
-      <header className='border'>
-          <nav>
+      <header>
+          <nav className='bg-indigo-100 flex p-4 gap-2 justify-between font-bold text-slate-600'>
               <Link to='/'>Home</Link>
               {user ? (
-                <div>
-                  <div>{user.name}</div>
+                <div className='flex gap-2'>
                   <form onSubmit={handleLogout}>
                     <button>Logout</button>
                   </form>
+                  <span className=''>{user.name}</span>
                 </div>
               ) : (
-              <div>
+              <div className='flex gap-2'>
                 <Link to='/register'>Register</Link>
                 <Link to='/login'>Login</Link>
               </div>
