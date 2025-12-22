@@ -26,15 +26,15 @@ const Layout = () => {
               {user ? (
                 <div className='flex gap-2'>
                   <form onSubmit={handleLogout}>
-                    <button>Logout</button>
+                    <button className='hover:cursor-pointer'>Logout</button>
                   </form>
                   <span className=''>{user.name}</span>
                 </div>
               ) : (
-              <div className='flex gap-2'>
-                <Link to='/register'>Register</Link>
-                <Link to='/login'>Login</Link>
-              </div>
+                <div className='flex gap-2'>
+                  <Link to='/register'>Register</Link>
+                  <Link to='/login'>Login</Link>
+                </div>
               )             
               }
           </nav>
