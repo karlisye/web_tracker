@@ -16,11 +16,11 @@ function Main() {
       const { authToken } = await chrome.storage.local.get('authToken');
       if (authToken) {
         try {
-          const config = { headers: { Authorization: `Bearer ${authToken}` } }
+          const config = { headers: { Authorization: `Bearer ${authToken}` } };
           const response = await axios.get('http://localhost:8000/api/user', config);
           setUser(response.data);
         } catch (error) {
-          console.log('Error getting user', error)
+          console.log('Error getting user', error);
         }
       }
       setLoading(false);
@@ -29,6 +29,11 @@ function Main() {
     loadState();
     loadUser();
   }, []);
+
+  const unlink = async () => {
+    await chrome.storage.local.remove('authToken');
+    redirectToLogin();
+  }
 
   const toggleWebsiteReader = () => {
     const newState = !isActive;
@@ -61,6 +66,7 @@ function Main() {
           </p>
           <button 
             className="bg-indigo-300 border-2 text-white rounded-md hover:bg-indigo-400 hover:cursor-pointer px-3 py-1 text-sm font-semibold"
+            onClick={unlink}
           >
             Unlink
           </button>
