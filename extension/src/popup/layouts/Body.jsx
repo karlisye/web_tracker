@@ -1,7 +1,7 @@
-function Body(props) {
+function Body({ children }) {
   return (
-    <div className="border w-80 h-120">
-        { props.children }
+    <div className="w-80 h-120 p-2 bg-indigo-100">
+        {children}
     </div>
   )
 }
