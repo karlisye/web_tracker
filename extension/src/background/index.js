@@ -17,6 +17,16 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
             });
             break;
 
+        case "auth-check":
+            chrome.storage.local.get("authToken")
+                .then(({ authToken }) => {
+                    if (authToken) sendResponse(true);
+                    else sendResponse(false);
+                })
+                .catch(() => sendResponse({ error: true }));
+
+            return true;
+
         default:
             console.log("Unknown message type received:", message.type);
             sendResponse({ error: "Unknown message type" });
