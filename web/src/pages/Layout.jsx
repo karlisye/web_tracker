@@ -46,7 +46,7 @@ const Layout = () => {
           <Outlet/>
       </main>
       
-      <ExtensionStatus />
+      {user && <ExtensionStatus />}
     </>
   )
 }
