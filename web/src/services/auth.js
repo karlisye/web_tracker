@@ -20,18 +20,34 @@ export const authorize = async (route, formData, getUser) => {
         
         await getUser();
         console.log(data);
-        
-        // send token to extension
-        if (window.chrome && chrome.runtime) {
-            chrome.runtime.sendMessage(
-                extensionId,
-                { type: 'auth-token', token: data.token },
-                response => { console.log('Message sent to Chrome extension:', response) }
-            );
-        }
+
+        link(data.token);
     } catch (error) {
         console.log('Auth failed:', error);
         throw error;
+    }
+}
+
+export const link = (token) => {
+    if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+            extensionId,
+            { type: 'auth-token', token: token },
+            response => { console.log('Link Message sent to Chrome extension:', response) }
+        );
+    }
+}
+
+export const unlink = () => {
+    if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+            extensionId,
+            { type: 'remove-token' },
+            (response) => {
+            console.log('Message sent to Chrome extension:', response);
+            if (!response.error) console.log('extension token removed');
+            }
+        );
     }
 }
 

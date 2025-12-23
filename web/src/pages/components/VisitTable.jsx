@@ -66,7 +66,8 @@ const VisitTable = () => {
         <button 
           className={`bg-indigo-200 rounded-md py-2 px-4
             ${page-1 < 1 ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
-          `}          onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+          `}          
+          onClick={() => setPage(prev => Math.max(prev - 1, 1))}
           disabled={page-1 < 1}
         >
           <span>previous</span>
