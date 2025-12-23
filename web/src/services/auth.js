@@ -44,7 +44,7 @@ export const unlink = () => {
             extensionId,
             { type: 'remove-token' },
             (response) => {
-            console.log('Message sent to Chrome extension:', response);
+            console.log('Unlink Message sent to Chrome extension:', response);
             if (!response.error) console.log('extension token removed');
             }
         );
@@ -64,15 +64,7 @@ export const logout = async (setUser) => {
     
         setUser(null);
     
-        if (window.chrome && chrome.runtime) {
-            chrome.runtime.sendMessage(
-                extensionId,
-                { type: 'remove-token' },
-                (response) => {
-                console.log('Message sent to Chrome extension:', response);
-                }
-            );
-        }  
+        unlink();
     } catch (error) {
         console.log('Logout failed:', error);
         throw error;
