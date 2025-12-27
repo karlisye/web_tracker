@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 import { Link, Outlet, useNavigate } from 'react-router-dom'
 import { AppContext } from '../context/AppContext'
 import { logout } from '../services/auth';
-import ExtensionStatus from './auth/ExtensionStatus';
+import ExtensionStatus from '../components/ExtensionStatus';
 
 const Layout = () => {
   const { user, setUser } = useContext(AppContext);
@@ -24,7 +24,10 @@ const Layout = () => {
     <>
       <header>
           <nav className='bg-indigo-100 flex p-4 gap-2 justify-between font-bold text-slate-600'>
+            <div className='flex gap-2'>
               <Link to='/'>Home</Link>
+              <Link to='/dashboard'>Dashboard</Link>
+            </div>
               {user ? (
                 <div className='flex gap-2'>
                   <form onSubmit={handleLogout}>

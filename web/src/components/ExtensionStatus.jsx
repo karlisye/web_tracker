@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { AppContext } from '../../context/AppContext';
-import { link, unlink } from '../../services/auth';
+import { AppContext } from '../context/AppContext';
+import { link, unlink } from '../services/auth';
 
 const extensionId = import.meta.env.VITE_CHROME_EXTENSION_ID;
 

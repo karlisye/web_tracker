@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext';
-import VisitTable from './components/VisitTable';
+import VisitTable from '../components/VisitTable';
 import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
@@ -8,7 +8,7 @@ const Dashboard = () => {
 
   return (
     <div className='text-center my-4 flex flex-col gap-4'>
-      <span className='text-4xl font-bold'>Dashboard</span>
+      <h1 className='text-4xl font-bold'>Dashboard</h1>
 
       {user ? (
         <VisitTable />
