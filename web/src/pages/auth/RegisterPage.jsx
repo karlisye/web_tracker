@@ -18,7 +18,27 @@ const RegisterPage = () => {
     e.preventDefault();
     setErrors({});
 
-    //validacija
+    const currentErrors = {};
+
+    if (!formData.name.trim()) currentErrors.name = ['Name field is required'];
+    else if (formData.name.trim().length < 3) currentErrors.name = ['Name field is too short'];
+
+    if (!formData.email.trim()) currentErrors.email = ['Email field is required'];
+    else if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(formData.email.trim())) currentErrors.email = ['Incorect email'];
+
+    if (!formData.password.trim()) currentErrors.password = ['Password field is required'];
+    else if (formData.password.trim().length < 8) currentErrors.password = ['Password has to contain at least 8 symbols'];
+    else if (!/[A-Z]/.test(formData.password)) currentErrors.password = ['Password has to contain uppercase letters'];
+    else if (!/[a-z]/.test(formData.password)) currentErrors.password = ['Password has to contain lowercase letters'];
+    else if (!/\d/.test(formData.password)) currentErrors.password = ['Password has to contain numbers'];
+    else if (!/[^A-Za-z0-9]/.test(formData.password)) currentErrors.password = ['Password has to contain special characters'];
+
+    else if (formData.password !== formData.password_confirmation) currentErrors.password = ['Passwords must match'];
+
+    if (Object.keys(currentErrors).length) {
+      setErrors(currentErrors);
+      return;
+    }
     
     try {
       await authorize('register', formData, getUser);
