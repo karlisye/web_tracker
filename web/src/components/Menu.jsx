@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 
 const Menu = ({ setIsMenuClicked }) => {
   return (
@@ -8,9 +8,8 @@ const Menu = ({ setIsMenuClicked }) => {
         <span className='text-xl font-bold'>x</span>
       </button>
 
-      <div className='bg-indigo-200 p-2 rounded-md'>
-        <Link className='font-semibold' to='/dashboard'>Dashboard</Link>
-      </div>
+      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white'} p-2 rounded-md font-semibold w-full`} to='/'>Home</NavLink>
+      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white'} p-2 rounded-md font-semibold w-full`} to='/dashboard'>Dashboard</NavLink>
     </div>
   )
 }
