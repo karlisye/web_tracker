@@ -19,11 +19,11 @@ export const authorize = async (route, formData, getUser) => {
         }
         
         await getUser();
-        console.log(data);
+        // console.log(data);
 
         link(data.token);
     } catch (error) {
-        console.log('Auth failed:', error);
+        // console.log('Auth failed:', error);
         throw error;
     }
 }

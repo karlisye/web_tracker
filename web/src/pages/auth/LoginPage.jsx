@@ -16,15 +16,22 @@ const LoginPage = () => {
     e.preventDefault();
     setErrors({});
 
-    //validacija
+    const currentErrors = {};
+
+    if (!formData.email) currentErrors.email = ['Email field is required'];
+    if (!formData.password) currentErrors.password = ['Password field is required'];
+
+    if (Object.keys(currentErrors).length) {
+      setErrors(currentErrors);
+      return;
+    }
 
     try {
       await authorize('login', formData, getUser);
       navigate('/');
     } catch (error) {
-      console.log(error);
-      setErrors(error.response?.data?.errors || "Login failed");
-    }  
+      setErrors(error.response?.data?.errors || { email:["Login failed"] });
+    }
   }
 
 
