@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const About = () => {
   return (
@@ -46,7 +47,7 @@ const About = () => {
                 </svg>
               </div>
               <p className='text-white text-lg leading-relaxed'>
-                Whether you're tidying up, tightening security, or just curious, Web Tracker helps you reclaim your online life - one account at a time.
+                Whether you're tidying up, tightening security, or just curious, Web Tracker helps you reclaim your online life - one account at a time. Start tracking your account usage by following the <Link className='underline'>Web Tracker setup guide</Link>.
               </p>
             </div>
           </div>
