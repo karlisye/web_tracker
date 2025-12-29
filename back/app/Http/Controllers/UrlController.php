@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Visit;
 use App\Models\Website;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UrlController extends Controller
 {
@@ -51,5 +52,20 @@ class UrlController extends Controller
         ]);
 
         return response()->json(['message' => 'Stored successfully!'], 200);
+    }
+
+    public function mostVisits(Request $request) 
+    {
+        $data = DB::table('visits')
+            ->select('websites.host', DB::raw('COUNT(*) as total'))
+            ->join('websites', 'visits.website_id', '=', 'websites.id')
+            ->where('visits.user_id', $request->user()->id)
+            ->groupBy('websites.host')
+            ->orderByDesc('total')
+            ->get();
+
+        return response()->json([
+            'mostVisits' => $data
+        ]);
     }
 }

@@ -14,4 +14,5 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return $request->user();
     });
     Route::get('/visits', [UrlController::class, 'index']);
+    Route::get('/most-visits', [UrlController::class, 'mostVisits']);
 });

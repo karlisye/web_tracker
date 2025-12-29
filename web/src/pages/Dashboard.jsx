@@ -2,6 +2,7 @@ import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext';
 import VisitTable from '../components/VisitTable';
 import { Link } from 'react-router-dom';
+import MostVisitsGraph from '../components/MostVisitsGraph';
 
 const Dashboard = () => {
   const { user } = useContext(AppContext);
@@ -17,7 +18,10 @@ const Dashboard = () => {
         </div>
 
         {user ? (
-          <VisitTable />
+          <>
+            <VisitTable />
+            <MostVisitsGraph />
+          </>
         ) : (
           <p className='text-slate-600 text-center'><Link className='text-blue-500 underline' to='/login'>Log in</Link> to see your web history statistics</p>
         )}
