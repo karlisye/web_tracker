@@ -27,8 +27,8 @@ const ExtensionStatus = () => {
 
   return (
     <div 
-      className={`fixed bottom-0 right-0 p-2 flex flex-col gap-2 text-lg border-2 rounded-lg m-2 text-white
-        ${isLinked ? 'bg-green-500' : 'bg-red-500'}
+      className={`fixed bottom-0 right-0 p-2 flex flex-col gap-2 text-lg rounded-lg m-2 text-white bg-linear-to-br
+        ${isLinked ? 'from-green-400 to-green-600' : 'from-red-400 to-red-600'}
       `}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
