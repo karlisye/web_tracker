@@ -8,9 +8,9 @@ const Menu = ({ setIsMenuClicked }) => {
         <span className='text-xl font-bold'>x</span>
       </button>
 
-      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white'} p-2 rounded-md font-semibold w-full`} to='/'>Home</NavLink>
-      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white'} p-2 rounded-md font-semibold w-full`} to='/dashboard'>Dashboard</NavLink>
-      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white'} p-2 rounded-md font-semibold w-full`} to='/about'>About Us</NavLink>
+      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white shadow-md'} p-2 rounded-md font-semibold w-full`} to='/'>Home</NavLink>
+      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white shadow-md'} p-2 rounded-md font-semibold w-full`} to='/dashboard'>Dashboard</NavLink>
+      <NavLink className={({ isActive }) => `${isActive && 'bg-indigo-200 border-l-6 border-white shadow-md'} p-2 rounded-md font-semibold w-full`} to='/about'>About Us</NavLink>
     </div>
   )
 }
