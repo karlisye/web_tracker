@@ -19,7 +19,7 @@ const Dashboard = () => {
         {user ? (
           <VisitTable />
         ) : (
-          <p className='text-slate-600'><Link className='text-blue-500 underline' to='/login'>Log in</Link> to see your web history statistics</p>
+          <p className='text-slate-600 text-center'><Link className='text-blue-500 underline' to='/login'>Log in</Link> to see your web history statistics</p>
         )}
       </div>
     </div>

@@ -21,67 +21,69 @@ const VisitTable = () => {
   if (!visits) return <p>Loading...</p>
 
   return (
-    <div className='p-2 rounded-md m-4 bg-indigo-100'>
-      <div className='flex gap-4 text-slate-600 justify-end'>
-        <div>
-          <label htmlFor="sortBy">Sort by: </label>
-          <select onChange={(e) => setSortBy(e.target.value)} id='sortBy'>
-            <option value='visit_time'>Time</option>
-            <option value='website_id'>Website</option>
-          </select>
+    <div className='min-h-screen bg-linear-to-br from-slate-50 to-blue-50 py-16 px-4'>
+      <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
+        <div className='flex gap-4 text-slate-400 justify-end'>
+          <div>
+            <label htmlFor="sortBy">Sort by: </label>
+            <select onChange={(e) => setSortBy(e.target.value)} id='sortBy'>
+              <option value='visit_time'>Time</option>
+              <option value='website_id'>Website</option>
+            </select>
+          </div>
+
+          <div>
+            <label htmlFor="direction">Direction: </label>
+            <select onChange={(e) => setDirection(e.target.value)} id='direction'>
+              <option value='asc'>Ascending</option>
+              <option value='desc'>Descending</option>
+            </select>
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="direction">Direction: </label>
-          <select onChange={(e) => setDirection(e.target.value)} id='direction'>
-            <option value='asc'>Ascending</option>
-            <option value='desc'>Descending</option>
-          </select>
-        </div>
-      </div>
-
-      <table className='w-full table-fixed text-left border-separate border-spacing-y-2'>
-        <thead>
-          <tr>
-            <th className='bg-indigo-200 p-2 rounded-l-md'>ID</th>
-            <th className='bg-indigo-200 p-2'>user</th>
-            <th className='bg-indigo-200 p-2'>website</th>
-            <th className='bg-indigo-200 p-2 rounded-r-md'>time</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {visits.map(visit => (
-            <tr key={visit.id}>
-              <td className='bg-indigo-200 p-2 rounded-l-md'>{visit.id}</td>
-              <td className='bg-indigo-200 p-2'>{visit.user.name}</td>
-              <td className='bg-indigo-200 p-2'>{visit.website.host}</td>
-              <td className='bg-indigo-200 p-2 rounded-r-md'>{visit.visit_time}</td>
+        <table className='w-full table-fixed text-left border-separate border-spacing-y-2 text-slate-600'>
+          <thead>
+            <tr>
+              <th className='bg-slate-100 p-2 rounded-l-md'>ID</th>
+              <th className='bg-slate-100 p-2'>user</th>
+              <th className='bg-slate-100 p-2'>website</th>
+              <th className='bg-slate-100 p-2 rounded-r-md'>time</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
 
-      <div className='flex gap-2'>
-        <button 
-          className={`bg-indigo-200 rounded-md py-2 px-4
-            ${page-1 < 1 ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
-          `}          
-          onClick={() => setPage(prev => Math.max(prev - 1, 1))}
-          disabled={page-1 < 1}
-        >
-          <span>previous</span>
-        </button>
+          <tbody>
+            {visits.map(visit => (
+              <tr key={visit.id}>
+                <td className='bg-slate-100 p-2 rounded-l-md'>{visit.id}</td>
+                <td className='bg-slate-100 p-2'>{visit.user.name}</td>
+                <td className='bg-slate-100 p-2'>{visit.website.host}</td>
+                <td className='bg-slate-100 p-2 rounded-r-md'>{visit.visit_time}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-        <button 
-          className={`bg-indigo-200 rounded-md py-2 px-4
-            ${page+1 > pageCount ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
-          `}
-          onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}
-          disabled={page+1 > pageCount}
-        >
-          <span>next</span>
-        </button>
+        <div className='flex gap-2'>
+          <button 
+            className={`bg-indigo-200 rounded-md py-2 px-4
+              ${page-1 < 1 ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
+            `}          
+            onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+            disabled={page-1 < 1}
+          >
+            <span>previous</span>
+          </button>
+
+          <button 
+            className={`bg-indigo-200 rounded-md py-2 px-4
+              ${page+1 > pageCount ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
+            `}
+            onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}
+            disabled={page+1 > pageCount}
+          >
+            <span>next</span>
+          </button>
+        </div>
       </div>
     </div>
   )
