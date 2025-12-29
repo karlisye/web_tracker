@@ -21,7 +21,7 @@ const VisitTable = () => {
   if (!visits) return <p>Loading...</p>
 
   return (
-    <div className='min-h-screen bg-linear-to-br from-slate-50 to-blue-50 px-4'>
+    <div>
       <h2 className='text-2xl my-2 font-bold ml-2'>Login History</h2>
       <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
         <div className='flex gap-4 text-slate-400 justify-end'>
