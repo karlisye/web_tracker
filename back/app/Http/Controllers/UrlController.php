@@ -56,11 +56,21 @@ class UrlController extends Controller
 
     public function mostVisits(Request $request) 
     {
-        $data = DB::table('visits')
-            ->select('websites.host', DB::raw('COUNT(*) as total'))
-            ->join('websites', 'visits.website_id', '=', 'websites.id')
-            ->where('visits.user_id', $request->user()->id)
-            ->groupBy('websites.host')
+        $incomingFields = $request->validate([
+            'sortBy' => ['required', 'in:all,lastMonth']
+        ]);
+
+        
+        $query = DB::table('visits')
+        ->select('websites.host', DB::raw('COUNT(*) as total'))
+        ->join('websites', 'visits.website_id', '=', 'websites.id')
+        ->where('visits.user_id', $request->user()->id);
+
+        if ($incomingFields['sortBy'] === 'lastMonth') {
+            $query->where('visits.created_at', '>=', now()->subMonth());
+        }
+
+        $data = $query->groupBy('websites.host')
             ->orderByDesc('total')
             ->get();
 
