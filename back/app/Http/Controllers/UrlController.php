@@ -57,7 +57,9 @@ class UrlController extends Controller
     public function mostVisits(Request $request) 
     {
         $incomingFields = $request->validate([
-            'sortBy' => ['required', 'in:all,lastMonth']
+            'sortBy' => ['required', 'in:all,lastMonth'],
+            'startDate' => ['nullable', 'date'],
+            'endDate' => ['nullable', 'date'],
         ]);
 
         
@@ -69,6 +71,14 @@ class UrlController extends Controller
         if ($incomingFields['sortBy'] === 'lastMonth') {
             $query->where('visits.created_at', '>=', now()->subMonth());
         }
+
+        $query->when($incomingFields['startDate'] ?? null, function ($q, $start) {
+            return $q->where('visits.created_at', '>=', $start);
+        });
+
+        $query->when($incomingFields['endDate'] ?? null, function ($q, $start) {
+            return $q->where('visits.created_at', '<=', $start);
+        });
 
         $data = $query->groupBy('websites.host')
             ->orderByDesc('total')
