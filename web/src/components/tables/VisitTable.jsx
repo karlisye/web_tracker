@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ContainerTitle from '../ContainerTitle';
+import TableSkeleton from '../TableSkeleton';
 
 const VisitTable = () => {
   const [visits, setVisits] = useState(null);
@@ -19,7 +20,7 @@ const VisitTable = () => {
     getVisits();
   },[page, sortBy, direction]);
 
-  if (!visits) return <p>Loading...</p>
+  if (!visits) return <TableSkeleton colCount={4} />
 
   return (
     <div>
