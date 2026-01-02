@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import ContainerTitle from '../ContainerTitle';
+import TableSkeleton from '../TableSkeleton';
 
 const InactiveWebsitesTable = () => {
   const [inactiveWebsites, setInactiveWebsites] = useState(null);
@@ -14,7 +15,7 @@ const InactiveWebsitesTable = () => {
     getInactiveWebsites();
   },[]);
 
-  if (!inactiveWebsites) return <p>Loading...</p>
+  if (!inactiveWebsites) return <TableSkeleton />
 
   return (
     <div>
