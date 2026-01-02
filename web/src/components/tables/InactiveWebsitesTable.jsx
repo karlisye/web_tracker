@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import Tooltip from './Tooltip';
+import Tooltip from '../Tooltip';
 
 const InactiveWebsitesTable = () => {
   const [inactiveWebsites, setInactiveWebsites] = useState(null);

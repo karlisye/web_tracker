@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
-import DateSelector from './DateSelector';
+import DateSelector from '../DateSelector';
 
 const MostVisitsGraph = () => {
   const [mostVisits, setMostVisits] = useState(null);

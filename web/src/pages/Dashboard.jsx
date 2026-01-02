@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../context/AppContext';
-import VisitTable from '../components/VisitTable';
+import VisitTable from '../components/tables/VisitTable';
 import { Link } from 'react-router-dom';
-import MostVisitsGraph from '../components/MostVisitsGraph';
-import InactiveWebsitesTable from '../components/InactiveWebsitesTable';
+import MostVisitsGraph from '../components/graphs/MostVisitsGraph';
+import InactiveWebsitesTable from '../components/tables/InactiveWebsitesTable';
 
 const Dashboard = () => {
   const { user } = useContext(AppContext);
