@@ -64,9 +64,9 @@ class UrlController extends Controller
 
         
         $query = DB::table('visits')
-        ->select('websites.host', DB::raw('COUNT(*) as total'))
-        ->join('websites', 'visits.website_id', '=', 'websites.id')
-        ->where('visits.user_id', $request->user()->id);
+            ->select('websites.host', DB::raw('COUNT(*) as total'))
+            ->join('websites', 'visits.website_id', '=', 'websites.id')
+            ->where('visits.user_id', $request->user()->id);
 
         if ($incomingFields['sortBy'] === 'lastMonth') {
             $query->where('visits.created_at', '>=', now()->subMonth());
@@ -86,6 +86,21 @@ class UrlController extends Controller
 
         return response()->json([
             'mostVisits' => $data
+        ]);
+    }
+
+    public function inactiveWebsites(Request $request) {
+        $inactiveWebsites = DB::table('visits')
+            ->join('websites', 'visits.website_id', '=', 'websites.id')
+            ->where('visits.user_id', $request->user()->id)
+            ->select('websites.host', DB::raw('MAX(visits.visit_time) as last_visit'))
+            ->groupBy('websites.host')
+            ->having('last_visit', '<', now()->subMonth())
+            ->orderBy('last_visit', 'asc')
+            ->get();
+
+        return response()->json([
+            'inactiveWebsites' => $inactiveWebsites
         ]);
     }
 }

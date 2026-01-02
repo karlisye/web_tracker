@@ -3,6 +3,7 @@ import { AppContext } from '../context/AppContext';
 import VisitTable from '../components/VisitTable';
 import { Link } from 'react-router-dom';
 import MostVisitsGraph from '../components/MostVisitsGraph';
+import InactiveWebsitesTable from '../components/InactiveWebsitesTable';
 
 const Dashboard = () => {
   const { user } = useContext(AppContext);
@@ -21,6 +22,7 @@ const Dashboard = () => {
           <div className='min-h-screen bg-linear-to-br from-slate-50 to-blue-50 px-4 flex flex-col gap-10'>
             <VisitTable />
             <MostVisitsGraph />
+            <InactiveWebsitesTable />
           </div>
         ) : (
           <p className='text-slate-600 text-center'><Link className='text-blue-500 underline' to='/login'>Log in</Link> to see your web history statistics</p>
