@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
+import ContainerTitle from '../ContainerTitle';
 
 const VisitTable = () => {
   const [visits, setVisits] = useState(null);
@@ -22,70 +23,71 @@ const VisitTable = () => {
 
   return (
     <div>
-      <h2 className='text-2xl my-2 font-bold ml-2'>Login History</h2>
-      <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
-        <div className='flex gap-4 text-slate-400 justify-end'>
-          <div>
-            <label htmlFor="sortBy">Sort by: </label>
-            <select onChange={(e) => setSortBy(e.target.value)} id='sortBy'>
-              <option value='visit_time'>Time</option>
-              <option value='website_id'>Website</option>
-            </select>
-          </div>
+    <ContainerTitle title='Login History' />
 
-          <div>
-            <label htmlFor="direction">Direction: </label>
-            <select onChange={(e) => setDirection(e.target.value)} id='direction'>
-              <option value='asc'>Ascending</option>
-              <option value='desc'>Descending</option>
-            </select>
-          </div>
+    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
+      <div className='flex gap-4 text-slate-400 justify-end'>
+        <div>
+          <label htmlFor="sortBy">Sort by: </label>
+          <select onChange={(e) => setSortBy(e.target.value)} id='sortBy'>
+            <option value='visit_time'>Time</option>
+            <option value='website_id'>Website</option>
+          </select>
         </div>
 
-        <table className='w-full table-fixed text-left border-separate border-spacing-y-2 text-slate-600'>
-          <thead>
-            <tr className='shadow-sm shadow-slate-300 rounded-md'>
-              <th className='bg-slate-100 p-2 rounded-l-md'>ID</th>
-              <th className='bg-slate-100 p-2'>user</th>
-              <th className='bg-slate-100 p-2'>website</th>
-              <th className='bg-slate-100 p-2 rounded-r-md'>time</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {visits.map(visit => (
-              <tr className='shadow-sm shadow-slate-300 rounded-md' key={visit.id}>
-                <td className='bg-slate-100 p-2 rounded-l-md'>{visit.id}</td>
-                <td className='bg-slate-100 p-2'>{visit.user.name}</td>
-                <td className='bg-slate-100 p-2'>{visit.website.host}</td>
-                <td className='bg-slate-100 p-2 rounded-r-md'>{visit.visit_time}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-
-        <div className='flex gap-2'>
-          <button 
-            className={`bg-indigo-200 rounded-md py-2 px-4 shadow-lg font-semibold
-              ${page-1 < 1 ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
-            `}          
-            onClick={() => setPage(prev => Math.max(prev - 1, 1))}
-            disabled={page-1 < 1}
-          >
-            <span>previous</span>
-          </button>
-
-          <button 
-            className={`bg-indigo-200 rounded-md py-2 px-4 shadow-lg font-semibold
-              ${page+1 > pageCount ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
-            `}
-            onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}
-            disabled={page+1 > pageCount}
-          >
-            <span>next</span>
-          </button>
+        <div>
+          <label htmlFor="direction">Direction: </label>
+          <select onChange={(e) => setDirection(e.target.value)} id='direction'>
+            <option value='asc'>Ascending</option>
+            <option value='desc'>Descending</option>
+          </select>
         </div>
       </div>
+
+      <table className='w-full table-fixed text-left border-separate border-spacing-y-2 text-slate-600'>
+        <thead>
+          <tr className='shadow-sm shadow-slate-300 rounded-md'>
+            <th className='bg-slate-100 p-2 rounded-l-md'>ID</th>
+            <th className='bg-slate-100 p-2'>user</th>
+            <th className='bg-slate-100 p-2'>website</th>
+            <th className='bg-slate-100 p-2 rounded-r-md'>time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {visits.map(visit => (
+            <tr className='shadow-sm shadow-slate-300 rounded-md' key={visit.id}>
+              <td className='bg-slate-100 p-2 rounded-l-md'>{visit.id}</td>
+              <td className='bg-slate-100 p-2'>{visit.user.name}</td>
+              <td className='bg-slate-100 p-2'>{visit.website.host}</td>
+              <td className='bg-slate-100 p-2 rounded-r-md'>{visit.visit_time}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className='flex gap-2'>
+        <button 
+          className={`bg-indigo-200 rounded-md py-2 px-4 shadow-lg font-semibold
+            ${page-1 < 1 ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
+          `}          
+          onClick={() => setPage(prev => Math.max(prev - 1, 1))}
+          disabled={page-1 < 1}
+        >
+          <span>previous</span>
+        </button>
+
+        <button 
+          className={`bg-indigo-200 rounded-md py-2 px-4 shadow-lg font-semibold
+            ${page+1 > pageCount ? 'bg-slate-400 text-slate-600' : 'hover:cursor-pointer hover:bg-indigo-300'}
+          `}
+          onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}
+          disabled={page+1 > pageCount}
+        >
+          <span>next</span>
+        </button>
+      </div>
+    </div>
     </div>
   )
 }
