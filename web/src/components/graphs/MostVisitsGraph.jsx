@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { BarChart, Bar, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 import DateSelector from '../DateSelector';
 import ContainerTitle from '../ContainerTitle';
+import GraphSkeleton from '../skeletons/GraphSkeleton';
 
 const MostVisitsGraph = () => {
   const [mostVisits, setMostVisits] = useState(null);
@@ -21,12 +22,12 @@ const MostVisitsGraph = () => {
     getMostVisits();
   },[sortBy, startDate, endDate]);
 
-  if (!mostVisits) return <p>Loading...</p>
+  if (!mostVisits) return <GraphSkeleton />
 
   return (
     <div>
     <ContainerTitle title='Visit Count' text="See how often you visit websites you're registered in." />
-    
+
     <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
       <div className='flex gap-2 justify-between text-slate-400 items-center my-1'>
         <div className='flex gap-2 items-center'>

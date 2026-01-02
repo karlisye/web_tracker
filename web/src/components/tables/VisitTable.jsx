@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ContainerTitle from '../ContainerTitle';
-import TableSkeleton from '../TableSkeleton';
+import TableSkeleton from '../skeletons/TableSkeleton';
 
 const VisitTable = () => {
   const [visits, setVisits] = useState(null);
