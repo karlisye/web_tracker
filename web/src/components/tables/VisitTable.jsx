@@ -60,7 +60,7 @@ const VisitTable = () => {
             <tr className='shadow-sm shadow-slate-300 rounded-md' key={visit.id}>
               <td className='bg-slate-100 p-2 rounded-l-md'>{visit.id}</td>
               <td className='bg-slate-100 p-2'>{visit.user.name}</td>
-              <td className='bg-slate-100 p-2'>{visit.website.host}</td>
+              <td className='bg-slate-100 p-2'><a target='_blank' href={visit.website.page_url}>{visit.website.host}</a></td>
               <td className='bg-slate-100 p-2 rounded-r-md'>{visit.visit_time}</td>
             </tr>
           ))}

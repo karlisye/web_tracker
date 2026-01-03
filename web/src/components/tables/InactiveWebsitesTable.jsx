@@ -32,7 +32,7 @@ const InactiveWebsitesTable = () => {
         <tbody>
           {inactiveWebsites.map(inactiveWebsite => (
             <tr className='shadow-sm shadow-slate-300 rounded-md' key={inactiveWebsite.host}>
-              <td className='bg-slate-100 p-2 rounded-l-md'>{inactiveWebsite.host}</td>
+              <td className='bg-slate-100 p-2 rounded-l-md'><a target='_blank' href={`https://${inactiveWebsite.host}`}>{inactiveWebsite.host}</a></td>
               <td className='bg-slate-100 p-2 rounded-r-md'>
                 <span className='bg-red-500 text-white py-1 px-4 rounded-2xl'>{inactiveWebsite.last_visit}</span>
               </td>
