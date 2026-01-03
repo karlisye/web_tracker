@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ContainerTitle from '../ContainerTitle';
 import TableSkeleton from '../skeletons/TableSkeleton';
+import WebsiteInfo from '../WebsiteInfo';
 
 const VisitTable = () => {
   const [visits, setVisits] = useState(null);
@@ -9,6 +10,9 @@ const VisitTable = () => {
   const [page, setPage] = useState(1);
   const [sortBy, setSortBy] = useState('visit_time');
   const [direction, setDirection] = useState('asc');
+
+  const [isSeeMoreActive, setIsSeeMoreActive] = useState(false);
+  const [websiteID, setWebsiteID] = useState(null);
 
   const getVisits = async () => {
     const res = await axios.get(`/visits?page=${page}`, { params: { sortBy, direction } });
@@ -51,7 +55,8 @@ const VisitTable = () => {
             <th className='bg-slate-100 p-2 rounded-l-md'>ID</th>
             <th className='bg-slate-100 p-2'>user</th>
             <th className='bg-slate-100 p-2'>website</th>
-            <th className='bg-slate-100 p-2 rounded-r-md'>time</th>
+            <th className='bg-slate-100 p-2'>time</th>
+            <th className='bg-slate-100 p-2 rounded-r-md'></th>
           </tr>
         </thead>
 
@@ -61,7 +66,10 @@ const VisitTable = () => {
               <td className='bg-slate-100 p-2 rounded-l-md'>{visit.id}</td>
               <td className='bg-slate-100 p-2'>{visit.user.name}</td>
               <td className='bg-slate-100 p-2'><a target='_blank' href={visit.website.page_url}>{visit.website.host}</a></td>
-              <td className='bg-slate-100 p-2 rounded-r-md'>{visit.visit_time}</td>
+              <td className='bg-slate-100 p-2'>{visit.visit_time}</td>
+              <td className='bg-slate-100 p-2 rounded-r-md flex justify-end'>
+                <button onClick={() => {setIsSeeMoreActive(true); setWebsiteID(visit.website_id)}} className='bg-slate-200 py-1 px-6 rounded-md shadow-sm hover:shadow-md hover:cursor-pointer transition duration-100'>See More</button>
+              </td>
             </tr>
           ))}
         </tbody>
@@ -89,6 +97,9 @@ const VisitTable = () => {
         </button>
       </div>
     </div>
+
+    <WebsiteInfo setIsSeeMoreActive={setIsSeeMoreActive} isSeeMoreActive={isSeeMoreActive} websiteID={websiteID} />
+
     </div>
   )
 }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Visit;
 use App\Models\Website;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class UrlController extends Controller
@@ -24,6 +25,22 @@ class UrlController extends Controller
 
         return response()->json([
             'visits' => $visits
+        ]);
+    }
+
+    public function show($website_id)
+    {
+        $visits = Visit::with('website')
+            ->where('website_id', $website_id)
+            ->where('user_id', Auth::user()->id)
+            ->orderBy('visit_time', 'desc')
+            ->get();
+
+        $visitCount = $visits->where('visit_time', '<', now()->subMonth())->count();
+
+        return response()->json([
+            'visits' => $visits,
+            'visitCount' => $visitCount
         ]);
     }
 

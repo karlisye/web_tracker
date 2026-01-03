@@ -14,6 +14,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
         return $request->user();
     });
     Route::get('/visits', [UrlController::class, 'index']);
+    Route::get('/visits/{website_id}', [UrlController::class, 'show']);
     Route::get('/most-visits', [UrlController::class, 'mostVisits']);
     Route::get('inactive-websites', [UrlController::class, 'inactiveWebsites']);
 });
