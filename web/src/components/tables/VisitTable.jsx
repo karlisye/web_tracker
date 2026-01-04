@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import ContainerTitle from '../ContainerTitle';
 import TableSkeleton from '../skeletons/TableSkeleton';
 import WebsiteInfo from '../WebsiteInfo';
+import Modal from '../modals/Modal';
 
 const VisitTable = () => {
   const [visits, setVisits] = useState(null);
@@ -97,8 +98,10 @@ const VisitTable = () => {
         </button>
       </div>
     </div>
-
-    <WebsiteInfo setIsSeeMoreActive={setIsSeeMoreActive} isSeeMoreActive={isSeeMoreActive} websiteID={websiteID} />
+    
+    <Modal setIsActive={setIsSeeMoreActive} isActive={isSeeMoreActive}>
+      <WebsiteInfo websiteID={websiteID} />
+    </Modal>
 
     </div>
   )

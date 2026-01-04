@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 
-const RemoveWebsiteModal = ({ website, setIsActive, setMessage }) => {
+const RemoveWebsiteModal = ({ website, setMessage }) => {
   const removeWebsite = async () => {
     const res = await axios.post(`/remove-website/${website.id}`);
     setMessage(res.data.message);

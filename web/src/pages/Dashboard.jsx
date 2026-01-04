@@ -21,10 +21,10 @@ const Dashboard = () => {
 
         {user ? (
           <div className='min-h-screen bg-linear-to-br from-slate-50 to-blue-50 px-4 flex flex-col gap-10'>
-            {/* <VisitTable />
-            <MostVisitsGraph />
-            <InactiveWebsitesTable /> */}
-            <WebsitesTable />
+            <VisitTable />
+            {/* <MostVisitsGraph />
+            <InactiveWebsitesTable />
+            <WebsitesTable /> */}
           </div>
         ) : (
           <p className='text-slate-600 text-center'><Link className='text-blue-500 underline' to='/login'>Log in</Link> to see your web history statistics</p>
