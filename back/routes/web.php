@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrlController;
+use App\Http\Controllers\WebsiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -18,10 +19,7 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/visits/{website_id}', [UrlController::class, 'show']);
     Route::get('/most-visits', [UrlController::class, 'mostVisits']);
     Route::get('inactive-websites', [UrlController::class, 'inactiveWebsites']);
-    Route::get('/websites', function (Request $request) {
-        $websites = $request->user()->websitesVisited()->get();
-        return response()->json([
-            'websites' => $websites
-        ]);
-    });
+
+    Route::get('/websites', [WebsiteController::class, 'show']);
+    Route::post('/remove-website/{website_id}', [WebsiteController::class, 'remove']);
 });
