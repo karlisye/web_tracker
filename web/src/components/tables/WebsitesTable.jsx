@@ -3,10 +3,15 @@ import React, { useEffect, useState } from 'react'
 import TableSkeleton from '../skeletons/TableSkeleton';
 import ContainerTitle from '../ContainerTitle';
 import Modal from '../modals/Modal';
+import RemoveWebsiteModal from '../modals/RemoveWebsiteModal';
+import PopupMsg from '../PopupMsg';
 
 const WebsitesTable = () => {
   const [websites, setWebsites] = useState(null);
   const [isModalActive, setIsModalActive] = useState(false);
+  const [selectedWebsite, setSelectedWebsite] = useState(null); 
+
+  const [message, setMessage] = useState('');
 
   useEffect(() => {
     const getUsersWebsites = async () => {
@@ -34,7 +39,7 @@ const WebsitesTable = () => {
               <tr key={website.id} className='shadow-sm shadow-slate-300 rounded-md'>
                 <td className='bg-slate-100 p-2 rounded-l-md'>{website.host}</td>
                 <td className='bg-slate-100 p-2 rounded-r-md flex justify-end'>
-                  <button onClick={() => setIsModalActive(true)} className='py-1 px-4 bg-slate-200 rounded-md shadow-sm hover:shadow-md hover:cursor-pointer'>Remove</button>
+                  <button onClick={() => {setIsModalActive(true); setSelectedWebsite(website)}} className='py-1 px-4 bg-slate-200 rounded-md shadow-sm hover:shadow-md hover:cursor-pointer'>Remove</button>
                 </td>
               </tr>
             ))}
@@ -43,8 +48,10 @@ const WebsitesTable = () => {
       </div>
 
       <Modal setIsActive={setIsModalActive} isActive={isModalActive}>
-        
+        <RemoveWebsiteModal setMessage={setMessage} setIsActive={setIsModalActive} website={selectedWebsite} />
       </Modal>
+
+      <PopupMsg message={message} onClose={() => setMessage('')} />
     </div>
   )
 }
