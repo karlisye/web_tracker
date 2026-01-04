@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function websitesVisited()
     {
-        return $this->belongsToMany(Website::class, 'visits')->withPivot('visit_time')->withTimestamps();
+        return $this->belongsToMany(Website::class, 'visits')->distinct();
     }
 }

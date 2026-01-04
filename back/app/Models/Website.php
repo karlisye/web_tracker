@@ -15,6 +15,6 @@ class Website extends Model
 
     public function users()
     {
-        return $this->belongsToMany(User::class, 'visits')->withPivot('visit_time')->withTimestamps();
+        return $this->belongsToMany(User::class, 'visits');
     }
 }

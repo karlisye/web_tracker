@@ -4,6 +4,7 @@ import VisitTable from '../components/tables/VisitTable';
 import { Link } from 'react-router-dom';
 import MostVisitsGraph from '../components/graphs/MostVisitsGraph';
 import InactiveWebsitesTable from '../components/tables/InactiveWebsitesTable';
+import WebsitesTable from '../components/tables/WebsitesTable';
 
 const Dashboard = () => {
   const { user } = useContext(AppContext);
@@ -20,9 +21,10 @@ const Dashboard = () => {
 
         {user ? (
           <div className='min-h-screen bg-linear-to-br from-slate-50 to-blue-50 px-4 flex flex-col gap-10'>
-            <VisitTable />
+            {/* <VisitTable />
             <MostVisitsGraph />
-            <InactiveWebsitesTable />
+            <InactiveWebsitesTable /> */}
+            <WebsitesTable />
           </div>
         ) : (
           <p className='text-slate-600 text-center'><Link className='text-blue-500 underline' to='/login'>Log in</Link> to see your web history statistics</p>
