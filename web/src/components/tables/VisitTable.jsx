@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import ContainerTitle from '../ContainerTitle';
 import TableSkeleton from '../skeletons/TableSkeleton';
-import WebsiteInfo from '../WebsiteInfo';
+import WebsiteInfo from '../modals/WebsiteInfo';
 import Modal from '../modals/Modal';
 
 const VisitTable = () => {
