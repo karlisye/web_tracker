@@ -21,7 +21,7 @@ const InactiveWebsitesTable = () => {
     <div>
     <ContainerTitle title='Inactive Websites' text="See all websites that you haven't visited in over a month." />
 
-    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
+    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
       <table className='w-full table-fixed text-left border-separate border-spacing-y-2 text-slate-600'>
         <thead>
           <tr className='shadow-sm shadow-slate-300 rounded-md'>

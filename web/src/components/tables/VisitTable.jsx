@@ -30,7 +30,7 @@ const VisitTable = () => {
     <div>
     <ContainerTitle title='Login History' />
 
-    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
+    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
       <div className='flex gap-4 text-slate-400 justify-end'>
         <div>
           <label htmlFor="sortBy">Sort by: </label>
