@@ -6,7 +6,7 @@ import Menu from '../components/Menu';
 import NavBar from '../components/navbar/NavBar';
 
 const Layout = () => {
-  const { user, setUser } = useContext(AppContext);
+  const { user } = useContext(AppContext);
   const [isMenuClicked, setIsMenuClicked] = useState(false);
 
   return (
