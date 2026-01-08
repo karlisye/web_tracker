@@ -15,7 +15,7 @@ const Layout = () => {
         <NavBar setIsMenuClicked={setIsMenuClicked} />
       </header>
 
-      <main>
+      <main className='mt-10'>
           <Outlet/>
       </main>
 
