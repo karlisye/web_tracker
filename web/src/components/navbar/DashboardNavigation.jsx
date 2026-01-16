@@ -1,9 +1,10 @@
 import React from 'react'
+import ContainerTitle from '../ContainerTitle'
 
 const DashboardNavigation = ({ onNavigate }) => {
   return (
     <section>
-            
+      <ContainerTitle title="See what you've been up to" />
 
       <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
         <div className='flex gap-2 justify-between text-slate-800 font-bold items-center my-1 h-full'>
