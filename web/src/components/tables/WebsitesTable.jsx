@@ -26,7 +26,8 @@ const WebsitesTable = () => {
   return (
     <>
       <ContainerTitle title="Your Websites" text="All the websites you have visited before" />
-      <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center'>
+
+      <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center grow'>
         <div className='h-full w-full overflow-scroll overscroll-contain'>
           <table className='w-full text-left border-separate border-spacing-y-2 text-slate-600'>
             <thead>
