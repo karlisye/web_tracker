@@ -18,7 +18,7 @@ const InactiveWebsitesTable = () => {
   if (!inactiveWebsites) return <TableSkeleton />
 
   return (
-    <div>
+    <>
     <ContainerTitle title='Inactive Websites' text="See all websites that you haven't visited in over a month." />
 
     <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
@@ -41,7 +41,7 @@ const InactiveWebsitesTable = () => {
         </tbody>
       </table>
     </div>
-    </div>
+    </>
   )
 }
 

@@ -21,7 +21,7 @@ class UrlController extends Controller
             ->visits()
             ->with(['user', 'website'])
             ->orderBy($incomingFields['sortBy'], $incomingFields['direction'])
-            ->paginate(10);
+            ->paginate(8);
 
         return response()->json([
             'visits' => $visits

@@ -28,7 +28,7 @@ const VisitTable = () => {
   if (!visits) return <TableSkeleton colCount={4} />
 
   return (
-    <div>
+    <>
     <ContainerTitle title='Login History' />
 
     <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
@@ -103,7 +103,7 @@ const VisitTable = () => {
       <WebsiteInfo websiteID={websiteID} />
     </Modal>
 
-    </div>
+    </>
   )
 }
 

@@ -24,7 +24,7 @@ const WebsitesTable = () => {
   if (!websites) return <TableSkeleton />
 
   return (
-    <div>
+    <>
       <ContainerTitle title="Your Websites" text="All the websites you have visited before" />
       <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center'>
         <div className='h-full w-full overflow-scroll overscroll-contain'>
@@ -54,7 +54,7 @@ const WebsitesTable = () => {
       </Modal>
 
       <PopupMsg message={message} onClose={() => setMessage('')} />
-    </div>
+    </>
   )
 }
 

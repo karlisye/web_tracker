@@ -25,7 +25,7 @@ const MostVisitsGraph = () => {
   if (!mostVisits) return <GraphSkeleton />
 
   return (
-    <div>
+    <>
     <ContainerTitle title='Visit Count' text="See how often you visit websites you're registered in." />
 
     <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
@@ -66,7 +66,7 @@ const MostVisitsGraph = () => {
         </BarChart>
       </ResponsiveContainer>
     </div>
-    </div>
+    </>
   )
 }
 
