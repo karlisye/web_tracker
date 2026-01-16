@@ -6,6 +6,8 @@ import MostVisitsGraph from '../components/graphs/MostVisitsGraph';
 import InactiveWebsitesTable from '../components/tables/InactiveWebsitesTable';
 import WebsitesTable from '../components/tables/WebsitesTable';
 import DashboardNavigation from '../components/navbar/DashboardNavigation';
+import SnapContainer from '../components/snap/SnapContainer';
+import SnapItem from '../components/snap/SnapItem';
 
 const Dashboard = () => {
   const { user } = useContext(AppContext);
@@ -27,10 +29,8 @@ const Dashboard = () => {
   }
 
   return (
-    <div className="bg-linear-to-br from-slate-50 to-blue-50 overflow-y-scroll lg:h-screen lg:snap-y lg:snap-mandatory scroll-smooth">
-
-      <section className="lg:h-screen snap-start flex items-center px-4">
-        <div className="max-w-6xl mx-auto w-full">
+    <SnapContainer>
+      <SnapItem>
           <div className="py-16 px-4">
             <div className="max-w-6xl mx-auto text-center">
               <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4">
@@ -45,34 +45,25 @@ const Dashboard = () => {
           </div>
 
           <DashboardNavigation onNavigate={handleNavigation} />
-        </div>
-      </section>
+      </SnapItem>
 
       {user ? (
         <>
-          <section ref={visitsRef} className="lg:h-screen snap-start flex items-center px-4">
-            <div className="max-w-6xl mx-auto w-full">
+          <SnapItem ref={visitsRef} >
               <VisitTable />
-            </div>
-          </section>
+          </SnapItem>
 
-          <section ref={mostVisitsRef} className="lg:h-screen snap-start flex items-center px-4">
-            <div className="max-w-6xl mx-auto w-full">
-              <MostVisitsGraph />
-            </div>
-          </section>
+          <SnapItem ref={mostVisitsRef}>
+            <MostVisitsGraph />
+          </SnapItem>
 
-          <section ref={inactiveRef} className="lg:h-screen snap-start flex items-center px-4">
-            <div className="max-w-6xl mx-auto w-full">
-              <InactiveWebsitesTable />
-            </div>
-          </section>
+          <SnapItem ref={inactiveRef}>
+            <InactiveWebsitesTable />
+          </SnapItem>
 
-          <section ref={websitesRef} className="lg:h-screen snap-start flex items-center px-4">
-            <div className="max-w-6xl mx-auto w-full">
-              <WebsitesTable />
-            </div>
-          </section>
+          <SnapItem ref={websitesRef}>
+            <WebsitesTable />
+          </SnapItem>
         </>
 
 
@@ -84,7 +75,8 @@ const Dashboard = () => {
           to see your web history statistics
         </p>
       )}
-    </div>
+    </SnapContainer>
+
   )
 }
 
