@@ -28,8 +28,8 @@ const MostVisitsGraph = () => {
     <>
     <ContainerTitle title='Visit Count' text="See how often you visit websites you're registered in." />
 
-    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 md:p-10'>
-      <div className='flex gap-2 justify-between text-slate-400 items-center my-1'>
+    <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
+      <div className='flex gap-2 justify-between text-slate-400 items-center my-1 h-full'>
         <div className='flex gap-2 items-center'>
           <label htmlFor='pickTime'>Pick time</label>
           <input 
