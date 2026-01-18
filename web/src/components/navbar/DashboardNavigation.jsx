@@ -9,28 +9,28 @@ const DashboardNavigation = ({ onNavigate }) => {
       <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8'>
         <div className='flex gap-2 justify-between text-slate-800 font-bold items-center my-1 h-full'>
           <button
-            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer'
+            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer transition duration-200'
             onClick={() => onNavigate('visits')}
           >
             Login history
           </button>
 
           <button
-            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer'
+            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer transition duration-200'
             onClick={() => onNavigate('mostVisits')}
           >
             Visit count
           </button>
 
           <button
-            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer'
+            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer transition duration-200'
             onClick={() => onNavigate('inactive')}
           >
             Inactive websites
           </button>
 
           <button
-            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer'
+            className='bg-indigo-200 py-5 rounded-md grow shadow-md hover:bg-indigo-300 hover:shadow-lg hover:cursor-pointer transition duration-200'
             onClick={() => onNavigate('websites')}
           >
             Your websites
