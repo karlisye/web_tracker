@@ -79,7 +79,7 @@ const LoginPage = () => {
               </div>
 
               <div className="flex gap-2 justify-end">
-                <Link className="text-blue-500 underline" to={'/register'}>Register instead</Link>
+                <Link className="text-blue-500 underline" to={'/register'}>Sign Up instead</Link>
               </div>
 
               <button className="text-white py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Login</button>

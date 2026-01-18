@@ -52,53 +52,79 @@ const RegisterPage = () => {
 
 
   return (
-    <>
-        <h1 className="text-center text-4xl font-bold my-4">RegisterPage</h1>
+    <div className="h-screen flex justify-center items-center">
+      <section className="w-200 m-4">
+        <h1 className="text-4xl font-bold my-4">RegisterPage</h1>
 
-        <div className="w-1/3 mx-auto p-2 rounded-md bg-indigo-100">
-          <form className="flex flex-col gap-2" onSubmit={handleRegister}>
-              <input
-              className="bg-indigo-200 p-2 rounded-md"
-              type="text"
-              placeholder="Name"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              />
-              {errors.name && <p className="text-red-500 font-bold">{errors.name[0]}</p>}
+        
+        <div className="p-2 rounded-md bg-linear-to-br from-white to-slate-50 flex gap-2 shadow-md">
+          <div className="flex-1 p-2">
+            <div className="h-full bg-indigo-600 rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
+              <div className="absolute top-0 left-0 m-8">
+                <span>WT</span>
+              </div>
 
-              <input
-              className="bg-indigo-200 p-2 rounded-md"
-              type="text"
-              placeholder="Email"
-              value={formData.email}
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              />
-              {errors.email && <p className="text-red-500 font-bold">{errors.email[0]}</p>}
+              <h2 className="text-2xl text-center font-bold">Welcome to Web Tracker!</h2>
+              <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full mb-4 mt-2" />
 
-              <input
-              className="bg-indigo-200 p-2 rounded-md"
-              type="password"
-              placeholder="Password"
-              value={formData.password}
-              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-              />
-              {errors.password && <p className="text-red-500 font-bold">{errors.password[0]}</p>}
+              <p className="text-sm">Sign up and start tracing your digital footprint today!</p>
+            </div>
+          </div>
 
-              <input
-              className="bg-indigo-200 p-2 rounded-md"
-              type="password"
-              placeholder="Confirm Password"
-              value={formData.password_confirmation}
-              onChange={(e) => setFormData({ ...formData, password_confirmation: e.target.value })}
-              />
+          <div className="flex-1 p-2 flex items-center">
+            <form className="flex flex-col gap-4 w-full p-8" onSubmit={handleRegister}>
+              <div>
+                <input
+                className={`border-l-6 p-2 rounded-md shadow-md w-full ${errors.name ? 'outline-1 outline-red-500 border-red-500' : 'border-indigo-600'}`}
+                type="text"
+                placeholder="Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                />
+                {errors.name && <p className="text-red-500 font-bold">{errors.name[0]}</p>}
+              </div>
 
-              <div className="flex gap-2 justify-between">
-                <button className="py-2 px-4 rounded-md bg-indigo-200 hover:bg-indigo-300 hover:cursor-pointer" type="submit">Register</button>
+              <div>
+                <input
+                className={`border-l-6 p-2 rounded-md shadow-md w-full ${errors.email ? 'outline-1 outline-red-500 border-red-500' : 'border-indigo-600'}`}
+                type="text"
+                placeholder="Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                />
+                {errors.email && <p className="text-red-500 font-bold">{errors.email[0]}</p>}
+              </div>
+              <div>
+                <input
+                className={`border-l-6 p-2 rounded-md shadow-md w-full ${errors.password ? 'outline-1 outline-red-500 border-red-500' : 'border-indigo-600'}`}
+                type="password"
+                placeholder="Password"
+                value={formData.password}
+                onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+                />
+                {errors.password && <p className="text-red-500 font-bold">{errors.password[0]}</p>}
+              </div>
+
+              <div>
+                <input
+                className='border-l-6 p-2 rounded-md shadow-md w-full border-indigo-600'
+                type="password"
+                placeholder="Confirm Password"
+                value={formData.password_confirmation}
+                onChange={(e) => setFormData({ ...formData, password_confirmation: e.target.value })}
+                />
+              </div>
+
+              <div className="flex gap-2 justify-end">
                 <Link className="p-2 text-blue-500 underline" to={'/login'}>Log in instead</Link>
               </div>
-          </form>
+
+              <button className="text-white py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Register</button>
+            </form>
+          </div>
         </div>
-    </>
+      </section>
+    </div>
   )
 }
 
