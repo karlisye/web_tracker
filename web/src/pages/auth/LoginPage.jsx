@@ -38,7 +38,7 @@ const LoginPage = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <section className="w-200 m-4">
-        <h1 className="text-4xl font-bold my-4">Login Page</h1>
+        <h1 className="text-4xl font-bold my-4">Log In Page</h1>
 
         <div className="p-2 rounded-md bg-linear-to-br from-white to-slate-50 flex gap-2 shadow-md">
           <div className="flex-1 p-2">
