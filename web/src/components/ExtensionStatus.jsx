@@ -43,21 +43,12 @@ const ExtensionStatus = () => {
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <button
-        className={`fixed bottom-0 right-0 my-2 py-8 hover:cursor-pointer transition-all duration-300 overflow-hidden text-white rounded-l-full hover:scale-105 
-          ${isHidden ? 'w-6 opacity-100' : 'w-0 opacity-0'}
-          ${isLinked ? 'bg-green-600' : 'bg-red-600'}
-        `}
-        onClick={() => setIsHidden((prev) => !prev)}
-        disabled={!isHidden}
-      >
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" strokeWidth="0" /><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round" /><g id="SVGRepo_iconCarrier"><path fillRule="evenodd" clipRule="evenodd" d="M15.7071 5.29289C16.0976 5.68342 16.0976 6.31658 15.7071 6.70711L10.4142 12L15.7071 17.2929C16.0976 17.6834 16.0976 18.3166 15.7071 18.7071C15.3165 19.0976 14.6834 19.0976 14.2929 18.7071L8.46963 12.8839C7.98148 12.3957 7.98148 11.6043 8.46963 11.1161L14.2929 5.29289C14.6834 4.90237 15.3165 4.90237 15.7071 5.29289Z" fill="currentColor" /></g></svg>
-      </button>
-
-      <div className={`flex transition-all duration-300 overflow-hidden ${isHidden ? 'w-0 opacity-0 h-0' : 'w-auto opacity-100'}`}>
+      <div 
+        className={`flex transition-all duration-300 overflow-hidden 
+          ${isHidden && 'transform translate-x-14/15'}
+        `}>
         <button
-          className={`ml-auto hover:cursor-pointer rounded-l-full text-white transition-all duration-300 overflow-hidden flex items-center 
-            ${isHovered ? 'w-6 opacity-100' : 'w-0 opacity-0'}
+          className={`ml-auto hover:cursor-pointer rounded-l-full text-white transition-all duration-300 overflow-hidden flex items-center w-6
             ${isLinked ? 'bg-green-600' : 'bg-red-600'}
           `}
           onClick={() => setIsHidden((prev) => !prev)}
@@ -67,9 +58,9 @@ const ExtensionStatus = () => {
         </button>
 
         <div
-          className={`p-2 flex flex-col text-lg text-white shadow-lg transition-all duration-300 items-center ${
-            isLinked ? 'bg-green-500' : 'bg-red-500'
-          } ${isHovered ? 'rounded-r-lg' : 'rounded-lg'}`}
+          className={`p-2 flex flex-col text-lg text-white shadow-lg transition-all duration-300 items-center rounded-r-lg
+            ${isLinked ? 'bg-green-500' : 'bg-red-500'} 
+          `}
         >
           <div className="flex gap-2 items-center">
             <span>

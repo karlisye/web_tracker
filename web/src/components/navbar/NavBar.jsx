@@ -73,7 +73,7 @@ const NavBar = () => {
         <div 
           ref={menuRef}
           className={`w-60 rounded-b-4xl transition-all duration-400 bg-indigo-700/50 backdrop-blur-xs overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl
-            ${isMenuClicked ? 'h-30' : 'h-0'}
+            ${isMenuClicked ? 'h-30 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           <NavLink 
@@ -104,8 +104,8 @@ const NavBar = () => {
         <div
           ref={profileMenuRef}
           className={`w-60 rounded-b-4xl transition-all duration-400 bg-indigo-700/50 backdrop-blur-xs overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl ml-auto
-            ${isProfileClicked && !user ? 'h-20' : 
-            isProfileClicked ? 'h-50' : 'h-0'}
+            ${isProfileClicked && !user ? 'h-20 opacity-100' : 
+            isProfileClicked ? 'h-50 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           {user ? (
@@ -136,7 +136,7 @@ const NavBar = () => {
                 onSubmit={handleLogout}
               >
                 <button 
-                  className='w-full text-left px-4 py-3 text-sm text-red-600 bg-white/50 hover:bg-red-50/70 hover:cursor-pointer'
+                  className='w-full text-left px-4 py-3 text-sm text-red-600 bg-white/50 hover:bg-red-50/70 hover:cursor-pointer transition'
                 >
                   Sign Out
                 </button>
