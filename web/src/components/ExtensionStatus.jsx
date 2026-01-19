@@ -44,9 +44,10 @@ const ExtensionStatus = () => {
       onMouseLeave={() => setIsHovered(false)}
     >
       <button
-        className={`fixed bottom-0 right-0 my-2 py-8 hover:cursor-pointer transition-all duration-300 overflow-hidden bg-red-600 text-white rounded-l-full hover:scale-105 ${
-          isHidden ? 'w-6 opacity-100' : 'w-0 opacity-0'
-        }`}
+        className={`fixed bottom-0 right-0 my-2 py-8 hover:cursor-pointer transition-all duration-300 overflow-hidden text-white rounded-l-full hover:scale-105 
+          ${isHidden ? 'w-6 opacity-100' : 'w-0 opacity-0'}
+          ${isLinked ? 'bg-green-600' : 'bg-red-600'}
+        `}
         onClick={() => setIsHidden((prev) => !prev)}
         disabled={!isHidden}
       >
@@ -55,9 +56,10 @@ const ExtensionStatus = () => {
 
       <div className={`flex transition-all duration-300 overflow-hidden ${isHidden ? 'w-0 opacity-0 h-0' : 'w-auto opacity-100'}`}>
         <button
-          className={`ml-auto hover:cursor-pointer rounded-l-full bg-red-600 text-white transition-all duration-300 overflow-hidden flex items-center ${
-            isHovered ? 'w-6 opacity-100' : 'w-0 opacity-0'
-          }`}
+          className={`ml-auto hover:cursor-pointer rounded-l-full text-white transition-all duration-300 overflow-hidden flex items-center 
+            ${isHovered ? 'w-6 opacity-100' : 'w-0 opacity-0'}
+            ${isLinked ? 'bg-green-600' : 'bg-red-600'}
+          `}
           onClick={() => setIsHidden((prev) => !prev)}
           disabled={!isHovered}
         >
