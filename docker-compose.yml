@@ -1,0 +1,41 @@
+services:
+  web:
+    build: ./web
+    ports: 
+      - "5173:80"
+    depends_on:
+      - nginx
+
+  back:
+    build: ./back
+    volumes:
+      - ./back:/var/www
+    expose:
+      - "9000"
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:alpine
+    ports:
+      - "8000:80"
+    volumes:
+      - ./back:/var/www
+      - ./nginx/laravel.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - back
+
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: secret
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql
+    ports:
+      - "3306:3306"
+
+volumes:
+  dbdata:
