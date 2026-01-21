@@ -65,7 +65,7 @@ function Main() {
             Logged in as: <span className="text-black font-semibold">{user.name}</span>
           </p>
           <button 
-            className="bg-indigo-300 text-white rounded-md hover:bg-indigo-400 hover:cursor-pointer px-3 py-1 text-sm font-semibold shadow-md hover:scale-105"
+            className="bg-indigo-500 text-white rounded-md hover:bg-indigo-600 hover:cursor-pointer px-3 py-1 text-sm font-semibold shadow-md hover:shadow-lg transition"
             onClick={unlink}
           >
             Unlink
@@ -79,7 +79,7 @@ function Main() {
           <div className="flex gap-2 items-center">
             <h3>Auth Monitor:</h3>
             <button 
-              className={`py-1 px-3 rounded-xl hover:cursor-pointer hover:scale-105
+              className={`py-1 px-3 rounded-xl hover:cursor-pointer transition
                 ${isActive ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'}`
               } 
               onClick={toggleWebsiteReader}
