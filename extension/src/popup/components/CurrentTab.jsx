@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 
 const CurrentTab = () => {
@@ -19,8 +20,23 @@ const CurrentTab = () => {
     loadCurrentTab();
   },[]);
 
-  const loadData = () => {
-    
+  const loadData = async () => {
+    if (!tabHost) return;
+
+    const { authToken } = await chrome.storage.local.get('authToken');
+    if (authToken) {
+      try {
+        const config = { 
+          headers: { Authorization: `Bearer ${authToken}` },
+          params: { websiteHost: tabHost }
+        };
+        const response = await axios.get('http://localhost:8000/api/load-website-data', config);
+        console.log(response)
+
+      } catch (error) {
+        console.log('Error while loading website data', error);
+      }
+    }
   }
 
   return (

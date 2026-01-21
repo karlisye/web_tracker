@@ -106,7 +106,8 @@ class UrlController extends Controller
         ]);
     }
 
-    public function inactiveWebsites(Request $request) {
+    public function inactiveWebsites(Request $request) 
+    {
         $inactiveWebsites = DB::table('visits')
             ->join('websites', 'visits.website_id', '=', 'websites.id')
             ->where('visits.user_id', $request->user()->id)
@@ -118,6 +119,31 @@ class UrlController extends Controller
 
         return response()->json([
             'inactiveWebsites' => $inactiveWebsites
+        ]);
+    }
+
+    public function loadVisitsByHost(Request $request) 
+    {
+        $request->validate([
+            "websiteHost" => ['required', 'string']
+        ]);
+
+        $website = Website::where('host', $request->websiteHost)->first();
+
+        if (!$website) {
+            return response()->json([
+                "visits" => []
+            ]);
+        }
+
+        $visits = Visit::with('website')
+            ->where('website_id', $website->id)
+            ->where('user_id', auth()->id())
+            ->latest('visit_time')
+            ->get();
+
+        return response()->json([
+            "visits" => $visits
         ]);
     }
 }

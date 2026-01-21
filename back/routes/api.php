@@ -5,7 +5,11 @@ use App\Http\Controllers\UrlController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-Route::post('/store-url', [UrlController::class, 'store'])->middleware('auth:sanctum');
+
+Route::middleware(['auth:sanctum'])->group(function () {
+    Route::post('/store-url', [UrlController::class, 'store']);
+    Route::get('/load-website-data', [UrlController::class, 'loadVisitsByHost']);
+});
 
 Route::get('/user', function (Request $request) {
     return $request->user();
