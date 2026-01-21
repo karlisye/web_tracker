@@ -3,6 +3,8 @@ import React, { useEffect, useState } from 'react'
 
 const CurrentTab = () => {
   const [tabHost, setTabHost] = useState(null);
+  const [visits, setVisits] = useState(null);
+  const [isDataLoadBtnClicked, setIsDataLoadBtnClicked] = useState(false);
 
   useEffect(() => {
     const loadCurrentTab = async () => {
@@ -23,6 +25,8 @@ const CurrentTab = () => {
   const loadData = async () => {
     if (!tabHost) return;
 
+    setIsDataLoadBtnClicked(true);
+
     const { authToken } = await chrome.storage.local.get('authToken');
     if (authToken) {
       try {
@@ -31,7 +35,8 @@ const CurrentTab = () => {
           params: { websiteHost: tabHost }
         };
         const response = await axios.get('http://localhost:8000/api/load-website-data', config);
-        console.log(response)
+        console.log(response.data.visits);
+        setVisits(response.data.visits);
 
       } catch (error) {
         console.log('Error while loading website data', error);
@@ -46,11 +51,40 @@ const CurrentTab = () => {
       </p>
 
       <button
-        onClick={loadData}
+        onClick={isDataLoadBtnClicked ? () => setIsDataLoadBtnClicked(false) : loadData}
         className='py-1 px-4 rounded-md shadow-md hover:shadow-lg bg-indigo-500 text-white text-sm hover:cursor-pointer hover:bg-indigo-600'
       >
-        Load data about this page
+        {isDataLoadBtnClicked ? 'Close' : 'Load data about this page'}
       </button>
+
+      {isDataLoadBtnClicked && visits && (
+        <div className="bg-indigo-500 h-55 w-full rounded-md shadow-md p-2">
+          <div className="h-full overflow-y-auto rounded-md">
+            <table className="w-full border-separate border-spacing-y-0.5">
+              <thead>
+                <tr className='text-white'>
+                  <th className="sticky top-0 bg-indigo-600 z-10 px-2 py-1 text-left">
+                    Website
+                  </th>
+                  <th className="sticky top-0 bg-indigo-600 z-10 px-2 py-1 text-left">
+                    Visit time
+                  </th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {visits.map((visit) => (
+                  <tr key={visit.id} className="odd:bg-white even:bg-indigo-50">
+                    <td className="px-2 py-1">{visit.website.host}</td>
+                    <td className="px-2 py-1">{visit.visit_time}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }
