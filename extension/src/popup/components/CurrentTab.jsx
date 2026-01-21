@@ -35,7 +35,6 @@ const CurrentTab = () => {
           params: { websiteHost: tabHost }
         };
         const response = await axios.get('http://localhost:8000/api/load-website-data', config);
-        console.log(response.data.visits);
         setVisits(response.data.visits);
 
       } catch (error) {
@@ -60,23 +59,23 @@ const CurrentTab = () => {
       {isDataLoadBtnClicked && visits && (
         <div className="bg-indigo-500 h-55 w-full rounded-md shadow-md p-2">
           <div className="h-full overflow-y-auto rounded-md">
-            <table className="w-full border-separate border-spacing-y-0.5">
+            <table className="w-full border-separate border-spacing-y-1">
               <thead>
                 <tr className='text-white'>
-                  <th className="sticky top-0 bg-indigo-600 z-10 px-2 py-1 text-left">
+                  <th className="sticky top-0 bg-indigo-600 z-10 px-2 py-1 text-left rounded-l-md">
                     Website
                   </th>
-                  <th className="sticky top-0 bg-indigo-600 z-10 px-2 py-1 text-left">
+                  <th className="sticky top-0 bg-indigo-600 z-10 px-2 py-1 text-left rounded-r-md">
                     Visit time
                   </th>
-                </tr>
-              </thead>
+                </tr> 
+              </thead> 
 
               <tbody>
                 {visits.map((visit) => (
-                  <tr key={visit.id} className="odd:bg-white even:bg-indigo-50">
-                    <td className="px-2 py-1">{visit.website.host}</td>
-                    <td className="px-2 py-1">{visit.visit_time}</td>
+                  <tr key={visit.id} className="bg-white shadow-sm">
+                    <td className="px-2 py-1 rounded-l-md">{visit.website.host}</td>
+                    <td className="px-2 py-1 rounded-r-md">{visit.visit_time}</td>
                   </tr>
                 ))}
               </tbody>
