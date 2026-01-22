@@ -61,21 +61,23 @@ function Main() {
     <>
       {user ? ( 
       <>
-        <div className="flex justify-between items-center my-2">
-          <p className="text-sm text-slate-600 text-center">
-            Logged in as: <span className="text-black font-semibold">{user.name}</span>
-          </p>
-          <button 
-            className="bg-indigo-500 text-white rounded-md hover:bg-indigo-600 hover:cursor-pointer px-3 py-1 text-sm font-semibold shadow-md hover:shadow-lg transition"
-            onClick={unlink}
-          >
-            Unlink
-          </button>
+        <div>
+          <div className="flex justify-between items-center my-2">
+            <p className="text-sm text-slate-600 text-center">
+              Logged in as: <span className="text-black font-semibold">{user.name}</span>
+            </p>
+            <button 
+              className="bg-indigo-500 text-white rounded-md hover:bg-indigo-600 hover:cursor-pointer px-3 py-1 text-sm font-semibold shadow-md hover:shadow-lg transition"
+              onClick={unlink}
+            >
+              Unlink
+            </button>
+          </div>
+
+          <CurrentTab />
         </div>
 
-        <CurrentTab />
-
-        <div className={`p-4 m-2 items-center flex justify-between gap-2 text-white font-semibold rounded-md text-sm fixed bottom-0 left-0 right-0 shadow-lg hover:shadow-xl transition-shadow duration-300 bg-linear-to-br
+        <div className={`p-4 items-center flex justify-between gap-2 text-white font-semibold rounded-md text-sm shadow-lg hover:shadow-xl transition-shadow duration-300 bg-linear-to-br
           ${isActive ? 'from-green-500 to-green-600' : 'from-red-500 to-red-600'}`
         }>
           <span>{ isActive ? 'ON' : 'OFF' }</span>

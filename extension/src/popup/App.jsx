@@ -1,14 +1,9 @@
 import './App.css'
-import Body from './layouts/Body'
-import Head from './layouts/Head'
-import Main from './pages/Main'
+import Layout from './layouts/Layout'
 
 function App() {
   return (
-    <Body>
-      <Head/>
-      <Main/>
-    </Body>
+    <Layout />
   )
 }
 

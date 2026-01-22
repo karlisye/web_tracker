@@ -36,6 +36,7 @@ const CurrentTab = () => {
         };
         const response = await axios.get('http://localhost:8000/api/load-website-data', config);
         setVisits(response.data.visits);
+        console.log(response.data.visits)
 
       } catch (error) {
         console.log('Error while loading website data', error);
@@ -57,7 +58,7 @@ const CurrentTab = () => {
       </button>
 
       {isDataLoadBtnClicked && visits && (
-        <div className="bg-indigo-500 h-55 w-full rounded-md shadow-md p-2">
+        <div className="bg-indigo-500 grow h-55 w-full rounded-md shadow-md p-2">
           <div className="h-full overflow-y-auto rounded-md">
             <table className="w-full border-separate border-spacing-y-1">
               <thead>
