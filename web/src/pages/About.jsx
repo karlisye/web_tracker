@@ -6,6 +6,7 @@ import ContainerTitle from '../components/ContainerTitle'
 import { useState } from 'react'
 import { useRef } from 'react'
 
+
 const About = () => {
   const [isImageModalOpen, setIsImageModalOpen] = useState(false);
 
@@ -49,7 +50,7 @@ const About = () => {
         <SnapItem>
           <div className='mb-16'>
             <h1 className='text-5xl font-bold text-slate-200 mb-4'>
-              What we offer
+              Login History
             </h1>
             <div className='w-24 h-1 bg-teal-600 rounded-full'></div>
           </div>
@@ -76,7 +77,7 @@ const About = () => {
               <img 
                 onClick={handleImageClick}
                 src="images/about/visits.png" 
-                className='w-full h-auto rounded-xl shadow-lg hover:scale-105 transition'
+                className='w-full h-auto rounded-xl shadow-lg hover:scale-105 transition cursor-pointer'
               />
 
               <h3 className='text-teal-700 font-bold mt-4 text-lg'>Available after signing up in the Dashboard page</h3>
@@ -84,6 +85,43 @@ const About = () => {
           </div>
         </SnapItem>
 
+        <SnapItem>
+          <div className='mb-16'>
+            <h1 className='text-5xl font-bold text-slate-200 mb-4'>
+              Websites You Use Most Often
+            </h1>
+            <div className='w-24 h-1 bg-pink-200 rounded-full'></div>
+          </div>
+
+          <div className='grid grid-cols-2 gap-8'>
+            <div 
+              className='bg-pink-200 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 flex flex-col items-center justify-center'
+            >
+              <img 
+                onClick={handleImageClick}
+                src="images/about/most-visits.png" 
+                className='w-full h-auto rounded-xl shadow-lg hover:scale-105 transition cursor-pointer'
+              />
+
+              <h3 className='text-teal-700 font-bold mt-4 text-lg'>Interactive charts showing your browsing patterns</h3>
+            </div>
+
+            <div className='bg-teal-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-12 flex flex-col justify-center'>
+              <div className='inline-block bg-pink-200 text-teal-700 px-4 py-1 rounded-full text-sm font-bold mb-6 w-fit'>
+                Analyze Patterns
+              </div>
+              <h3 className='text-4xl font-bold text-white mb-6'>
+                Discover Your Most Visited Sites
+              </h3>
+              <p className='text-yellow-50 text-xl leading-relaxed mb-6'>
+                Visualize which websites you visit most frequently with interactive graphs. Understand your browsing habits and identify the platforms that matter most to you.
+              </p>
+              <p className='text-yellow-100 text-lg leading-relaxed'>
+                Make data-driven decisions about where to focus your security efforts and which accounts deserve your attention.
+              </p>
+            </div>
+          </div>
+        </SnapItem>
 
         <SnapItem>
           <div className='bg-teal-700 rounded-2xl shadow-lg p-8'>
@@ -110,6 +148,7 @@ const About = () => {
             </button>
             <img 
               src={ref.current.src}
+              alt="Enlarged view"
               className='w-full h-auto rounded-xl shadow-2xl'
             />
           </div>
