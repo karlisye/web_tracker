@@ -110,7 +110,7 @@ const CurrentTab = () => {
                 disabled={page === 1}
                 className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
               >
-                Previous
+                {'<'}
               </button>
               
               <span className='text-sm font-medium'>
@@ -122,7 +122,7 @@ const CurrentTab = () => {
                 disabled={page >= totalPages}
                 className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
               >
-                Next
+                {'>'}
               </button>
             </div>
           </div>
