@@ -61,7 +61,7 @@ function Main() {
             Logged in as: <span className='text-black font-semibold'>{user.name}</span>
           </p>
           <button
-            className='bg-indigo-500 text-white rounded-md px-3 py-1 text-sm font-semibold shadow-md hover:bg-indigo-600'
+            className='bg-indigo-500 text-white rounded-md px-3 py-1 text-sm font-semibold shadow-md hover:bg-indigo-600 hover:cursor-pointer'
             onClick={unlink}
           >
             Unlink

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import CurrentTabSkeleton from './CurrentTabSkeleton';
 
 const CurrentTab = () => {
   const [tabHost, setTabHost] = useState(null);
@@ -70,14 +71,14 @@ const CurrentTab = () => {
 
       <button
         onClick={isOpen ? () => setIsOpen(false) : loadData}
-        className='py-1 px-4 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600'
+        className='py-1 px-4 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 hover:cursor-pointer'
       >
         {isOpen ? 'Close' : 'Load data about this page'}
       </button>
 
       {isOpen && (
         loading ? (
-          <p className='text-sm text-center'>Loading...</p>
+          <CurrentTabSkeleton />
         ) : visits.length ? (
           <div className='bg-indigo-500 flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2'>
             <div className='flex-1 overflow-y-scroll rounded-md'>
@@ -107,19 +108,19 @@ const CurrentTab = () => {
               <button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
-                className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 disabled:cursor-not-allowed'
+                className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
               >
                 Previous
               </button>
               
               <span className='text-sm font-medium'>
-                Page {page} of {totalPages}
+                {page} of {totalPages}
               </span>
 
               <button
                 onClick={() => setPage(page + 1)}
                 disabled={page >= totalPages}
-                className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 disabled:cursor-not-allowed'
+                className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
               >
                 Next
               </button>
