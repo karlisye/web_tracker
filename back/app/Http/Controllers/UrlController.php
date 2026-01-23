@@ -125,8 +125,11 @@ class UrlController extends Controller
     public function loadVisitsByHost(Request $request) 
     {
         $request->validate([
-            "websiteHost" => ['required', 'string']
+            "websiteHost" => ['required', 'string'],
+            "perPage" => ['nullable', 'int']
         ]);
+
+        $perPage = $request->input("perPage", 10);
 
         $website = Website::where('host', $request->websiteHost)->first();
 
@@ -140,10 +143,11 @@ class UrlController extends Controller
             ->where('website_id', $website->id)
             ->where('user_id', auth()->id())
             ->latest('visit_time')
-            ->get();
+            ->paginate($perPage);
 
         return response()->json([
-            "visits" => $visits
+            "visits" => $visits->items(),
+            "totalPages" => $visits->lastPage()
         ]);
     }
 }
