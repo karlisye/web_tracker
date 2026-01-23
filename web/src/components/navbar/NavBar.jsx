@@ -48,7 +48,7 @@ const NavBar = () => {
     <nav className='group flex justify-center fixed left-0 right-0 top-0 z-1 m-2'>
       <div className='relative'>
         <div 
-          className={`flex items-center bg-indigo-700/50 py-2 px-6 text-xl font-bold justify-between gap-60 shadow-lg hover:shadow-xl backdrop-blur-xs group-hover:translate-y-0 transition-all duration-300 text-white
+          className={`flex items-center bg-teal-700 py-2 px-6 text-xl font-bold justify-between gap-60 shadow-lg hover:shadow-xl group-hover:translate-y-0 transition-all duration-300 text-white
             ${!isMenuClicked && !isProfileClicked && 'transform -translate-y-5/6'} 
             ${isMenuClicked ? 'rounded-r-full rounded-tl-full' :
             isProfileClicked ? 'rounded-l-full rounded-tr-full' : 'rounded-full'}
@@ -71,12 +71,12 @@ const NavBar = () => {
 
         <div 
           ref={menuRef}
-          className={`w-60 rounded-b-4xl duration-400 bg-indigo-700/50 backdrop-blur-xs overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl
+          className={`w-60 rounded-b-4xl duration-400 bg-teal-700 overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl
             ${isMenuClicked ? 'h-30 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           <NavLink 
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -84,7 +84,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink 
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/dashboard'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -92,7 +92,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink 
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/about'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -102,7 +102,7 @@ const NavBar = () => {
 
         <div
           ref={profileMenuRef}
-          className={`w-60 rounded-b-4xl duration-400 bg-indigo-700/50 backdrop-blur-xs overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl ml-auto
+          className={`w-60 rounded-b-4xl duration-400 bg-teal-700 overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl ml-auto
             ${isProfileClicked && !user ? 'h-20 opacity-100' : 
             isProfileClicked ? 'h-50 opacity-100' : 'h-0 opacity-0'}
           `}
@@ -116,7 +116,7 @@ const NavBar = () => {
 
               <NavLink 
                 to='/profile' 
-                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 My Profile
@@ -124,7 +124,7 @@ const NavBar = () => {
 
               <NavLink 
                 to='/settings' 
-                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 Settings
@@ -135,7 +135,7 @@ const NavBar = () => {
                 onSubmit={handleLogout}
               >
                 <button 
-                  className='w-full text-left px-4 py-3 text-sm text-red-600 bg-white/50 hover:bg-red-50/70 hover:cursor-pointer transition'
+                  className='w-full text-left px-4 py-3 text-sm text-red-700 bg-red-50 hover:bg-red-100 hover:cursor-pointer transition'
                 >
                   Sign Out
                 </button>
@@ -145,14 +145,14 @@ const NavBar = () => {
             <>
               <NavLink 
                 to='/login' 
-                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
+                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 Sign In
               </NavLink>
               <NavLink 
                 to='/register' 
-                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-indigo-50/80 hover:text-indigo-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
+                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 Create An Account

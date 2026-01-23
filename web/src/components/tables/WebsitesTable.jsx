@@ -27,21 +27,21 @@ const WebsitesTable = () => {
     <>
       <ContainerTitle title="Your Websites" text="All the websites you have visited before" />
 
-      <div className='bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center grow'>
+      <div className='bg-yellow-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center grow'>
         <div className='h-full w-full overflow-scroll overscroll-contain'>
-          <table className='w-full text-left border-separate border-spacing-y-2 text-slate-600'>
+          <table className='w-full text-left border-separate border-spacing-y-2 text-white'>
             <thead>
-              <tr className='shadow-sm shadow-slate-300 rounded-md'>
-                <th className='bg-slate-100 p-2 rounded-l-md'>Website</th>
-                <th className='bg-slate-100 p-2 rounded-r-md'></th>
+              <tr className='shadow-sm rounded-md'>
+                <th className='bg-teal-700 p-2 rounded-l-md'>Website</th>
+                <th className='bg-teal-700 p-2 rounded-r-md'></th>
               </tr>
             </thead>
             <tbody>
               {websites.map(website => (
-                <tr key={website.id} className='shadow-sm shadow-slate-300 rounded-md'>
-                  <td className='bg-slate-100 p-2 rounded-l-md'>{website.host}</td>
-                  <td className='bg-slate-100 p-2 rounded-r-md flex justify-end'>
-                    <button onClick={() => {setIsModalActive(true); setSelectedWebsite(website)}} className='py-1 px-4 bg-slate-200 rounded-md shadow-sm hover:shadow-md hover:cursor-pointer'>Remove</button>
+                <tr key={website.id} className='shadow-sm rounded-md'>
+                  <td className='bg-teal-700 p-2 rounded-l-md'>{website.host}</td>
+                  <td className='bg-teal-700 p-2 rounded-r-md flex justify-end'>
+                    <button onClick={() => {setIsModalActive(true); setSelectedWebsite(website)}} className='py-1 px-4 bg-yellow-100 rounded-md shadow-sm hover:shadow-md hover:cursor-pointer text-teal-700 hover:bg-yellow-100/90'>Remove</button>
                   </td>
                 </tr>
               ))}

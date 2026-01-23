@@ -33,12 +33,12 @@ const Dashboard = () => {
       <SnapItem>
           <div className="py-16 px-4">
             <div className="max-w-6xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-4">
+              <h1 className="text-5xl md:text-6xl font-bold text-slate-200 mb-4">
                 Dashboard
               </h1>
-            <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-teal-600 mx-auto rounded-full" />
 
-            <p className="text-slate-600 text-lg mt-6 max-w-3xl mx-auto">
+            <p className="text-slate-400 text-lg mt-6 max-w-3xl mx-auto">
               Your online life, neatly organized. From daily favorites to forgotten sites, it’s all right here.
             </p>
             </div>

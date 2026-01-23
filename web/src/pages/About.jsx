@@ -3,13 +3,13 @@ import { Link } from 'react-router-dom'
 
 const About = () => {
   return (
-    <div className='min-h-screen bg-linear-to-br from-slate-50 to-blue-50 py-16 px-4'>
+    <div className='min-h-screen py-16 px-4'>
       <div className='max-w-6xl mx-auto'>
         <div className='text-center mb-16'>
-          <h1 className='text-5xl md:text-6xl font-bold text-slate-900 mb-4'>
+          <h1 className='text-5xl md:text-6xl font-bold text-slate-200 mb-4'>
             About Web Tracker
           </h1>
-          <div className='w-24 h-1 bg-indigo-500 mx-auto rounded-full'></div>
+          <div className='w-24 h-1 bg-teal-600 mx-auto rounded-full'></div>
         </div>
 
         <div className='grid md:grid-cols-2 gap-8 lg:gap-12'>

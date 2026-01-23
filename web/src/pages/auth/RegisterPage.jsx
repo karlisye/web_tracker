@@ -59,13 +59,13 @@ const RegisterPage = () => {
         
         <div className="p-2 rounded-md bg-linear-to-br from-white to-slate-50 flex gap-2 shadow-md">
           <div className="flex-1 p-2">
-            <div className="h-full bg-indigo-600 rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
+            <div className="h-full bg-teal-600 rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
               <div className="absolute top-0 left-0 m-8">
                 <span>WT</span>
               </div>
 
               <h2 className="text-2xl text-center font-bold">Welcome to Web Tracker!</h2>
-              <div className="w-24 h-1 bg-indigo-500 mx-auto rounded-full mb-4 mt-2" />
+              <div className="w-24 h-1 bg-yellow-100 mx-auto rounded-full mb-4 mt-2" />
 
               <p className="text-sm">Sign up and start tracing your digital footprint today!</p>
             </div>
@@ -75,7 +75,7 @@ const RegisterPage = () => {
             <form className="flex flex-col gap-4 w-full p-8" onSubmit={handleRegister}>
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full ${errors.name ? 'outline-1 outline-red-500 border-red-500' : 'border-indigo-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-600 ${errors.name ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
                 type="text"
                 placeholder="Name"
                 value={formData.name}
@@ -86,7 +86,7 @@ const RegisterPage = () => {
 
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full ${errors.email ? 'outline-1 outline-red-500 border-red-500' : 'border-indigo-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-600 ${errors.email ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
                 type="text"
                 placeholder="Email"
                 value={formData.email}
@@ -96,7 +96,7 @@ const RegisterPage = () => {
               </div>
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full ${errors.password ? 'outline-1 outline-red-500 border-red-500' : 'border-indigo-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-600 ${errors.password ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
                 type="password"
                 placeholder="Password"
                 value={formData.password}
@@ -107,7 +107,7 @@ const RegisterPage = () => {
 
               <div>
                 <input
-                className='border-l-6 p-2 rounded-md shadow-md w-full border-indigo-600'
+                className='border-l-6 p-2 rounded-md shadow-md w-full border-teal-600 outline-teal-600'
                 type="password"
                 placeholder="Confirm Password"
                 value={formData.password_confirmation}
@@ -119,7 +119,7 @@ const RegisterPage = () => {
                 <Link className="p-2 text-blue-500 underline" to={'/login'}>Log in instead</Link>
               </div>
 
-              <button className="text-white py-2 px-4 rounded-md bg-indigo-600 hover:bg-indigo-700 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Register</button>
+              <button className="text-white py-2 px-4 rounded-md bg-teal-600 hover:bg-teal-700 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Register</button>
             </form>
           </div>
         </div>
