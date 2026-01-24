@@ -10,7 +10,8 @@ class WebsiteController extends Controller
     {
         $websites = $request->user()->websitesVisited()->get();
         return response()->json([
-            'websites' => $websites
+            'websites' => $websites,
+            'count' => $websites->count()
         ]);
     }
 

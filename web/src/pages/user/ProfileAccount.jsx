@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import axios from 'axios'
 import { authorize } from '../../services/auth';
@@ -12,6 +12,9 @@ const ProfileAccount = () => {
   const [message, setMessage] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [errors, setErrors] = useState('');
+  const [websiteCount, setWebsiteCount] = useState(0);
+  const [inactiveWebsiteCount, setInactiveWebsiteCount] = useState(0);
+  const [visitCount, setVisitCount] = useState(0);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,6 +30,25 @@ const ProfileAccount = () => {
       setTimeout(() => setMessage(''), 5000);
     } 
   };
+
+  const getInactiveWebsites = async () => {
+    const res = await axios.get('/inactive-websites');
+    setInactiveWebsiteCount(res.data.count);
+  }
+  const getUsersWebsites = async () => {
+    const res = await axios.get('/websites');
+    setWebsiteCount(res.data.count);
+  }
+  const getVisits = async () => {
+    const res = await axios.get('/visits', { params: { sortBy: 'visit_time', direction: 'asc'}});
+    setVisitCount(res.data.visits.total);
+  }
+
+  useEffect(() => {
+    getInactiveWebsites();
+    getUsersWebsites();
+    getVisits();
+  },[]);
 
   return (
     <div>
@@ -119,15 +141,15 @@ const ProfileAccount = () => {
         <h3 className='text-xl font-bold text-teal-700 mb-4'>Account Activity</h3>
         <div className='grid grid-cols-3 gap-4'>
           <div className='bg-teal-50 rounded-lg p-4 text-center'>
-            <div className='text-3xl font-bold text-teal-700 mb-1'>24</div>
+            <div className='text-3xl font-bold text-teal-700 mb-1'>{websiteCount}</div>
             <div className='text-teal-600 text-sm'>Websites Tracked</div>
           </div>
           <div className='bg-pink-50 rounded-lg p-4 text-center'>
-            <div className='text-3xl font-bold text-teal-700 mb-1'>156</div>
-            <div className='text-teal-600 text-sm'>Total Visits</div>
+            <div className='text-3xl font-bold text-teal-700 mb-1'>{visitCount}</div>
+            <div className='text-teal-600 text-sm'>Total Times Authorized</div>
           </div>
           <div className='bg-yellow-50 rounded-lg p-4 text-center'>
-            <div className='text-3xl font-bold text-teal-700 mb-1'>8</div>
+            <div className='text-3xl font-bold text-teal-700 mb-1'>{inactiveWebsiteCount}</div>
             <div className='text-teal-600 text-sm'>Inactive Sites</div>
           </div>
         </div>

@@ -4,7 +4,6 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const Profile = () => {
   const { user } = useContext(AppContext);
-  console.log(user)
 
   return (
     <>

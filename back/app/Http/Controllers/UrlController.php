@@ -118,7 +118,8 @@ class UrlController extends Controller
             ->get();
 
         return response()->json([
-            'inactiveWebsites' => $inactiveWebsites
+            'inactiveWebsites' => $inactiveWebsites,
+            'count' => $inactiveWebsites->count()
         ]);
     }
 
