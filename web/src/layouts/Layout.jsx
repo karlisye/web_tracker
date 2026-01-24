@@ -12,7 +12,7 @@ const Layout = () => {
         <NavBar />
       </header>
 
-      <main>
+      <main className='h-screen'>
           <Outlet/>
       </main>
       
