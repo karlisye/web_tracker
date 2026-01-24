@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\UrlController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\WebsiteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -22,4 +23,6 @@ Route::middleware(['auth:sanctum'])->group(function () {
 
     Route::get('/websites', [WebsiteController::class, 'show']);
     Route::post('/remove-website/{website_id}', [WebsiteController::class, 'remove']);
+
+    Route::post('/user/update', [UserController::class, 'update']);
 });

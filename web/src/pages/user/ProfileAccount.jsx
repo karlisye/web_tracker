@@ -1,22 +1,31 @@
 import React, { useContext, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import axios from 'axios'
+import { authorize } from '../../services/auth';
 
 const ProfileAccount = () => {
-  const { user, setUser } = useContext(AppContext);
+  const { user, getUser } = useContext(AppContext);
   const [formData, setFormData] = useState({
     name: user.name || '',
     email: user.email || '',
   });
   const [message, setMessage] = useState('');
   const [isEditing, setIsEditing] = useState(false);
-
-  const handleChange = (e) => {
-
-  };
+  const [errors, setErrors] = useState('');
 
   const handleSubmit = async (e) => {
+    e.preventDefault();
+    setErrors('');
 
+    try {
+      await authorize('user/update', formData, getUser);
+      setMessage('Account updated!')
+      setTimeout(() => setMessage(''), 5000);
+    } catch (error) {
+      setErrors(error.response?.data?.errors || "Updating account failed");
+      setMessage('Failed to update account');
+      setTimeout(() => setMessage(''), 5000);
+    } 
   };
 
   return (
@@ -51,10 +60,11 @@ const ProfileAccount = () => {
                 type='text'
                 name='name'
                 value={formData.name}
-                onChange={handleChange}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 disabled={!isEditing}
                 className='w-full px-4 py-3 border-l-8 border-teal-700 rounded-lg outline-teal-700 bg-white transition shadow-md hover:shadow-lg'
               />
+              {errors.name && <p className='font-bold text-red-500'>{errors.name}</p>}
             </div>
 
             <div>
@@ -63,10 +73,11 @@ const ProfileAccount = () => {
                 type='email'
                 name='email'
                 value={formData.email}
-                onChange={handleChange}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 disabled={!isEditing}
                 className='w-full px-4 py-3 border-l-8 border-teal-700 rounded-lg outline-teal-700 bg-white transition shadow-md hover:shadow-lg'
               />
+              {errors.email && <p className='font-bold text-red-500'>{errors.email}</p>}
             </div>
 
             <div>
@@ -93,6 +104,7 @@ const ProfileAccount = () => {
                 onClick={() => {
                   setIsEditing(false);
                   setFormData({ name: user.name, email: user.email });
+                  setErrors('');
                 }}
                 className='px-6 py-2 bg-gray-300 text-teal-700 rounded-lg hover:bg-gray-400 transition font-semibold hover:cursor-pointer'
               >
