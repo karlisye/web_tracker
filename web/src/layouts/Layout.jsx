@@ -12,7 +12,7 @@ const Layout = () => {
         <NavBar />
       </header>
 
-      <main className='h-screen'>
+      <main className='h-screen overflow-hidden flex flex-col'>
           <Outlet/>
       </main>
       

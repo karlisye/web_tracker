@@ -6,15 +6,8 @@ const Profile = () => {
   const { user } = useContext(AppContext);
 
   return (
-    <>
-      <header className='mt-16 mb-5 flex ml-10'>
-        <div className='py-2 px-6 bg-pink-200 rounded-full shadow-lg'>
-          Hello, <span className='text-teal-600 font-semibold'>{user.name}</span>
-        </div>
-      </header>
-
-      <div className='flex h-full gap-8 px-10 pb-10'>
-        <aside className='w-80 rounded-md'>
+      <div className='flex flex-1 gap-8 px-10 min-h-0'>
+        <aside className='w-80 rounded-md pt-20'>
           <nav>
             <NavLink 
               className={({isActive}) => `my-2 p-2 flex items-center gap-1 transition rounded-md
@@ -38,11 +31,10 @@ const Profile = () => {
           </nav>
         </aside>
 
-        <main className='flex-1 p-2'>
+        <main className='flex-1 px-2 pb-6 overflow-y-auto'>
           <Outlet />
         </main>
       </div>
-    </>
   )
 }
 
