@@ -38,11 +38,11 @@ const LoginPage = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <section className="w-200 m-4">
-        <h1 className="text-4xl font-bold my-4">Log In Page</h1>
+        <h1 className="text-4xl font-bold my-4 text-white">Log In Page</h1>
 
         <div className="p-2 rounded-md bg-linear-to-br from-white to-slate-50 flex gap-2 shadow-md">
           <div className="flex-1 p-2">
-            <div className="h-full bg-teal-600 rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
+            <div className="h-full bg-teal-700 rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
               <div className="absolute top-0 left-0 m-8">
                 <span>WT</span>
               </div>
@@ -58,7 +58,7 @@ const LoginPage = () => {
             <form className="flex flex-col gap-4 w-full p-8" onSubmit={handleLogin}>
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-600 ${errors.email ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-700 ${errors.email ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
                 type="text"
                 placeholder="Email"
                 value={formData.email}
@@ -69,7 +69,7 @@ const LoginPage = () => {
 
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-600 ${errors.password ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-700 ${errors.password ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
                 type="password"
                 placeholder="Password"
                 value={formData.password}
@@ -82,7 +82,7 @@ const LoginPage = () => {
                 <Link className="text-blue-500 underline" to={'/register'}>Sign Up instead</Link>
               </div>
 
-              <button className="text-white py-2 px-4 rounded-md bg-teal-600 hover:bg-teal-700 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Login</button>
+              <button className="text-yellow-100 py-2 px-4 rounded-md bg-teal-700 hover:bg-teal-800 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Login</button>
             </form>
           </div>
         </div>
