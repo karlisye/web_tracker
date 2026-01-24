@@ -2,15 +2,15 @@ import React from 'react'
 
 const CurrentTabSkeleton = () => {
   return (
-    <div className='bg-indigo-500 flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2 animate-pulse'>
+    <div className='bg-teal-700 flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2 animate-pulse'>
       <div className='flex-1 overflow-y-scroll rounded-md'>
         <table className='w-full border-separate border-spacing-y-1'>
           <thead>
             <tr className='text-white'>
-              <th className='sticky top-0 bg-indigo-600 px-2 py-1 text-left rounded-l-md'>
+              <th className='sticky top-0 bg-teal-700 text-yellow-100 px-2 py-1 text-left rounded-l-md'>
                 Website
               </th>
-              <th className='sticky top-0 bg-indigo-600 px-2 py-1 text-left rounded-r-md'>
+              <th className='sticky top-0 bg-teal-700 text-yellow-100  px-2 py-1 text-left rounded-r-md'>
                 Visit time
               </th>
             </tr>

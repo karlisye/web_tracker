@@ -57,11 +57,11 @@ function Main() {
     <div className='flex flex-col flex-1 overflow-hidden gap-2'>
       <div className='flex flex-col flex-1 overflow-hidden'>
         <div className='flex justify-between items-center my-2'>
-          <p className='text-sm text-slate-600'>
-            Logged in as: <span className='text-black font-semibold'>{user.name}</span>
+          <p className='text-sm text-slate-200'>
+            Logged in as: <span className='text-yellow-100 font-semibold'>{user.name}</span>
           </p>
           <button
-            className='bg-indigo-500 text-white rounded-md px-3 py-1 text-sm font-semibold shadow-md hover:bg-indigo-600 hover:cursor-pointer'
+            className='bg-teal-700 text-yellow-100 rounded-md px-3 py-1 text-sm font-semibold shadow-md hover:bg-teal-800 hover:cursor-pointer'
             onClick={unlink}
           >
             Unlink

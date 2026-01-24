@@ -66,12 +66,12 @@ const CurrentTab = () => {
       `}
     >
       <p className='text-sm'>
-        Currently on: <span className='text-indigo-500'>{tabHost}</span>
+        Currently on: <span className='text-teal-700'>{tabHost}</span>
       </p>
 
       <button
         onClick={isOpen ? () => setIsOpen(false) : loadData}
-        className='py-1 px-4 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 hover:cursor-pointer'
+        className='py-1 px-4 rounded-md bg-teal-700 text-yellow-100 text-sm hover:bg-teal-800 hover:cursor-pointer'
       >
         {isOpen ? 'Close' : 'Load data about this page'}
       </button>
@@ -80,24 +80,24 @@ const CurrentTab = () => {
         loading ? (
           <CurrentTabSkeleton />
         ) : visits.length ? (
-          <div className='bg-indigo-500 flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2'>
+          <div className='bg-teal-700 flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2'>
             <div className='flex-1 overflow-y-scroll rounded-md'>
               <table className='w-full border-separate border-spacing-y-1'>
                 <thead>
-                  <tr className='text-white'>
-                    <th className='sticky top-0 bg-indigo-600 px-2 py-1 text-left rounded-l-md'>
+                  <tr className='shadow-sm'>
+                    <th className='sticky top-0 bg-teal-800 text-yellow-100 px-2 py-1 text-left rounded-l-md'>
                       Website
                     </th>
-                    <th className='sticky top-0 bg-indigo-600 px-2 py-1 text-left rounded-r-md'>
+                    <th className='sticky top-0 bg-teal-800 text-yellow-100 px-2 py-1 text-left rounded-r-md'>
                       Visit time
                     </th>
                   </tr>
                 </thead>
                 <tbody>
                   {visits.map(v => (
-                    <tr key={v.id} className='bg-white shadow-sm'>
-                      <td className='px-2 py-1 rounded-l-md'>{v.website.host}</td>
-                      <td className='px-2 py-1 rounded-r-md'>{v.visit_time}</td>
+                    <tr key={v.id} className='shadow-sm'>
+                      <td className='px-2 py-1 bg-white rounded-l-md'>{v.website.host}</td>
+                      <td className='px-2 py-1 bg-white rounded-r-md'>{v.visit_time}</td>
                     </tr>
                   ))}
                 </tbody>
@@ -108,7 +108,7 @@ const CurrentTab = () => {
               <button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
-                className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
+                className='px-3 py-1 rounded-md bg-teal-700 text-yellow-100 text-sm hover:bg-teal-800 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
               >
                 {'<'}
               </button>
@@ -120,7 +120,7 @@ const CurrentTab = () => {
               <button
                 onClick={() => setPage(page + 1)}
                 disabled={page >= totalPages}
-                className='px-3 py-1 rounded-md bg-indigo-500 text-white text-sm hover:bg-indigo-600 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
+                className='px-3 py-1 rounded-md bg-teal-700 text-yellow-100 text-sm hover:bg-teal-800 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
               >
                 {'>'}
               </button>
