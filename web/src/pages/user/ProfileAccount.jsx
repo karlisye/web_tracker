@@ -4,7 +4,6 @@ import axios from 'axios'
 import { authorize } from '../../services/auth';
 import Modal from '../../components/modals/Modal';
 import DeleteAccountModal from '../../components/modals/DeleteAccountModal';
-import ResetAccountModal from '../../components/modals/ResetAccountModal';
 
 const ProfileAccount = () => {
   const { user, getUser } = useContext(AppContext);
@@ -19,7 +18,6 @@ const ProfileAccount = () => {
   const [inactiveWebsiteCount, setInactiveWebsiteCount] = useState(0);
   const [visitCount, setVisitCount] = useState(0);
   const [isDeleteModalActive, setIsDeleteModalActive] = useState(false);
-  const [isResetModalActive, setIsResetModalActive] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -60,22 +58,22 @@ const ProfileAccount = () => {
   return (
     <>
     <div className='pt-20'>
-      <h2 className='text-3xl font-bold text-slate-200 mb-2'>Account Settings</h2>
+      <h2 className='text-3xl font-bold text-white mb-2'>Account Settings</h2>
       <p className='text-slate-400 mb-8'>Manage your personal information and account preferences</p>
 
       {message && (
-        <div className='mb-6 p-4 bg-pink-200 text-teal-700 rounded-lg shadow-sm'>
+        <div className='mb-6 p-4 bg-teal-900 border border-teal-700 text-yellow-100 rounded-lg'>
           {message}
         </div>
       )}
 
-      <div className='bg-white rounded-xl shadow-md p-6 mb-6'>
+      <div className='bg-neutral-800 rounded-xl p-6 mb-6'>
         <div className='flex items-center justify-between mb-6'>
-          <h3 className='text-xl font-bold text-teal-700'>Profile Information</h3>
+          <h3 className='text-xl font-bold text-yellow-100'>Profile Information</h3>
           {!isEditing && (
             <button
               onClick={() => setIsEditing(true)}
-              className='px-4 py-2 bg-teal-700 text-yellow-100 rounded-lg hover:bg-teal-800 transition hover:cursor-pointer shadow-md hover:shadow-lg'
+              className='px-4 py-2 bg-teal-700 text-yellow-100 rounded-lg hover:bg-teal-600 transition font-semibold'
             >
               Edit
             </button>
@@ -83,40 +81,40 @@ const ProfileAccount = () => {
         </div>
 
         <form onSubmit={handleSubmit}>
-          <div className='flex flex-col gap-2'>
+          <div className='flex flex-col gap-4'>
             <div>
-              <label className='block text-teal-700 font-semibold'>Name</label>
+              <label className='block text-yellow-100 font-semibold mb-2'>Name</label>
               <input
                 type='text'
                 name='name'
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 disabled={!isEditing}
-                className='w-full px-4 py-3 border-l-8 border-teal-700 rounded-lg outline-teal-700 bg-white transition shadow-md hover:shadow-lg'
+                className='w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border-2 border-transparent focus:border-teal-700 outline-none transition disabled:opacity-50'
               />
-              {errors.name && <p className='font-bold text-red-500'>{errors.name}</p>}
+              {errors.name && <p className='font-bold text-pink-400 mt-1'>{errors.name}</p>}
             </div>
 
             <div>
-              <label className='block text-teal-700 font-semibold'>Email Address</label>
+              <label className='block text-yellow-100 font-semibold mb-2'>Email Address</label>
               <input
                 type='email'
                 name='email'
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 disabled={!isEditing}
-                className='w-full px-4 py-3 border-l-8 border-teal-700 rounded-lg outline-teal-700 bg-white transition shadow-md hover:shadow-lg'
+                className='w-full px-4 py-3 bg-neutral-700 text-white rounded-lg border-2 border-transparent focus:border-teal-700 outline-none transition disabled:opacity-50'
               />
-              {errors.email && <p className='font-bold text-red-500'>{errors.email}</p>}
+              {errors.email && <p className='font-bold text-pink-400 mt-1'>{errors.email}</p>}
             </div>
 
             <div>
-              <label className='block text-teal-700 font-semibold'>Member Since</label>
+              <label className='block text-yellow-100 font-semibold mb-2'>Member Since</label>
               <input
                 type='text'
                 value={new Date(user.created_at).toLocaleDateString()}
                 disabled
-                className='w-full px-4 py-3 border-l-8 border-teal-700 rounded-lg bg-gray-100 shadow-md'
+                className='w-full px-4 py-3 bg-neutral-700 text-slate-400 rounded-lg opacity-50'
               />
             </div>
           </div>
@@ -125,7 +123,7 @@ const ProfileAccount = () => {
             <div className='flex gap-3 mt-6'>
               <button
                 type='submit'
-                className='px-6 py-2 bg-teal-700 text-yellow-100 rounded-lg hover:bg-teal-800 transition font-semibold hover:cursor-pointer'
+                className='px-6 py-2 bg-teal-700 text-yellow-100 rounded-lg hover:bg-teal-600 transition font-semibold'
               >
                 Save Changes
               </button>
@@ -136,7 +134,7 @@ const ProfileAccount = () => {
                   setFormData({ name: user.name, email: user.email });
                   setErrors('');
                 }}
-                className='px-6 py-2 bg-gray-300 text-teal-700 rounded-lg hover:bg-gray-400 transition font-semibold hover:cursor-pointer'
+                className='px-6 py-2 bg-neutral-700 text-white rounded-lg hover:bg-neutral-600 transition font-semibold'
               >
                 Cancel
               </button>
@@ -145,53 +143,39 @@ const ProfileAccount = () => {
         </form>
       </div>
 
-      <div className='bg-white rounded-xl shadow-md p-6 mb-6'>
-        <h3 className='text-xl font-bold text-teal-700 mb-4'>Account Activity</h3>
+      <div className='bg-neutral-800 rounded-xl p-6 mb-6'>
+        <h3 className='text-xl font-bold text-yellow-100 mb-4'>Account Activity</h3>
         <div className='grid grid-cols-3 gap-4'>
-          <div className='bg-teal-50 rounded-lg p-4 text-center'>
-            <div className='text-3xl font-bold text-teal-700 mb-1'>{websiteCount}</div>
-            <div className='text-teal-600 text-sm'>Websites Tracked</div>
+          <div className='bg-teal-900 border border-teal-700 rounded-lg p-4 text-center'>
+            <div className='text-3xl font-bold text-teal-400 mb-1'>{websiteCount}</div>
+            <div className='text-slate-300 text-sm'>Websites Tracked</div>
           </div>
-          <div className='bg-pink-50 rounded-lg p-4 text-center'>
-            <div className='text-3xl font-bold text-teal-700 mb-1'>{visitCount}</div>
-            <div className='text-teal-600 text-sm'>Total Times Authorized</div>
+          <div className='bg-pink-900 border border-pink-700 rounded-lg p-4 text-center'>
+            <div className='text-3xl font-bold text-pink-400 mb-1'>{visitCount}</div>
+            <div className='text-slate-300 text-sm'>Total Visits</div>
           </div>
-          <div className='bg-yellow-50 rounded-lg p-4 text-center'>
-            <div className='text-3xl font-bold text-teal-700 mb-1'>{inactiveWebsiteCount}</div>
-            <div className='text-teal-600 text-sm'>Inactive Sites</div>
+          <div className='bg-yellow-900 border border-yellow-700 rounded-lg p-4 text-center'>
+            <div className='text-3xl font-bold text-yellow-300 mb-1'>{inactiveWebsiteCount}</div>
+            <div className='text-slate-300 text-sm'>Inactive Sites</div>
           </div>
         </div>
       </div>
 
-      <div className='bg-red-50 border-2 border-red-200 rounded-xl shadow-md p-6'>
-        <h3 className='text-xl font-bold text-red-700 mb-2'>Danger Zone</h3>
-        <p className='text-red-600 mb-4'>These actions are permanent and cannot be undone</p>
-        <div className='flex gap-4'>
-          <button 
-            className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'
-            onClick={() => setIsDeleteModalActive(true)}
-          >
-            Delete Account
-          </button>
-          <button 
-            className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'
-            onClick={() => setIsResetModalActive(true)}
-          >
-            Reset Account History
-          </button>
-        </div>
+      <div className='bg-neutral-800 border-2 border-red-500 rounded-xl p-6'>
+        <h3 className='text-xl font-bold text-red-400 mb-2'>Danger Zone</h3>
+        <p className='text-slate-400 mb-4'>These actions are permanent and cannot be undone</p>
+        <button 
+          className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold'
+          onClick={() => setIsDeleteModalActive(true)}
+        >
+          Delete Account
+        </button>
       </div>
     </div>
 
     {isDeleteModalActive &&
       <Modal setIsActive={setIsDeleteModalActive} isActive={isDeleteModalActive} >
         <DeleteAccountModal setIsActive={setIsDeleteModalActive} />
-      </Modal>
-    }
-
-    {isResetModalActive &&
-      <Modal setIsActive={setIsResetModalActive} isActive={isResetModalActive} >
-        <ResetAccountModal setIsActive={setIsResetModalActive} />
       </Modal>
     }
     </>
