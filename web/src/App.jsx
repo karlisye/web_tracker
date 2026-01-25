@@ -10,6 +10,7 @@ import About from "./pages/About"
 import Profile from "./pages/user/Profile"
 import ProfilePrivacy from "./pages/user/ProfilePrivacy"
 import ProfileAccount from "./pages/user/ProfileAccount"
+import Setup from "./pages/Setup"
 
 const App = () => {
   const { user } = useContext(AppContext);
@@ -21,6 +22,7 @@ const App = () => {
           <Route index element={<Home/>} />
           <Route path="/dashboard" element={<Dashboard/>} />
           <Route path="/about" element={<About/>} />
+          <Route path="/setup" element={<Setup/>} />
           <Route path="/register" element={user ? <Dashboard/> : <RegisterPage/>} />
           <Route path="/login" element={user ? <Dashboard/> : <LoginPage/>} />
           <Route path="/profile" element={user ? <Profile/> : <LoginPage/>} >

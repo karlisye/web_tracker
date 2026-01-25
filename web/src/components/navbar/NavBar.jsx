@@ -72,7 +72,7 @@ const NavBar = () => {
         <div 
           ref={menuRef}
           className={`w-60 rounded-b-4xl duration-400 bg-teal-700 overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl
-            ${isMenuClicked ? 'h-30 opacity-100' : 'h-0 opacity-0'}
+            ${isMenuClicked ? 'h-40 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           <NavLink 
@@ -97,6 +97,14 @@ const NavBar = () => {
               onClick={() => setIsMenuClicked(false)}
             >
               About Us
+            </NavLink>
+
+            <NavLink
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              to='/setup'
+              onClick={() => setIsMenuClicked(false)}
+            >
+              Setup
             </NavLink>
         </div>
 
