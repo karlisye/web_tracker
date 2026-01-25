@@ -4,6 +4,7 @@ import axios from 'axios'
 import { authorize } from '../../services/auth';
 import Modal from '../../components/modals/Modal';
 import DeleteAccountModal from '../../components/modals/DeleteAccountModal';
+import ResetAccountModal from '../../components/modals/ResetAccountModal';
 
 const ProfileAccount = () => {
   const { user, getUser } = useContext(AppContext);
@@ -18,6 +19,7 @@ const ProfileAccount = () => {
   const [inactiveWebsiteCount, setInactiveWebsiteCount] = useState(0);
   const [visitCount, setVisitCount] = useState(0);
   const [isDeleteModalActive, setIsDeleteModalActive] = useState(false);
+  const [isResetModalActive, setIsResetModalActive] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -171,7 +173,10 @@ const ProfileAccount = () => {
           >
             Delete Account
           </button>
-          <button className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'>
+          <button 
+            className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'
+            onClick={() => setIsResetModalActive(true)}
+          >
             Reset Account History
           </button>
         </div>
@@ -181,6 +186,12 @@ const ProfileAccount = () => {
     {isDeleteModalActive &&
       <Modal setIsActive={setIsDeleteModalActive} isActive={isDeleteModalActive} >
         <DeleteAccountModal setIsActive={setIsDeleteModalActive} />
+      </Modal>
+    }
+
+    {isResetModalActive &&
+      <Modal setIsActive={setIsResetModalActive} isActive={isResetModalActive} >
+        <ResetAccountModal setIsActive={setIsResetModalActive} />
       </Modal>
     }
     </>

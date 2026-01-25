@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Visit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
@@ -41,5 +42,14 @@ class UserController extends Controller
         $request->session()->regenerateToken();
 
         return response()->json(['message' => 'Account deleted successfully']);
+    }
+
+    public function clearVisits (Request $request)
+    {
+        $user = Auth::user();
+
+        Visit::where('user_id', $user->id)->delete();
+
+        return response()->json(['message' => 'Visit history cleared']);
     }
 }

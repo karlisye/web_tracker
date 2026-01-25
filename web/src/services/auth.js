@@ -93,3 +93,22 @@ export const deleteAccount = async (setUser) => {
         throw error;
     }
 }
+
+export const removeHistory = async () => {
+    try {
+        await axios.get('/sanctum/csrf-cookie');
+        const response = await axios.delete('/visits');
+        const data = response.data;
+
+        if (data.errors) {
+            const error = new Error('History reset failed');
+            error.response = { data };
+            throw error;
+        }
+
+        return data;
+    } catch (error) {
+        console.log('History reset failed:', error);
+        throw error;
+    }
+}
