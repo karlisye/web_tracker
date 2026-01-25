@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useState } from 'react'
 import { AppContext } from '../../context/AppContext'
 import axios from 'axios'
 import { authorize } from '../../services/auth';
+import Modal from '../../components/modals/Modal';
+import DeleteAccountModal from '../../components/modals/DeleteAccountModal';
 
 const ProfileAccount = () => {
   const { user, getUser } = useContext(AppContext);
@@ -15,6 +17,7 @@ const ProfileAccount = () => {
   const [websiteCount, setWebsiteCount] = useState(0);
   const [inactiveWebsiteCount, setInactiveWebsiteCount] = useState(0);
   const [visitCount, setVisitCount] = useState(0);
+  const [isDeleteModalActive, setIsDeleteModalActive] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,10 +38,12 @@ const ProfileAccount = () => {
     const res = await axios.get('/inactive-websites');
     setInactiveWebsiteCount(res.data.count);
   }
+
   const getUsersWebsites = async () => {
     const res = await axios.get('/websites');
     setWebsiteCount(res.data.count);
   }
+
   const getVisits = async () => {
     const res = await axios.get('/visits', { params: { sortBy: 'visit_time', direction: 'asc'}});
     setVisitCount(res.data.visits.total);
@@ -51,6 +56,7 @@ const ProfileAccount = () => {
   },[]);
 
   return (
+    <>
     <div className='pt-20'>
       <h2 className='text-3xl font-bold text-slate-200 mb-2'>Account Settings</h2>
       <p className='text-slate-400 mb-8'>Manage your personal information and account preferences</p>
@@ -159,7 +165,10 @@ const ProfileAccount = () => {
         <h3 className='text-xl font-bold text-red-700 mb-2'>Danger Zone</h3>
         <p className='text-red-600 mb-4'>These actions are permanent and cannot be undone</p>
         <div className='flex gap-4'>
-          <button className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'>
+          <button 
+            className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'
+            onClick={() => setIsDeleteModalActive(true)}
+          >
             Delete Account
           </button>
           <button className='px-6 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition font-semibold hover:cursor-pointer shadow-md hover:shadow-lg'>
@@ -168,6 +177,13 @@ const ProfileAccount = () => {
         </div>
       </div>
     </div>
+
+    {isDeleteModalActive &&
+      <Modal setIsActive={setIsDeleteModalActive} isActive={isDeleteModalActive} >
+        <DeleteAccountModal setIsActive={setIsDeleteModalActive} />
+      </Modal>
+    }
+    </>
   )
 }
 

@@ -70,3 +70,26 @@ export const logout = async (setUser) => {
         throw error;
     }
 }
+
+export const deleteAccount = async (setUser) => {
+    try {
+        await axios.get('/sanctum/csrf-cookie');
+        const response = await axios.delete('/account');
+        const data = response.data;
+        
+        if (data.errors) {
+            const error = new Error('Account deletion failed');
+            error.response = { data };
+            throw error;
+        }
+        
+        setUser(null);
+        
+        unlink();
+        
+        return data;
+    } catch (error) {
+        console.log('Account deletion failed:', error);
+        throw error;
+    }
+}
