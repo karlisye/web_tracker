@@ -112,3 +112,22 @@ export const removeHistory = async () => {
         throw error;
     }
 }
+
+export const updateRetention = async (retention) => {
+    try {
+        await axios.get('/sanctum/csrf-cookie');
+        const response = await axios.patch('/user/retention', { data_retention: retention });
+        const data = response.data;
+
+        if (data.errors) {
+            const error = new Error('Retention change failed');
+            error.response = { data };
+            throw error;
+        }
+
+        return data;
+    } catch (error) {
+        console.log('Retention change failed:', error);
+        throw error;
+    }
+}

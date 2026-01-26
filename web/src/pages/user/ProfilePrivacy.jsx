@@ -1,9 +1,23 @@
 import React, { useState } from 'react'
 import Modal from '../../components/modals/Modal';
 import ResetAccountModal from '../../components/modals/ResetAccountModal';
+import axios from 'axios';
+import { updateRetention } from '../../services/auth';
 
 const ProfilePrivacy = () => {
   const [isResetModalActive, setIsResetModalActive] = useState(false);
+  const [retentionMessage, setRetentionMessage] = useState('');
+
+  const handleRetentionChange = async (e) => {
+    try {
+      const res = await updateRetention(e.target.value);
+      setRetentionMessage(res.message);
+      setTimeout(() => setRetentionMessage(''), 5000);
+    } catch (error) {
+      setRetentionMessage('Failed to update retention setting');
+      setTimeout(() => setRetentionMessage(''), 5000);
+    }
+  }
 
   return (
     <>
@@ -57,13 +71,17 @@ const ProfilePrivacy = () => {
             <p className='text-slate-400 mb-4'>
               Choose how long we keep your visit history before automatically deleting it.
             </p>
-            <select className='bg-neutral-700 text-white py-2 px-4 rounded-lg w-full border-2 border-transparent focus:border-teal-700 outline-none'>
+            <select 
+              className='bg-neutral-700 text-white py-2 px-4 rounded-lg w-full border-2 border-transparent focus:border-teal-700 outline-none'
+              onChange={handleRetentionChange}
+            >
               <option value='forever'>Keep forever</option>
               <option value='1year'>Delete after 1 year</option>
               <option value='6months'>Delete after 6 months</option>
               <option value='3months'>Delete after 3 months</option>
               <option value='1month'>Delete after 1 month</option>
             </select>
+            {retentionMessage && <p className='mb-4 mt-2 p-3 bg-teal-900 border border-teal-700 text-yellow-100 rounded-lg'>{retentionMessage}</p>}
           </div>
         </div>
       </div>
