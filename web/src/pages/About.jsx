@@ -23,7 +23,7 @@ const About = () => {
         <SnapItem>
           <div className='flex flex-col items-center justify-center h-full text-center px-20'>
             <div className='mb-12'>
-              <h1 className='text-7xl font-bold text-white mb-8'>
+              <h1 className='hero'>
                 Your Digital Life,<br/>Finally Organized
               </h1>
               <p className='text-secondary text-2xl  max-w-4xl mx-auto mb-6'>
@@ -38,21 +38,21 @@ const About = () => {
 
             <div className='grid grid-cols-3 gap-12 max-w-5xl'>
               <div className='bg-primary-light rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8'>
-                <h3 className='text-3xl font-bold text-white mb-3'>Track</h3>
+                <h4 className='text-3xl font-bold text-white mb-3'>Track</h4>
                 <p className='text-secondary-light text-lg'>
                   Monitor login activity across all your registered websites
                 </p>
               </div>
 
               <div className='bg-secondary rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8'>
-                <h3 className='text-3xl font-bold text-primary mb-3'>Analyze</h3>
+                <h4 className='text-3xl font-bold text-primary mb-3'>Analyze</h4>
                 <p className='text-primary-dark text-lg'>
                   Visualize patterns and discover your most-used accounts
                 </p>
               </div>
 
               <div className='bg-accent rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8'>
-                <h3 className='text-3xl font-bold text-primary mb-3'>Clean</h3>
+                <h4 className='text-3xl font-bold text-primary mb-3'>Clean</h4>
                 <p className='text-primary-dark text-lg'>
                   Remove inactive accounts and reduce your digital footprint
                 </p>
@@ -63,9 +63,7 @@ const About = () => {
 
         <SnapItem>
           <div className='mb-16'>
-            <h1 className='text-5xl font-bold text-white mb-4'>
-              Login History
-            </h1>
+            <h1 className='hero'>Login History</h1>
             <div className='w-24 h-1 bg-primary-light rounded-full'></div>
           </div>
 
@@ -74,9 +72,9 @@ const About = () => {
               <div className='inline-block bg-secondary text-primary px-4 py-1 rounded-full text-sm font-bold mb-6 w-fit'>
                 Track Activity
               </div>
-              <h3 className='text-4xl font-bold text-white mb-6'>
+              <h4 className='text-4xl font-bold text-white mb-6'>
                 See Your Recent Login History
-              </h3>
+              </h4>
               <p className='text-secondary-light text-xl  mb-6'>
                 Monitor all the websites where you've logged in recently. Get a complete overview of your digital footprint and see which accounts you're actively using.
               </p>
@@ -94,16 +92,14 @@ const About = () => {
                 className='w-full h-auto rounded-xl shadow-lg hover:scale-105 transition cursor-pointer'
               />
 
-              <h3 className='text-primary font-bold mt-4 text-lg'>Available after signing up in the Dashboard page</h3>
+              <p className='text-primary font-bold mt-4 text-lg'>Available after signing up in the Dashboard page</p>
             </div>
           </div>
         </SnapItem>
 
         <SnapItem>
           <div className='mb-16'>
-            <h1 className='text-5xl font-bold text-white mb-4'>
-              Websites You Use Most Often
-            </h1>
+            <h1 className='hero'>Websites You Use Most Often</h1>
             <div className='w-24 h-1 bg-accent rounded-full'></div>
           </div>
 
@@ -117,16 +113,16 @@ const About = () => {
                 className='w-full h-auto rounded-xl shadow-lg hover:scale-105 transition cursor-pointer'
               />
 
-              <h3 className='text-primary font-bold mt-4 text-lg'>Interactive charts showing your browsing patterns</h3>
+              <p className='text-primary font-bold mt-4 text-lg'>Interactive charts showing your browsing patterns</p>
             </div>
 
             <div className='bg-primary rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-12 flex flex-col justify-center'>
               <div className='inline-block bg-accent text-primary px-4 py-1 rounded-full text-sm font-bold mb-6 w-fit'>
                 Analyze Patterns
               </div>
-              <h3 className='text-4xl font-bold text-white mb-6'>
+              <h4 className='text-4xl font-bold text-white mb-6'>
                 Discover Your Most Visited Sites
-              </h3>
+              </h4>
               <p className='text-secondary-light text-xl  mb-6'>
                 Visualize which websites you visit most frequently with interactive graphs. Understand your browsing habits and identify the platforms that matter most to you.
               </p>
@@ -139,9 +135,7 @@ const About = () => {
 
         <SnapItem>
           <div className='mb-16'>
-            <h1 className='text-5xl font-bold text-white mb-4'>
-              Clean Up Your Accounts
-            </h1>
+            <h1 className='hero'>Clean Up Your Accounts</h1>
             <div className='w-24 h-1 bg-secondary rounded-full'></div>
           </div>
 
@@ -150,9 +144,9 @@ const About = () => {
               <div className='inline-block bg-primary text-white px-4 py-1 rounded-full text-sm font-bold mb-6 w-fit'>
                 Manage Accounts
               </div>
-              <h3 className='text-4xl font-bold text-primary mb-6'>
+              <h4 className='text-4xl font-bold text-primary mb-6'>
                 Identify Inactive Websites
-              </h3>
+              </h4>
               <p className='text-primary-dark text-xl  mb-6'>
                 See a complete list of websites you haven't visited in a while. Keep track of forgotten accounts that might pose security risks or clutter your digital life.
               </p>
@@ -171,7 +165,7 @@ const About = () => {
                 className='w-full h-auto rounded-xl shadow-lg hover:scale-105 transition cursor-pointer'
               />
 
-              <h3 className='text-secondary font-bold mt-4 text-lg'>Track the websites you have forgotten about</h3>
+              <p className='text-secondary font-bold mt-4 text-lg'>Track the websites you have forgotten about</p>
             </div>
           </div>
         </SnapItem>
@@ -179,9 +173,7 @@ const About = () => {
         <SnapItem>
           <div className='flex flex-col items-center justify-center h-full text-center'>
             <div className='bg-primary rounded-3xl shadow-2xl p-16 max-w-4xl'>
-              <h2 className='text-5xl font-bold text-white mb-6'>
-                Ready to Take Control?
-              </h2>
+              <h2 className='title'>Ready to Take Control?</h2>
               <p className='text-secondary text-2xl  mb-8'>
                 Whether you're tidying up, tightening security, or just curious, Web Tracker helps you reclaim your online life - one account at a time.
               </p>

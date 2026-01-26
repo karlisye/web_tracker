@@ -33,9 +33,7 @@ const Dashboard = () => {
       <SnapItem>
           <div className="py-16 px-4">
             <div className="max-w-6xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
-                Dashboard
-              </h1>
+              <h1 className='hero'>Dashboard</h1>
             <div className="w-24 h-1 bg-primary-light mx-auto rounded-full" />
 
             <p className="text-muted text-lg mt-6 max-w-3xl mx-auto">

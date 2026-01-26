@@ -9,9 +9,7 @@ const Setup = () => {
       <SnapItem>
         <div className='flex flex-col items-center justify-center h-full text-center px-20'>
           <div className='mb-12'>
-            <h1 className='text-7xl font-bold text-white mb-8'>
-              Web Tracker Setup Guide
-            </h1>
+            <h1 className='hero'>Web Tracker Setup Guide</h1>
             <p className='text-secondary text-2xl  max-w-4xl mx-auto mb-6'>
               Follow these simple steps to install the Chrome extension and start tracking your browsing activity.
             </p>
@@ -49,9 +47,7 @@ const Setup = () => {
 
       <SnapItem>
         <div className='mb-16'>
-          <h1 className='text-5xl font-bold text-white mb-4'>
-            Download & Prepare
-          </h1>
+          <h1 className='hero'>Download & Prepare</h1>
           <div className='w-24 h-1 bg-primary-light rounded-full'></div>
         </div>
 
@@ -104,9 +100,7 @@ const Setup = () => {
 
       <SnapItem>
         <div className='mb-16'>
-          <h1 className='text-5xl font-bold text-white mb-4'>
-            Install the Extension
-          </h1>
+          <h1 className='hero'>Install the Extension</h1>
           <div className='w-24 h-1 bg-accent rounded-full'></div>
         </div>
 
@@ -159,9 +153,7 @@ const Setup = () => {
 
       <SnapItem>
         <div className='mb-16'>
-          <h1 className='text-5xl font-bold text-white mb-4'>
-            Load the Extension
-          </h1>
+          <h1 className='hero'>Load the Extension</h1>
           <div className='w-24 h-1 bg-secondary rounded-full'></div>
         </div>
 
@@ -208,9 +200,7 @@ const Setup = () => {
 
       <SnapItem>
         <div className='mb-16'>
-          <h1 className='text-5xl font-bold text-white mb-4'>
-            Link Your Account
-          </h1>
+          <h1 className='hero'>Link Your Account</h1>
           <div className='w-24 h-1 bg-accent rounded-full'></div>
         </div>
 
@@ -255,9 +245,7 @@ const Setup = () => {
       <SnapItem>
         <div className='flex flex-col items-center justify-center h-full text-center px-20'>
           <div className='mb-12'>
-            <h1 className='text-5xl font-bold text-white mb-6'>
-              Managing Your Connection
-            </h1>
+            <h1 className='hero'>Managing Your Connection</h1>
             <div className='w-24 h-1 bg-accent rounded-full mx-auto mb-8'></div>
           </div>
 
@@ -282,9 +270,7 @@ const Setup = () => {
       <SnapItem>
         <div className='flex flex-col items-center justify-center h-full text-center'>
           <div className='bg-primary rounded-3xl shadow-2xl p-16 max-w-4xl'>
-            <h2 className='text-5xl font-bold text-white mb-6'>
-              Installation Complete!
-            </h2>
+            <h2 className='title'>Installation Complete!</h2>
             <p className='text-secondary text-2xl  mb-8'>
               You're ready to start tracking your digital footprint and taking control of your online accounts.
             </p>

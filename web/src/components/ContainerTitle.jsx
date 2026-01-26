@@ -3,7 +3,7 @@ import React from 'react'
 const ContainerTitle = ({ title, text }) => {
   return (
     <div className='flex gap-2 my-2 ml-2 items-center'>
-      <h2 className='text-2xl font-bold text-white'>{title}</h2>
+      <h3 className='heading'>{title}</h3>
 
       {text && (
         <div className='group relative z-10'>

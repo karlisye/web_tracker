@@ -7,7 +7,7 @@ const Home = () => {
       <div className='max-w-6xl mx-auto'>
         
         <div className='text-center mb-16'>
-          <h1 className='text-6xl font-bold text-white mb-6'>
+          <h1 className='hero'>
             Welcome to Web Tracker
           </h1>
           <p className='text-secondary text-2xl mb-4 max-w-3xl mx-auto'>
@@ -35,7 +35,7 @@ const Home = () => {
         </div>
 
         <div className='mb-16'>
-          <h2 className='text-4xl font-bold text-white text-center mb-12'>What You Can Do</h2>
+          <h2 className='title'>What You Can Do</h2>
           <div className='grid grid-cols-3 gap-8'>
             <div className='bg-primary rounded-2xl p-8 shadow-lg hover:shadow-xl transition'>
               <h3 className='text-2xl font-bold text-secondary mb-3'>Track Activity</h3>
@@ -61,7 +61,7 @@ const Home = () => {
         </div>
 
         <div className='mb-16'>
-          <h2 className='text-4xl font-bold text-white text-center mb-12'>How It Works</h2>
+          <h2 className='title'>How It Works</h2>
           <div className='grid grid-cols-3 gap-8'>
             <div className='text-center'>
               <div className='bg-primary text-secondary rounded-full w-16 h-16 flex items-center justify-center text-3xl font-bold mx-auto mb-4'>
@@ -96,7 +96,7 @@ const Home = () => {
         </div>
 
         <div className='bg-background rounded-3xl p-12 mb-16'>
-          <h2 className='text-4xl font-bold text-white text-center mb-12'>Why Web Tracker?</h2>
+          <h2 className='title'>Why Web Tracker?</h2>
           <div className='grid grid-cols-3 gap-8'>
             <div className='text-center'>
               <div className='text-5xl font-bold text-primary-light mb-2'>100%</div>
@@ -119,9 +119,7 @@ const Home = () => {
         </div>
 
         <div className='bg-primary rounded-3xl p-16 text-center shadow-2xl'>
-          <h2 className='text-4xl font-bold text-white mb-4'>
-            Ready to Take Control?
-          </h2>
+          <h2 className='title'>Ready to Take Control?</h2>
           <p className='text-secondary text-xl mb-8 max-w-2xl mx-auto'>
             Join Web Tracker today and start managing your digital footprint. No credit card required.
           </p>
