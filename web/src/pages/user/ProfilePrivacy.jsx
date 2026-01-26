@@ -65,20 +65,14 @@ const ProfilePrivacy = () => {
             <p className='text-slate-400 mb-4'>
               *These settings can also be changed in the extension.
             </p>
-            <div className='space-y-3'>
-              <label className='flex items-center justify-between'>
-                <span className='text-white'>Track visited websites</span>
-                <input 
-                  type='checkbox'
-                  defaultChecked
-                  className='w-5 h-5 accent-teal-700'
-                  onChange={handleTrackVisitsToggle}
-                />
-              </label>
-              <label className='flex items-center justify-between'>
-                <span className='text-white'>Send visit timestamps</span>
-                <input type='checkbox' defaultChecked className='w-5 h-5 accent-teal-700' />
-              </label>
+            <div className='flex justify-between'>
+              <label className='flex items-center justify-between text-white'>Track visited websites</label>
+              <input 
+                type='checkbox'
+                defaultChecked
+                className='w-5 h-5 accent-teal-700'
+                onChange={handleTrackVisitsToggle}
+              />
             </div>
           </div>
 
