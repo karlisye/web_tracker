@@ -28,4 +28,5 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/user/update', [UserController::class, 'update']);
     Route::delete('/account', [UserController::class, 'destroy']);
     Route::delete('/visits', [UserController::class, 'clearVisits']);
+    Route::patch('/user/retention', [UserController::class, 'updateRetention']);
 });
