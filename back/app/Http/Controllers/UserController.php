@@ -52,4 +52,17 @@ class UserController extends Controller
 
         return response()->json(['message' => 'Visit history cleared']);
     }
+
+    public function updateRetention (Request $request)
+    {
+        $request->validate([
+            "data_retention" => ["required", "in:forever,1year,6months,3months,1month"]
+        ]);
+
+        $user = $request->user();
+        $user->data_retention = $request->data_retention;
+        $user->save();
+
+        return response()->json(["message" => "Data retention updated"]);
+    }
 }
