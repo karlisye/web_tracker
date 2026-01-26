@@ -3,3 +3,28 @@
 body {
   background-color: #333333;
 }
+
+@theme {
+  --color-primary: #0f766e;
+  --color-primary-light: #0d9488;
+  --color-primary-dark: #134e4a;
+  
+  --color-secondary: #fef3c7;
+  --color-secondary-light: #fffbeb;
+  --color-secondary-dark: #fef08a;
+  
+  --color-accent: #fbcfe8;
+  --color-accent-light: #fce7f3;
+  --color-accent-dark: #f9a8d4;
+
+  --color-background: #262626;
+  --color-background-light: #404040;
+  --color-background-dark: #171717;
+
+  --color-danger: #dc2626;
+  --color-danger-light: #ef4444;
+  --color-danger-dark: #b91c1c;
+  --color-danger-darker: #871313;
+
+  --color-muted: #94a3b8;
+}

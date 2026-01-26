@@ -33,12 +33,12 @@ const Dashboard = () => {
       <SnapItem>
           <div className="py-16 px-4">
             <div className="max-w-6xl mx-auto text-center">
-              <h1 className="text-5xl md:text-6xl font-bold text-slate-200 mb-4">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-4">
                 Dashboard
               </h1>
-            <div className="w-24 h-1 bg-teal-600 mx-auto rounded-full" />
+            <div className="w-24 h-1 bg-primary-light mx-auto rounded-full" />
 
-            <p className="text-slate-400 text-lg mt-6 max-w-3xl mx-auto">
+            <p className="text-muted text-lg mt-6 max-w-3xl mx-auto">
               Your online life, neatly organized. From daily favorites to forgotten sites, it’s all right here.
             </p>
             </div>
@@ -48,7 +48,7 @@ const Dashboard = () => {
             <>
               <DashboardNavigation onNavigate={handleNavigation} />
 
-              <div className='animate-pulse text-slate-500'>
+              <div className='animate-pulse text-muted'>
                 <p className='text-center mt-20 text-lg'>Start Scrolling</p>
                 <div className='w-10 mx-auto'>
                   <svg fill="currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0 0 30.727 30.727" xmlSpace="preserve"><g id="SVGRepo_bgCarrier" strokeWidth="0"></g><g id="SVGRepo_tracerCarrier" strokeLinecap="round" strokeLinejoin="round"></g><g id="SVGRepo_iconCarrier"> <g> <path d="M29.994,10.183L15.363,24.812L0.733,10.184c-0.977-0.978-0.977-2.561,0-3.536c0.977-0.977,2.559-0.976,3.536,0 l11.095,11.093L26.461,6.647c0.977-0.976,2.559-0.976,3.535,0C30.971,7.624,30.971,9.206,29.994,10.183z"></path> </g> </g></svg>
@@ -56,7 +56,7 @@ const Dashboard = () => {
               </div>
             </>
           ) : (
-            <p className="text-slate-600 text-center py-20">
+            <p className="text-muted text-center py-20">
               <Link className="text-blue-500 underline" to="/login">
                 Log in
               </Link>{" "}

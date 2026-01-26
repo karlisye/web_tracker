@@ -14,7 +14,7 @@ function Head() {
   }
   
   return (
-    <div className="text-center p-2 bg-teal-700 text-yellow-100 rounded-md shadow-lg">
+    <div className="text-center p-2 bg-primary text-secondary rounded-md shadow-lg">
         <h1 
           className="text-4xl font-bold hover:cursor-pointer"
           onClick={redirectToLogin}

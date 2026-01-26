@@ -49,7 +49,7 @@ const ExtensionStatus = () => {
         `}>
         <button
           className={`ml-auto hover:cursor-pointer rounded-l-full text-white transition-all duration-300 overflow-hidden flex items-center w-6
-            ${isLinked ? 'bg-green-600' : 'bg-red-600'}
+            ${isLinked ? 'bg-green-600' : 'bg-danger-dark'}
           `}
           onClick={() => setIsHidden((prev) => !prev)}
           disabled={!isHovered}
@@ -59,7 +59,7 @@ const ExtensionStatus = () => {
 
         <div
           className={`p-2 flex flex-col text-lg text-white shadow-lg transition-all duration-300 items-center rounded-r-lg
-            ${isLinked ? 'bg-green-500' : 'bg-red-500'} 
+            ${isLinked ? 'bg-green-500' : 'bg-danger'} 
           `}
         >
           <div className="flex gap-2 items-center">
@@ -81,7 +81,7 @@ const ExtensionStatus = () => {
                 className={`rounded-md py-1 px-5 hover:cursor-pointer font-semibold shadow-md transition ${
                   isLinked
                     ? 'bg-green-600 hover:bg-green-700'
-                    : 'bg-red-600 hover:bg-red-700'
+                    : 'bg-danger-dark hover:bg-danger-darker'
                 }`}
                 onClick={handleLinkToggle}
               >

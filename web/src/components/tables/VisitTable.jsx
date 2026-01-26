@@ -31,14 +31,14 @@ const VisitTable = () => {
     <>
     <ContainerTitle title='Login History' />
 
-    <div className="bg-teal-700 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 grow flex flex-col">
-      <div className="flex text-teal-700 mb-4 shrink-0 justify-between bg-yellow-100 items-center p-2 rounded-md">
+    <div className="bg-primary rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 grow flex flex-col">
+      <div className="flex text-primary mb-4 shrink-0 justify-between bg-secondary items-center p-2 rounded-md">
         <div className="flex gap-2 rounded-md">
           <button
             className={`rounded-md py-2 px-4 shadow-lg font-semibold text-white transition
               ${page - 1 < 1
-                ? 'bg-teal-700/70 text-teal-700'
-                : 'bg-teal-700 hover:bg-teal-800 hover:cursor-pointer'}
+                ? 'bg-primary/70 text-primary'
+                : 'bg-primary hover:bg-primary-dark hover:cursor-pointer'}
             `}
             onClick={() => setPage(prev => Math.max(prev - 1, 1))}
             disabled={page - 1 < 1}
@@ -49,8 +49,8 @@ const VisitTable = () => {
           <button
             className={`rounded-md py-2 px-4 shadow-lg font-semibold text-white transition
               ${page + 1 > pageCount
-                ? 'bg-teal-700/70 text-teal-700'
-                : 'bg-teal-700 hover:bg-teal-800 hover:cursor-pointer'}
+                ? 'bg-primary/70 text-primary'
+                : 'bg-primary hover:bg-primary-dark hover:cursor-pointer'}
             `}
             onClick={() => setPage(prev => Math.min(prev + 1, pageCount))}
             disabled={page + 1 > pageCount}
@@ -79,39 +79,39 @@ const VisitTable = () => {
       </div>
 
       <div className="flex-1 overflow-y-auto">
-        <table className="w-full table-fixed text-left border-separate border-spacing-y-2 text-slate-600">
+        <table className="w-full table-fixed text-left border-separate border-spacing-y-2 text-black">
           <thead>
             <tr>
-              <th className="bg-yellow-100 p-2 rounded-l-md">ID</th>
-              <th className="bg-yellow-100 p-2">User</th>
-              <th className="bg-yellow-100 p-2">Website</th>
-              <th className="bg-yellow-100 p-2">Time</th>
-              <th className="bg-yellow-100 p-2 rounded-r-md"></th>
+              <th className="bg-secondary p-2 rounded-l-md">ID</th>
+              <th className="bg-secondary p-2">User</th>
+              <th className="bg-secondary p-2">Website</th>
+              <th className="bg-secondary p-2">Time</th>
+              <th className="bg-secondary p-2 rounded-r-md"></th>
             </tr>
           </thead>
 
           <tbody>
             {visits.map(visit => (
-              <tr className="shadow-sm shadow-slate-300 rounded-md" key={visit.id}>
-                <td className="bg-yellow-100 p-2 rounded-l-md">{visit.id}</td>
-                <td className="bg-yellow-100 p-2">{visit.user.name}</td>
-                <td className="bg-yellow-100 p-2">
+              <tr className="shadow-sm shadow-muted rounded-md" key={visit.id}>
+                <td className="bg-secondary p-2 rounded-l-md">{visit.id}</td>
+                <td className="bg-secondary p-2">{visit.user.name}</td>
+                <td className="bg-secondary p-2">
                   <a
                     target="_blank"
                     href={visit.website.page_url}
-                    className="text-teal-700 hover:underline"
+                    className="text-primary hover:underline"
                   >
                     {visit.website.host}
                   </a>
                 </td>
-                <td className="bg-yellow-100 p-2">{visit.visit_time}</td>
-                <td className="bg-yellow-100 p-2 rounded-r-md text-right">
+                <td className="bg-secondary p-2">{visit.visit_time}</td>
+                <td className="bg-secondary p-2 rounded-r-md text-right">
                   <button
                     onClick={() => {
                       setIsSeeMoreActive(true);
                       setWebsiteID(visit.website_id);
                     }}
-                    className="bg-teal-700 text-white py-1 px-6 rounded-md shadow-sm hover:shadow-md transition hover:bg-teal-800 hover:cursor-pointer"
+                    className="bg-primary text-white py-1 px-6 rounded-md shadow-sm hover:shadow-md transition hover:bg-primary-dark hover:cursor-pointer"
                   >
                     See More
                   </button>

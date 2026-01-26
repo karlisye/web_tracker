@@ -48,7 +48,7 @@ const NavBar = () => {
     <nav className='group flex justify-center fixed left-0 right-0 top-0 z-1 m-2'>
       <div className='relative'>
         <div 
-          className={`flex items-center bg-teal-700 py-2 px-6 text-xl font-bold justify-between gap-60 shadow-lg hover:shadow-xl group-hover:translate-y-0 transition-all duration-300 text-white
+          className={`flex items-center bg-primary py-2 px-6 text-xl font-bold justify-between gap-60 shadow-lg hover:shadow-xl group-hover:translate-y-0 transition-all duration-300 text-white
             ${!isMenuClicked && !isProfileClicked && 'transform -translate-y-5/6'} 
             ${isMenuClicked ? 'rounded-r-full rounded-tl-full' :
             isProfileClicked ? 'rounded-l-full rounded-tr-full' : 'rounded-full'}
@@ -56,10 +56,10 @@ const NavBar = () => {
         >
           <div className='flex gap-2 items-center'>
             <button onClick={() => {setIsMenuClicked(prev => !prev); setIsProfileClicked(false)}} className='h-12 w-12 hover:scale-105 hover:cursor-pointer focus:scale-110'>
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={`${isMenuClicked && 'text-stone-200'}`}><path fill="currentColor" d="M18.75 8C18.75 8.41421 18.4142 8.75 18 8.75H6C5.58579 8.75 5.25 8.41421 5.25 8C5.25 7.58579 5.58579 7.25 6 7.25H18C18.4142 7.25 18.75 7.58579 18.75 8Z" /><path fill="currentColor" d="M18.75 12C18.75 12.4142 18.4142 12.75 18 12.75H6C5.58579 12.75 5.25 12.4142 5.25 12C5.25 11.5858 5.58579 11.25 6 11.25H18C18.4142 11.25 18.75 11.5858 18.75 12Z" /><path fill="currentColor" d="M18.75 16C18.75 16.4142 18.4142 16.75 18 16.75H6C5.58579 16.75 5.25 16.4142 5.25 16C5.25 15.5858 5.58579 15.25 6 15.25H18C18.4142 15.25 18.75 15.5858 18.75 16Z" /></svg>
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className={`${isMenuClicked && 'text-secondary'}`}><path fill="currentColor" d="M18.75 8C18.75 8.41421 18.4142 8.75 18 8.75H6C5.58579 8.75 5.25 8.41421 5.25 8C5.25 7.58579 5.58579 7.25 6 7.25H18C18.4142 7.25 18.75 7.58579 18.75 8Z" /><path fill="currentColor" d="M18.75 12C18.75 12.4142 18.4142 12.75 18 12.75H6C5.58579 12.75 5.25 12.4142 5.25 12C5.25 11.5858 5.58579 11.25 6 11.25H18C18.4142 11.25 18.75 11.5858 18.75 12Z" /><path fill="currentColor" d="M18.75 16C18.75 16.4142 18.4142 16.75 18 16.75H6C5.58579 16.75 5.25 16.4142 5.25 16C5.25 15.5858 5.58579 15.25 6 15.25H18C18.4142 15.25 18.75 15.5858 18.75 16Z" /></svg>
             </button>
 
-            <NavLink className={({ isActive }) => `p-1 rounded-md text-2xl hover:scale-105 focus:scale-110 ${isActive && 'text-stone-200'}`} to='/'>WT</NavLink>
+            <NavLink className={({ isActive }) => `p-1 rounded-md text-2xl hover:scale-105 focus:scale-110 ${isActive && 'text-secondary'}`} to='/'>WT</NavLink>
           </div>
 
           <button className='w-6 h-6 hover:cursor-pointer hover:scale-105'
@@ -71,12 +71,12 @@ const NavBar = () => {
 
         <div 
           ref={menuRef}
-          className={`w-60 rounded-b-4xl duration-400 bg-teal-700 overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl
+          className={`w-60 rounded-b-4xl duration-400 bg-primary overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl
             ${isMenuClicked ? 'h-40 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           <NavLink 
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -84,7 +84,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink 
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/dashboard'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -92,7 +92,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink 
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/about'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -100,7 +100,7 @@ const NavBar = () => {
             </NavLink>
 
             <NavLink
-              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+              className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
               to='/setup'
               onClick={() => setIsMenuClicked(false)}
             >
@@ -110,21 +110,21 @@ const NavBar = () => {
 
         <div
           ref={profileMenuRef}
-          className={`w-60 rounded-b-4xl duration-400 bg-teal-700 overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl ml-auto
+          className={`w-60 rounded-b-4xl duration-400 bg-primary overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl ml-auto
             ${isProfileClicked && !user ? 'h-20 opacity-100' : 
             isProfileClicked ? 'h-50 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           {user ? (
             <>
-              <div className='px-4 py-3 border-b border-gray-200'>
+              <div className='px-4 py-3 border-b border-muted'>
                 <p className='text-sm font-semibold text-white'>{user.name || 'User'}</p>
                 <p className='text-xs text-white truncate'>{user.email || 'user@example.com'}</p>
               </div>
 
               <NavLink 
                 to='/profile' 
-                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 My Profile
@@ -132,18 +132,18 @@ const NavBar = () => {
 
               <NavLink 
                 to='/settings' 
-                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
+                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 Settings
               </NavLink>
 
               <form 
-                className='border-t border-gray-200'
+                className='border-t border-muted'
                 onSubmit={handleLogout}
               >
                 <button 
-                  className='w-full text-left px-4 py-3 text-sm text-red-700 bg-red-50 hover:bg-red-100 hover:cursor-pointer transition'
+                  className='w-full text-left px-4 py-3 text-sm text-white bg-danger-light hover:bg-danger hover:cursor-pointer transition'
                 >
                   Sign Out
                 </button>
@@ -153,14 +153,14 @@ const NavBar = () => {
             <>
               <NavLink 
                 to='/login' 
-                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
+                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 Sign In
               </NavLink>
               <NavLink 
                 to='/register' 
-                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-yellow-100 hover:text-teal-700 hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
+                className={({ isActive }) => 'flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400'} 
                 onClick={() => setIsProfileClicked(false)}
               >
                 Create An Account

@@ -27,21 +27,21 @@ const WebsitesTable = () => {
     <>
       <ContainerTitle title="Your Websites" text="All the websites you have visited before" />
 
-      <div className='bg-yellow-100 rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center grow'>
+      <div className='bg-secondary rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-8 h-100 flex justify-center items-center grow'>
         <div className='h-full w-full overflow-scroll overscroll-contain'>
           <table className='w-full text-left border-separate border-spacing-y-2 text-white'>
             <thead>
               <tr className='shadow-sm rounded-md'>
-                <th className='bg-teal-700 p-2 rounded-l-md'>Website</th>
-                <th className='bg-teal-700 p-2 rounded-r-md'></th>
+                <th className='bg-primary p-2 rounded-l-md'>Website</th>
+                <th className='bg-primary p-2 rounded-r-md'></th>
               </tr>
             </thead>
             <tbody>
               {websites.map(website => (
                 <tr key={website.id} className='shadow-sm rounded-md'>
-                  <td className='bg-teal-700 p-2 rounded-l-md'>{website.host}</td>
-                  <td className='bg-teal-700 p-2 rounded-r-md flex justify-end'>
-                    <button onClick={() => {setIsModalActive(true); setSelectedWebsite(website)}} className='py-1 px-4 bg-yellow-100 rounded-md shadow-sm hover:shadow-md hover:cursor-pointer text-teal-700 hover:bg-yellow-100/90'>Remove</button>
+                  <td className='bg-primary p-2 rounded-l-md'>{website.host}</td>
+                  <td className='bg-primary p-2 rounded-r-md flex justify-end'>
+                    <button onClick={() => {setIsModalActive(true); setSelectedWebsite(website)}} className='py-1 px-4 bg-secondary rounded-md shadow-sm hover:shadow-md hover:cursor-pointer text-primary hover:bg-secondary-dark'>Remove</button>
                   </td>
                 </tr>
               ))}

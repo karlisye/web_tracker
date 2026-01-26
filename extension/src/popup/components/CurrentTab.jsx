@@ -66,12 +66,12 @@ const CurrentTab = () => {
       `}
     >
       <p className='text-sm'>
-        Currently on: <span className='text-teal-700'>{tabHost}</span>
+        Currently on: <span className='text-primary'>{tabHost}</span>
       </p>
 
       <button
         onClick={isOpen ? () => setIsOpen(false) : loadData}
-        className='py-1 px-4 rounded-md bg-teal-700 text-yellow-100 text-sm hover:bg-teal-800 hover:cursor-pointer'
+        className='py-1 px-4 rounded-md bg-primary text-secondary text-sm hover:bg-primary-dark hover:cursor-pointer'
       >
         {isOpen ? 'Close' : 'Load data about this page'}
       </button>
@@ -80,15 +80,15 @@ const CurrentTab = () => {
         loading ? (
           <CurrentTabSkeleton />
         ) : visits.length ? (
-          <div className='bg-teal-700 flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2'>
+          <div className='bg-primary flex-1 rounded-md shadow-md p-2 overflow-hidden flex flex-col gap-2'>
             <div className='flex-1 overflow-y-scroll rounded-md'>
               <table className='w-full border-separate border-spacing-y-1'>
                 <thead>
                   <tr className='shadow-sm'>
-                    <th className='sticky top-0 bg-teal-800 text-yellow-100 px-2 py-1 text-left rounded-l-md'>
+                    <th className='sticky top-0 bg-primary-dark text-secondary px-2 py-1 text-left rounded-l-md'>
                       Website
                     </th>
-                    <th className='sticky top-0 bg-teal-800 text-yellow-100 px-2 py-1 text-left rounded-r-md'>
+                    <th className='sticky top-0 bg-primary-dark text-secondary px-2 py-1 text-left rounded-r-md'>
                       Visit time
                     </th>
                   </tr>
@@ -108,7 +108,7 @@ const CurrentTab = () => {
               <button
                 onClick={() => setPage(page - 1)}
                 disabled={page === 1}
-                className='px-3 py-1 rounded-md bg-teal-700 text-yellow-100 text-sm hover:bg-teal-800 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
+                className='px-3 py-1 rounded-md bg-primary text-secondary text-sm hover:bg-primary-dark disabled:bg-muted hover:cursor-pointer disabled:hover:cursor-default'
               >
                 {'<'}
               </button>
@@ -120,14 +120,14 @@ const CurrentTab = () => {
               <button
                 onClick={() => setPage(page + 1)}
                 disabled={page >= totalPages}
-                className='px-3 py-1 rounded-md bg-teal-700 text-yellow-100 text-sm hover:bg-teal-800 disabled:bg-gray-300 hover:cursor-pointer disabled:hover:cursor-default'
+                className='px-3 py-1 rounded-md bg-primary text-secondary text-sm hover:bg-primary-dark disabled:bg-muted hover:cursor-pointer disabled:hover:cursor-default'
               >
                 {'>'}
               </button>
             </div>
           </div>
         ) : (
-          <p className='text-sm text-center text-red-500'>No data for this website</p>
+          <p className='text-sm text-center text-danger'>No data for this website</p>
         )
       )}
     </div>

@@ -42,13 +42,13 @@ const LoginPage = () => {
 
         <div className="p-2 rounded-md bg-linear-to-br from-white to-slate-50 flex gap-2 shadow-md">
           <div className="flex-1 p-2">
-            <div className="h-full bg-teal-700 rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
+            <div className="h-full bg-primary rounded-md px-8 py-40 text-white flex flex-col justify-center relative">
               <div className="absolute top-0 left-0 m-8">
                 <span>WT</span>
               </div>
 
               <h2 className="text-2xl text-center font-bold">Welcome Back!</h2>
-              <div className="w-24 h-1 bg-yellow-100 mx-auto rounded-full mb-4 mt-2" />
+              <div className="w-24 h-1 bg-secondary mx-auto rounded-full mb-4 mt-2" />
 
               <p className="text-sm">Please Log in to access all features provided by Web Tracker.</p>
             </div>
@@ -58,31 +58,31 @@ const LoginPage = () => {
             <form className="flex flex-col gap-4 w-full p-8" onSubmit={handleLogin}>
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-700 ${errors.email ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-primary ${errors.email ? 'outline-1 outline-danger border-danger' : 'border-primary-light'}`}
                 type="text"
                 placeholder="Email"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                 />
-                {errors.email && <p className="text-red-500 font-bold">{errors.email[0]}</p>}
+                {errors.email && <p className="text-danger font-bold">{errors.email[0]}</p>}
               </div>
 
               <div>
                 <input
-                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-teal-700 ${errors.password ? 'outline-1 outline-red-500 border-red-500' : 'border-teal-600'}`}
+                className={`border-l-6 p-2 rounded-md shadow-md w-full outline-primary ${errors.password ? 'outline-1 outline-danger border-danger' : 'border-primary-light'}`}
                 type="password"
                 placeholder="Password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
                 />
-                {errors.password && <p className="text-red-500 font-bold">{errors.password[0]}</p>}
+                {errors.password && <p className="text-danger font-bold">{errors.password[0]}</p>}
               </div>
 
               <div className="flex gap-2 justify-end">
                 <Link className="text-blue-500 underline" to={'/register'}>Sign Up instead</Link>
               </div>
 
-              <button className="text-yellow-100 py-2 px-4 rounded-md bg-teal-700 hover:bg-teal-800 hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Login</button>
+              <button className="text-secondary py-2 px-4 rounded-md bg-primary hover:bg-primary-dark hover:cursor-pointer shadow-md hover:shadow-lg transition duration-200" type="submit">Login</button>
             </form>
           </div>
         </div>

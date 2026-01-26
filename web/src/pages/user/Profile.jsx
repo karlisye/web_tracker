@@ -11,7 +11,7 @@ const Profile = () => {
           <nav>
             <NavLink 
               className={({isActive}) => `my-2 p-2 flex items-center gap-1 transition rounded-md
-                ${isActive ? 'bg-yellow-100 text-teal-700' : 'text-white hover:bg-neutral-700'}
+                ${isActive ? 'bg-secondary text-primary' : 'text-white hover:bg-background-light'}
               `}
               to='/profile/account'
             >
@@ -21,7 +21,7 @@ const Profile = () => {
 
             <NavLink 
               className={({isActive}) => `my-2 p-2 flex items-center gap-1 transition rounded-md
-                ${isActive ? 'bg-yellow-100 text-teal-700' : 'text-white hover:bg-neutral-700'}
+                ${isActive ? 'bg-secondary text-primary' : 'text-white hover:bg-background-light'}
               `}
               to='/profile/privacy'
             >

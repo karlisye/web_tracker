@@ -12,7 +12,7 @@ const PopupMsg = ({ message, onClose, duration = 3000 }) => {
 
   return (
     <div className="fixed top-6 right-6 w-80">
-      <div className='text-white px-5 py-4 rounded-xl shadow-xl bg-indigo-400'>
+      <div className='text-secondary px-5 py-4 rounded-xl shadow-xl bg-primary'>
         <span className="font-semibold">{message}</span>
       </div>
     </div>

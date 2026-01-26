@@ -57,11 +57,11 @@ function Main() {
     <div className='flex flex-col flex-1 overflow-hidden gap-2'>
       <div className='flex flex-col flex-1 overflow-hidden'>
         <div className='flex justify-between items-center my-2'>
-          <p className='text-sm text-slate-200'>
-            Logged in as: <span className='text-yellow-100 font-semibold'>{user.name}</span>
+          <p className='text-sm text-white'>
+            Logged in as: <span className='text-secondary font-semibold'>{user.name}</span>
           </p>
           <button
-            className='bg-teal-700 text-yellow-100 rounded-md px-3 py-1 text-sm font-semibold shadow-md hover:bg-teal-800 hover:cursor-pointer'
+            className='bg-primary text-secondary rounded-md px-3 py-1 text-sm font-semibold shadow-md hover:bg-primary-dark hover:cursor-pointer'
             onClick={unlink}
           >
             Unlink
@@ -75,14 +75,14 @@ function Main() {
 
       <div
         className={`p-4 flex justify-between items-center text-white font-semibold rounded-md text-sm shadow-lg
-        ${isActive ? 'bg-linear-to-br from-green-500 to-green-600' : 'bg-linear-to-br from-red-500 to-red-600'}`}
+        ${isActive ? 'bg-linear-to-br from-green-500 to-green-600' : 'bg-linear-to-br from-danger to-danger-dark'}`}
       >
         <span>{isActive ? 'ON' : 'OFF'}</span>
         <div className='flex gap-2 items-center'>
           <h3>Auth Monitor:</h3>
           <button
             className={`py-1 px-3 rounded-xl
-              ${isActive ? 'bg-green-600 hover:bg-green-700' : 'bg-red-600 hover:bg-red-700'}`}
+              ${isActive ? 'bg-green-600 hover:bg-green-700' : 'bg-danger-dark hover:bg-danger-darker'}`}
             onClick={toggleWebsiteReader}
           >
             {isActive ? 'Turn OFF' : 'Turn ON'}

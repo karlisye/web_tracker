@@ -25,7 +25,7 @@ const DateSelector = ({ setStartDate, setEndDate, startDate, endDate }) => {
 
   return (
     <div className='flex gap-2'>
-      {error && <p className='text-red-500 font-semibold'>{error}</p>}
+      {error && <p className='text-danger font-semibold'>{error}</p>}
 
       <div className='flex gap-2'>
         <label htmlFor="start">Start:</label>

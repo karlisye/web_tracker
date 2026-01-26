@@ -4,7 +4,7 @@ import Main from '../pages/Main';
 
 const Layout = () => {
   return (
-    <div className='w-80 h-[480px] p-2 bg-neutral-800 flex flex-col'>
+    <div className='w-80 h-[480px] p-2 bg-background flex flex-col'>
       <header>
         <Head />
       </header>
