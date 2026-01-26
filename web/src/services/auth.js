@@ -131,3 +131,19 @@ export const updateRetention = async (retention) => {
         throw error;
     }
 }
+
+export const toggleWebsiteReader = (isActive) => {
+    if (window.chrome && chrome.runtime) {
+        chrome.runtime.sendMessage(
+            extensionId,
+            { 
+                type: 'toggle-website-reader',
+                status: isActive
+            },
+            (response) => {
+            console.log('toggle-website-reader Message sent to Chrome extension:', response);
+            if (!response.error) console.log('Website reader: ', isActive);
+            }
+        )
+    }
+}

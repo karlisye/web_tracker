@@ -27,6 +27,11 @@ chrome.runtime.onMessageExternal.addListener((message, sender, sendResponse) => 
 
             return true;
 
+        case "toggle-website-reader":
+            sendResponse(message);
+            chrome.storage.sync.set({ isActive: message.status });
+            break;
+
         default:
             console.log("Unknown message type received:", message.type);
             sendResponse({ error: "Unknown message type" });

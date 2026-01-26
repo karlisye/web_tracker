@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Modal from '../../components/modals/Modal';
 import ResetAccountModal from '../../components/modals/ResetAccountModal';
 import axios from 'axios';
-import { updateRetention } from '../../services/auth';
+import { toggleWebsiteReader, updateRetention } from '../../services/auth';
 
 const ProfilePrivacy = () => {
   const [isResetModalActive, setIsResetModalActive] = useState(false);
@@ -17,6 +17,12 @@ const ProfilePrivacy = () => {
       setRetentionMessage('Failed to update retention setting');
       setTimeout(() => setRetentionMessage(''), 5000);
     }
+  }
+
+  const handleTrackVisitsToggle = (e) => {
+    toggleWebsiteReader(e.target.checked);
+
+
   }
 
   return (
@@ -39,6 +45,7 @@ const ProfilePrivacy = () => {
             </button>
           </div>
 
+          {/* later */}
           <div className='bg-neutral-800 p-6 rounded-xl'>
             <h3 className='text-xl font-semibold text-yellow-100 mb-2'>Export Your Data</h3>
             <p className='text-slate-400 mb-4'>
@@ -49,15 +56,24 @@ const ProfilePrivacy = () => {
             </button>
           </div>
 
+          {/* later */}
           <div className='bg-neutral-800 p-6 rounded-xl'>
             <h3 className='text-xl font-semibold text-yellow-100 mb-2'>Chrome Extension</h3>
-            <p className='text-slate-400 mb-4'>
+            <p className='text-slate-400'>
               Manage what data your Chrome extension can collect and send to our servers.
+            </p>
+            <p className='text-slate-400 mb-4'>
+              *These settings can also be changed in the extension.
             </p>
             <div className='space-y-3'>
               <label className='flex items-center justify-between'>
                 <span className='text-white'>Track visited websites</span>
-                <input type='checkbox' defaultChecked className='w-5 h-5 accent-teal-700' />
+                <input 
+                  type='checkbox'
+                  defaultChecked
+                  className='w-5 h-5 accent-teal-700'
+                  onChange={handleTrackVisitsToggle}
+                />
               </label>
               <label className='flex items-center justify-between'>
                 <span className='text-white'>Send visit timestamps</span>
