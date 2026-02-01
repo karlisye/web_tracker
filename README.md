@@ -27,6 +27,26 @@ Web Tracker automatically records when you log into websites through a browser e
 - Secure authentication with Laravel Sanctum
 - Easy account deletion and history reset options
 
+## Screenshots
+
+![Home](screenshots/home.png)
+*Home screen*
+
+![VisitHistory] (web/public/images/about/visits.png)
+*Recent Website visit history*
+
+![MostVisits] (web/public/images/about/most-visits.png)
+*Most active websites graph*
+
+![InactiveWebsites] (web/public/images/about/inactive-websites.png)
+*Websites you haven't used in a while*
+
+![AccountSettings](screenshots/account_settings.png)
+*See your account summary, edit your account, and delete your account*
+
+![Privacy](screenshots/privacy.png)
+*Manage chrome extension settings, update your data retention policy for web tracker, and delete all of your history*
+
 ## Tech Stack
 
 ### Frontend
