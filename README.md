@@ -12,6 +12,7 @@ Web Tracker automatically records when you log into websites through a browser e
 - Automatic detection of website logins via browser extension
 - Complete history of all registered accounts
 - Real-time tracking with zero manual effort
+- Guided setup process for seamless browser extension integration
 
 ### Visual Analytics
 - Interactive graphs showing your most-visited websites
@@ -21,11 +22,19 @@ Web Tracker automatically records when you log into websites through a browser e
 ### Account Management
 - Identify inactive websites you haven't visited recently
 - Reduce your digital footprint for better privacy
+- Remove tracked websites individually or in bulk
 
 ### Security & Privacy
-- Your data stays yours - complete control over tracked information
+- Your data stays yours, complete control over tracked information
 - Secure authentication with Laravel Sanctum
+- Customizable data retention policies - decide how long to keep your browsing history
 - Easy account deletion and history reset options
+- Granular privacy controls for extension tracking
+
+### User Experience
+- Step-by-step setup guide for browser extension configuration
+- Intuitive dashboard with real-time sync status
+- Snap scrolling for desktop users
 
 ## Screenshots
 
@@ -46,6 +55,9 @@ Web Tracker automatically records when you log into websites through a browser e
 
 ![Privacy](screenshots/privacy.png)
 *Manage chrome extension settings, update your data retention policy for web tracker, and delete all of your history*
+
+![Extension](screenshots/extension.png)
+*Unlink your chrome extension, see more details about the page you're on, toggle web tracking*
 
 ## Tech Stack
 
