@@ -32,13 +32,13 @@ Web Tracker automatically records when you log into websites through a browser e
 ![Home](screenshots/home.png)
 *Home screen*
 
-![VisitHistory] (web/public/images/about/visits.png)
+![VisitHistory](web/public/images/about/visits.png)
 *Recent Website visit history*
 
-![MostVisits] (web/public/images/about/most-visits.png)
+![MostVisits](web/public/images/about/most-visits.png)
 *Most active websites graph*
 
-![InactiveWebsites] (web/public/images/about/inactive-websites.png)
+![InactiveWebsites](web/public/images/about/inactive-websites.png)
 *Websites you haven't used in a while*
 
 ![AccountSettings](screenshots/account_settings.png)
