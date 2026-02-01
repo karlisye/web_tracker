@@ -112,7 +112,7 @@ const NavBar = () => {
           ref={profileMenuRef}
           className={`w-60 rounded-b-4xl duration-400 bg-primary overflow-hidden text-white text-sm flex flex-col shadow-lg hover:shadow-xl ml-auto
             ${isProfileClicked && !user ? 'h-20 opacity-100' : 
-            isProfileClicked ? 'h-50 opacity-100' : 'h-0 opacity-0'}
+            isProfileClicked ? 'h-40 opacity-100' : 'h-0 opacity-0'}
           `}
         >
           {user ? (
@@ -128,14 +128,6 @@ const NavBar = () => {
                 onClick={() => setIsProfileClicked(false)}
               >
                 My Profile
-              </NavLink>
-
-              <NavLink 
-                to='/settings' 
-                className={({ isActive }) => `flex-1 px-4 py-2 hover:bg-secondary hover:text-primary hover:scale-102 transition-transfrom hover:flex-2 flex items-center duration-400 ${isActive && 'font-bold'}`} 
-                onClick={() => setIsProfileClicked(false)}
-              >
-                Settings
               </NavLink>
 
               <form 
