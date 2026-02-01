@@ -145,7 +145,7 @@ const Setup = () => {
               Then, enable Developer Mode by clicking the toggle switch in the top-right corner. This allows you to install extensions from outside the Chrome Web Store.
             </p>
             <div className='bg-secondary rounded-lg p-4'>
-              <p className='text-primary font-semibold'>💡 Tip: You can also access this page through Menu → More Tools → Extensions</p>
+              <p className='text-primary font-semibold'>Tip: You can also access this page through Menu → More Tools → Extensions</p>
             </div>
           </div>
         </div>
@@ -172,7 +172,7 @@ const Setup = () => {
               Navigate to the folder where you extracted the extension files and select it. Click "Select Folder" to install.
             </p>
             <div className='bg-primary rounded-lg p-4'>
-              <p className='text-secondary font-semibold'>✓ The Web Tracker extension will now appear in your extensions list!</p>
+              <p className='text-secondary font-semibold'>The Web Tracker extension will now appear in your extensions list!</p>
             </div>
           </div>
 
